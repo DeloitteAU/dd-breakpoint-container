@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- Fixed lib/index.js filename mismatches
+
 ## 0.2.1
 
 - Library now auto-routes to prod/dev script according to NODE_ENV
