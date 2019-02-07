@@ -8,6 +8,7 @@ import pcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import minify from 'rollup-plugin-babel-minify';
+import replace from 'rollup-plugin-replace';
 
 import { main } from './package.json';
 
@@ -26,6 +27,11 @@ export default (isDev = true) => {
 		},
 		plugins: [
 			clean({ targets: './lib/' }),
+			(!isDev && replace({
+				'include': 'src/index.js',
+				'delimiters': ['', ''],
+				'DEBUG_BROWSER = true': 'DEBUG_BROWSER = false',
+			})),
 			babel({
 				exclude: 'node_modules/**',
 				presets: ['@deloitte-digital-au/babel-preset-app-react'],
@@ -33,7 +39,6 @@ export default (isDev = true) => {
 			}),
 			resolve(),
 			commonjs({ sourceMap }),
-			(!isDev && minify()),
 			postcss({
 				inject: true,
 				sourceMap,
@@ -50,6 +55,7 @@ export default (isDev = true) => {
 					(!isDev && cssnano()),
 				],
 			}),
+			(!isDev && minify()),
 		],
 	};
 };
