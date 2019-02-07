@@ -17,8 +17,8 @@ export default (isDev = true) => {
 	return {
 		input: srcFile,
 		output: {
-			name: 'dd.breakpointContainer',
-			file: `./lib/cjs/dd.breakpointContainer${isDev ? '.dev' : '.min'}.js`,
+			name: 'dd-breakpoint-container',
+			file: `./lib/cjs/dd.bpc${isDev ? '.dev' : '.min'}.js`,
 			format: 'esm', // TODO cjs or umd
 			sourceMap,
 			globals: { react: 'React' },
