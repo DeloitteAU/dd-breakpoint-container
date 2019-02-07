@@ -1,6 +1,6 @@
 {
   "name": "dd-breakpoint-container",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Flexible container queries for responsive design in React and SCSS.",
   "main": "lib/index.js",
   "devDependencies": {
