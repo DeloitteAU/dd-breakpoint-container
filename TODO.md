@@ -1,0 +1,29 @@
+* README if you want media queries -> DD breakpoints
+* Get installable via npm
+* Separate bp & bpc CSS mixins from other essential/debug CSS
+* Ensure all debug indicators are disabled in 'prod' build
+* Usage docs in readme
+* Decide on library name
+* Cypress unit tests
+* UMD js wrapper...?
+* Doclets?
+* Contributing.md?
+* Accurate changelog - CHANGELOG.md?
+* Write background
+
+## Legacy TODOs
+- TODO efficiency/performance tests
+- TODO unit tests
+- TODO docs, version, licence, etc
+- TODO make sure JSdoc conventions are correct - are there any for classes?
+
+- TODO react hooks?
+- TODO what to do about first-pass rendering? react-container-query 'solves' it with initialSize
+- can we do an onMount / constructor container size check? Or initialSize...? Dont see how thats a solution though
+- TODO how can we set global debug indicators when this is a package?
+- TODO ensure debug is set to false when building/prod version
+- TODO any way to optimise <Breakpoint/>? General component optimisation?
+- TODO breakpoint height? react-resize-detector seems to support this
+- TODO is it possible to share SCSS / JS vars?
+- TODO do we need bps-max array or can we just derive that?
+- TODO fragments with shortened syntax - lint/highlighting support?
