@@ -1,12 +1,13 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import del from 'rollup-plugin-delete';
+import clean from 'rollup-plugin-delete';
 import babel from 'rollup-plugin-babel';
 import sass from 'node-sass';
 import postcss from 'rollup-plugin-postcss';
 import pcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import minify from 'rollup-plugin-babel-minify';
 
 import { main } from './package.json';
 
@@ -24,7 +25,7 @@ export default (isDev = true) => {
 			exports: 'named',
 		},
 		plugins: [
-			del({ targets: './lib/' }),
+			clean({ targets: './lib/' }),
 			babel({
 				exclude: 'node_modules/**',
 				presets: ['@deloitte-digital-au/babel-preset-app-react'],
@@ -32,6 +33,7 @@ export default (isDev = true) => {
 			}),
 			resolve(),
 			commonjs({ sourceMap }),
+			(!isDev && minify()),
 			postcss({
 				inject: true,
 				sourceMap,

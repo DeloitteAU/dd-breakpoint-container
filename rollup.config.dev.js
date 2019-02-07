@@ -1,3 +1,3 @@
 import generate from './rollup.config.common.js';
 
-export default generate();
+export default generate(true);
