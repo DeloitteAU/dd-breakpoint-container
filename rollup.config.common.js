@@ -45,7 +45,7 @@ export default (isDev = true) => {
 				plugins: [
 					pcssPresetEnv(),
 					autoprefixer(),
-					(isDev && cssnano()),
+					(!isDev && cssnano()),
 				],
 			}),
 		],
