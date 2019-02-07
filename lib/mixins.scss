@@ -1,3 +1,8 @@
+// NOTE: This file is a separate export from the core library CSS
+// It specifically enables the 'bp' and 'bpc' mixins
+// (It's separate so that it must be imported into a project's SCSS,
+// wherein the mixins become available to the other project SCSS files)
+
 // ==========================================================================
 // VARIABLES
 // ==========================================================================
@@ -13,13 +18,6 @@ $BP_BROWSER: '#{$CORE_CLASS}__browser';
 $DEBUG_MODIFIER: '-debug';
 $DEBUG_INDICATOR: '#{$CORE_CLASS}__debugIndicator';
 $DEBUG_IDENTIFIER: '#{$CORE_CLASS}__debugIdentifier';
-
-// NOTE: This file is a separate export from the core library CSS
-// It specifically enables the 'bp' and 'bpc' mixins
-// (It's separate so that it must be imported into a project's SCSS,
-// wherein the mixins become available to the other project SCSS files)
-
-@import 'variables';
 
 // ==========================================================================
 // BREAKPOINTS
