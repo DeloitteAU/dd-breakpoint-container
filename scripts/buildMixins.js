@@ -23,7 +23,7 @@ fs.readFile(mixins, 'utf8', (err, data) => {
 	let mixinsFile = data.split('\n');
 
 	// Find line index of variable '@import' statement
-	const importIndex = mixinsFile.findIndex(line => line.indexOf(importStatement));
+	const importIndex = mixinsFile.findIndex(line => line.indexOf(importStatement) >= 0);
 
 	fs.readFile(variables, 'utf8', (err, data) => {
 		if (err) { throw err; }
@@ -34,7 +34,7 @@ fs.readFile(mixins, 'utf8', (err, data) => {
 		mixinsFile = [
 			mixinsFile.slice(0, importIndex),
 			variablesFile,
-			mixinsFile.slice(importIndex, mixinsFile.length),
+			mixinsFile.slice(importIndex + 2, mixinsFile.length),
 		];
 
 		// Flatten (array of arrays)
