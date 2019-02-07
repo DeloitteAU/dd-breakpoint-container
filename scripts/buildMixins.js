@@ -15,7 +15,7 @@ const fs = require('fs');
 const mixins = 'src/mixins.scss';
 const variables = 'src/_variables.scss';
 const importStatement = '@import \'variables\';';
-const output = 'lib/dd.breakpointContainer.scss';
+const output = 'lib/mixins.scss';
 
 fs.readFile(mixins, 'utf8', (err, data) => {
 	if (err) { throw err; }
