@@ -18,7 +18,7 @@ export default (isDev = true) => {
 		output: {
 			name: 'dd-breakpoint-container',
 			file: `./dist/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
-			format: 'esm', // TODO cjs or umd
+			format: 'cjs',
 			sourceMap,
 			globals: { react: 'React' },
 			exports: 'named',
