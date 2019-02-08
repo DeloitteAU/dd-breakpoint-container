@@ -12,8 +12,8 @@
 
 const fs = require('fs');
 
-const mixins = 'src/mixins.scss';
-const variables = 'src/_variables.scss';
+const mixins = 'src/scss/mixins.scss';
+const variables = 'src/scss/_variables.scss';
 const importStatement = '@import \'variables\';';
 const output = 'lib/mixins.scss';
 

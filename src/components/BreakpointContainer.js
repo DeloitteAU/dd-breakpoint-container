@@ -3,7 +3,7 @@ import T from 'prop-types';
 import cx from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 
-import './main.scss';
+import '../scss/debug.scss';
 
 // ------------------------
 // Variables

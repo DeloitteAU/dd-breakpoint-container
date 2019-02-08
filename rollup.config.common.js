@@ -9,7 +9,7 @@ import cssnano from 'cssnano';
 import minify from 'rollup-plugin-babel-minify';
 import replace from 'rollup-plugin-replace';
 
-const srcFile = 'src/BreakpointContainer.js';
+const srcFile = 'src/index.js';
 
 export default (isDev = true) => {
 	const sourceMap = isDev ? 'inline' : false;
@@ -18,7 +18,7 @@ export default (isDev = true) => {
 		input: srcFile,
 		output: {
 			name: 'dd-breakpoint-container',
-			file: `./lib/cjs/dd.bpc${isDev ? '.dev' : '.min'}.js`,
+			file: `./lib/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
 			format: 'esm', // TODO cjs or umd
 			sourceMap,
 			globals: { react: 'React' },
@@ -26,7 +26,7 @@ export default (isDev = true) => {
 		},
 		plugins: [
 			(!isDev && replace({
-				'include': srcFile,
+				'include': 'src/components/BreakpointContainer.js',
 				'delimiters': ['', ''],
 				'DEBUG_BROWSER = true': 'DEBUG_BROWSER = false',
 			})),
