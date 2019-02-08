@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.3
+## 0.2.4
 
 - Fix: '0' lower bp definitions are now properly routed to 'none', for <Bpc/> class output too
 - Feat: Added '0' bp, as there is merit to introducing 'none' as an official bp
