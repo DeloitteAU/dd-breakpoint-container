@@ -9,7 +9,7 @@ import cssnano from 'cssnano';
 import alias from 'rollup-plugin-alias';
 import minify from 'rollup-plugin-babel-minify';
 
-const srcFile = 'src/components/BreakpointContainer.js';
+const srcFile = 'src/index.js';
 
 export default (isDev = true) => {
 	const sourceMap = isDev ? 'inline' : false;
@@ -18,7 +18,7 @@ export default (isDev = true) => {
 		input: srcFile,
 		output: {
 			name: 'dd-breakpoint-container',
-			file: `./lib/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
+			file: `./dist/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
 			format: 'esm', // TODO cjs or umd
 			sourceMap,
 			globals: { react: 'React' },
@@ -31,7 +31,6 @@ export default (isDev = true) => {
 			}),
 			babel({
 				exclude: 'node_modules/**',
-				presets: ['@deloitte-digital-au/babel-preset-app-react'],
 				sourceMap,
 			}),
 			resolve(),

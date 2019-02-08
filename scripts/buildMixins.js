@@ -15,7 +15,8 @@ const fs = require('fs');
 const mixins = 'src/scss/mixins.scss';
 const variables = 'src/scss/_variables.scss';
 const importStatement = '@import \'variables\';';
-const output = 'lib/mixins.scss';
+const libOutput = 'lib/mixins.scss';
+const distOutput = 'dist/mixins.scss';
 
 fs.readFile(mixins, 'utf8', (err, data) => {
 	if (err) { throw err; }
@@ -42,7 +43,8 @@ fs.readFile(mixins, 'utf8', (err, data) => {
 		// Merge back into a file
 		mixinsFile = mixinsFile.join('\n');
 
-		// Write our amended file to build folder
-		fs.writeFile(output, mixinsFile, err => { if (err) { throw err; } });
+		// Write our amended file to lib/dist folders
+		fs.writeFile(libOutput, mixinsFile, err => { if (err) { throw err; } });
+		fs.writeFile(distOutput, mixinsFile, err => { if (err) { throw err; } });
 	});
 });
