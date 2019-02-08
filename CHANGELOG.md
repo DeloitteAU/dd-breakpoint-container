@@ -2,6 +2,11 @@
 
 ## 0.2.3
 
+- Fix: '0' lower bp definitions are now properly routed to 'none', for <Bpc/> class output too
+- Feat: Added '0' bp, as there is merit to introducing 'none' as an official bp
+
+## 0.2.3
+
 - Fix: 'none' breakpoint class replaced with core 'bpc' class
 - Refactor: 'xxxs' breakpoint definition from 300 -> 320px
 

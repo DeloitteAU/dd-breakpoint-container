@@ -15,6 +15,7 @@
 // - (React) Add to BREAKPOINTS const obj in BreakpointContainer.js component
 
 $bps: (
+	none: 0,
 	xxxs: 320,
 	xxs: 359,
 	xs: 480,
@@ -28,6 +29,7 @@ $bps: (
 
 // A breakpoint's 'max' is its upper-limit, which we can set by pointing to the 'next' breakpoint up
 $bps-max: (
+	none: xxxs,
 	xxxs: xxs,
 	xxs: xs,
 	xs: s,
@@ -36,7 +38,7 @@ $bps-max: (
 	l: xl,
 	xl: xxl,
 	xxl: xxxl,
-	// This last value has itself as its max, because there is no upper limit threshold
+	// This last value has itself as its max, because there is no upper limit
 	xxxl: xxxl,
 );
 
@@ -109,7 +111,7 @@ $bps-max: (
 		}
 	} @else {
 		@if ($bp-min == '0' or $bp-min == 0) {
-			$bp-min: $CORE_CLASS;
+			$bp-min: 'none';
 		}
 
 		.#{$BP_PREFIX}#{$bp-min}:not(.#{$BP_PREFIX}#{map-get($bps-max, $bp-max)}) > .#{$BP_BROWSER} & {
@@ -123,7 +125,7 @@ $bps-max: (
 		.#{$BP_PREFIX}#{$bp-min} > & { @content; }
 	} @else {
 		@if ($bp-min == '0' or $bp-min == 0) {
-			$bp-min: $CORE_CLASS;
+			$bp-min: 'none';
 		}
 
 		.#{$BP_PREFIX}#{$bp-min}:not(.#{$BP_PREFIX}#{map-get($bps-max, $bp-max)}) > & {
