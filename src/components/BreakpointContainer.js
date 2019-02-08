@@ -3,7 +3,7 @@ import T from 'prop-types';
 import cx from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { WithContext, ID_DEFAULT, ID_BROWSER } from './components/Context.js';
+import { WithContext, ID_DEFAULT, ID_BROWSER } from './Context.js';
 import { BREAKPOINTS } from '../data/breakpoints.js';
 
 import '../scss/debug.scss';

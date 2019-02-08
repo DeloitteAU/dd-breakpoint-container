@@ -4,7 +4,7 @@ import React from 'react';
 import T from 'prop-types';
 
 import { BREAKPOINTS, getBpUpperLimit } from '../data/breakpoints.js';
-import { BP_CONTEXTS, ID_DEFAULT } from './components/Context.js';
+import { BP_CONTEXTS, ID_DEFAULT } from './Context.js';
 
 // TODO docs - also explain inclusive bp, i.e. s-m includes both s & m, whereas just s would be s, s
 function Breakpoint({ q, query, identifier, children }) {
