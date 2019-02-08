@@ -23,3 +23,5 @@
 - TODO is it possible to share SCSS / JS vars?
 - TODO do we need bps-max array or can we just derive that?
 - TODO fragments with shortened syntax - lint/highlighting support?
+- TODO does nested BEM @include work the same as DD bps? Or is that the same limitation?
+- TODO should I separate out into different files now rather than one super component file?

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3
+
+- Fix - 'none' breakpoint class replaced with core 'bpc' class
+
 ## 0.2.2
 
 - Fixed lib/index.js filename mismatches

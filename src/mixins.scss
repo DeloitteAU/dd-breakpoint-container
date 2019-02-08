@@ -108,7 +108,7 @@ $bps-max: (
 		}
 	} @else {
 		@if ($bp-min == '0' or $bp-min == 0) {
-			$bp-min: none;
+			$bp-min: $CORE_CLASS;
 		}
 
 		.#{$BP_PREFIX}#{$bp-min}:not(.#{$BP_PREFIX}#{map-get($bps-max, $bp-max)}) > .#{$BP_BROWSER} & {
@@ -122,7 +122,7 @@ $bps-max: (
 		.#{$BP_PREFIX}#{$bp-min} > & { @content; }
 	} @else {
 		@if ($bp-min == '0' or $bp-min == 0) {
-			$bp-min: none;
+			$bp-min: $CORE_CLASS;
 		}
 
 		.#{$BP_PREFIX}#{$bp-min}:not(.#{$BP_PREFIX}#{map-get($bps-max, $bp-max)}) > & {
