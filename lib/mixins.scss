@@ -29,7 +29,8 @@ $DEBUG_IDENTIFIER: '#{$CORE_CLASS}__debugIdentifier';
 // - (React) Add to BREAKPOINTS const obj in BreakpointContainer.js component
 
 $bps: (
-	xxxs: 300,
+	none: 0,
+	xxxs: 320,
 	xxs: 359,
 	xs: 480,
 	s: 640,
@@ -40,8 +41,9 @@ $bps: (
 	xxxl: 1690,
 );
 
-// A breakpoint's 'max' to its upper-limit, which we can set by pointing to the 'next' breakpoint up
+// A breakpoint's 'max' is its upper-limit, which we can set by pointing to the 'next' breakpoint up
 $bps-max: (
+	none: xxxs,
 	xxxs: xxs,
 	xxs: xs,
 	xs: s,
@@ -50,7 +52,8 @@ $bps-max: (
 	l: xl,
 	xl: xxl,
 	xxl: xxxl,
-	xxxl: xxxs, // Last entry should wrap back to first entry
+	// This last value has itself as its max, because there is no upper limit
+	xxxl: xxxl,
 );
 
 // ==========================================================================
@@ -122,7 +125,7 @@ $bps-max: (
 		}
 	} @else {
 		@if ($bp-min == '0' or $bp-min == 0) {
-			$bp-min: none;
+			$bp-min: 'none';
 		}
 
 		.#{$BP_PREFIX}#{$bp-min}:not(.#{$BP_PREFIX}#{map-get($bps-max, $bp-max)}) > .#{$BP_BROWSER} & {
@@ -136,7 +139,7 @@ $bps-max: (
 		.#{$BP_PREFIX}#{$bp-min} > & { @content; }
 	} @else {
 		@if ($bp-min == '0' or $bp-min == 0) {
-			$bp-min: none;
+			$bp-min: 'none';
 		}
 
 		.#{$BP_PREFIX}#{$bp-min}:not(.#{$BP_PREFIX}#{map-get($bps-max, $bp-max)}) > & {
