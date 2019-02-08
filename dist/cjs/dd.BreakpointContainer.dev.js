@@ -1,16 +1,23 @@
-import 'core-js/modules/es6.object.assign';
-import 'core-js/modules/es6.array.map';
-import 'core-js/modules/web.dom.iterable';
-import 'core-js/modules/es6.array.iterator';
-import 'core-js/modules/es6.object.keys';
-import 'core-js/modules/es6.array.filter';
-import React, { cloneElement, isValidElement, createElement, PureComponent } from 'react';
-import 'core-js/modules/es6.array.index-of';
-import 'core-js/modules/es6.number.constructor';
-import 'core-js/modules/es6.number.is-nan';
-import 'core-js/modules/es6.function.name';
-import 'core-js/modules/es6.regexp.replace';
-import 'core-js/modules/es6.regexp.split';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+require('core-js/modules/es6.object.assign');
+require('core-js/modules/es6.array.map');
+require('core-js/modules/web.dom.iterable');
+require('core-js/modules/es6.array.iterator');
+require('core-js/modules/es6.object.keys');
+require('core-js/modules/es6.array.filter');
+var React = require('react');
+var React__default = _interopDefault(React);
+require('core-js/modules/es6.array.index-of');
+require('core-js/modules/es6.number.constructor');
+require('core-js/modules/es6.number.is-nan');
+require('core-js/modules/es6.function.name');
+require('core-js/modules/es6.regexp.replace');
+require('core-js/modules/es6.regexp.split');
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -377,7 +384,7 @@ function emptyFunctionThatReturnsNull() {
   return null;
 }
 
-var factoryWithTypeCheckers = function (isValidElement$$1, throwOnDirectAccess) {
+var factoryWithTypeCheckers = function (isValidElement, throwOnDirectAccess) {
   /* global Symbol */
   var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
   var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
@@ -614,7 +621,7 @@ var factoryWithTypeCheckers = function (isValidElement$$1, throwOnDirectAccess) 
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
 
-      if (!isValidElement$$1(propValue)) {
+      if (!isValidElement(propValue)) {
         var propType = getPropType(propValue);
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
       }
@@ -809,7 +816,7 @@ var factoryWithTypeCheckers = function (isValidElement$$1, throwOnDirectAccess) 
           return propValue.every(isNode);
         }
 
-        if (propValue === null || isValidElement$$1(propValue)) {
+        if (propValue === null || isValidElement(propValue)) {
           return true;
         }
 
@@ -997,14 +1004,14 @@ var propTypes = createCommonjsModule(function (module) {
 if (process.env.NODE_ENV !== 'production') {
   var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
 
-  var isValidElement$$1 = function (object) {
+  var isValidElement = function (object) {
     return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
   }; // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
 
 
   var throwOnDirectAccess = true;
-  module.exports = factoryWithTypeCheckers(isValidElement$$1, throwOnDirectAccess);
+  module.exports = factoryWithTypeCheckers(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
@@ -2931,7 +2938,7 @@ function (_PureComponent) {
       var render = _this.props.render;
 
       if (render && typeof render === 'function') {
-        return cloneElement(render({
+        return React.cloneElement(render({
           width: width,
           height: height
         }), {
@@ -2950,10 +2957,10 @@ function (_PureComponent) {
       return convertChildrenToArray(children).filter(function (child) {
         return !!child;
       }).map(function (child, key) {
-        if (isFunction(child)) return cloneElement(child(width, height), {
+        if (isFunction(child)) return React.cloneElement(child(width, height), {
           key: key
         });
-        if (isValidElement(child)) return cloneElement(child, {
+        if (React.isValidElement(child)) return React.cloneElement(child, {
           width: width,
           height: height,
           key: key
@@ -3004,7 +3011,7 @@ function (_PureComponent) {
       var _this2 = this;
 
       var nodeType = this.props.nodeType;
-      var resizeDetector = createElement(nodeType, {
+      var resizeDetector = React.createElement(nodeType, {
         key: 'resize-detector',
         style: styles,
         ref: function ref(el) {
@@ -3016,7 +3023,7 @@ function (_PureComponent) {
   }]);
 
   return ResizeDetector;
-}(PureComponent);
+}(React.PureComponent);
 
 ResizeDetector.propTypes = {
   handleWidth: propTypes.bool,
@@ -3057,7 +3064,7 @@ var _BP_CONTEXTS,
 var ID_DEFAULT = 'default';
 var ID_BROWSER = 'browser'; // NOTE: Other identifier contexts are created as-needed in WithContext
 
-var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React.createContext()), _BP_CONTEXTS); // TODO docs? necessary here with internal comments already? should you doc functional components?
+var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React__default.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React__default.createContext()), _BP_CONTEXTS); // TODO docs? necessary here with internal comments already? should you doc functional components?
 
 function WithContext(_ref) {
   var identifier = _ref.identifier,
@@ -3067,7 +3074,7 @@ function WithContext(_ref) {
   var hasIdentifier = identifier !== ID_DEFAULT; // Create specific context if it doesn't already exist
 
   if (hasIdentifier && !BP_CONTEXTS[identifier]) {
-    BP_CONTEXTS[identifier] = React.createContext();
+    BP_CONTEXTS[identifier] = React__default.createContext();
   } // CoreContext aka 'default' context must always be present, even if the
   // BPC has a specified identifier - this is to enable the default behaviour
   // of <Breakpoint/> components that don't specify an target BPC identifier
@@ -3075,27 +3082,27 @@ function WithContext(_ref) {
 
   var CoreContext = BP_CONTEXTS[ID_DEFAULT];
   var IdentifierContext = BP_CONTEXTS[identifier];
-  return React.createElement(React.Fragment, {
+  return React__default.createElement(React__default.Fragment, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 30
     },
     __self: this
-  }, hasIdentifier ? React.createElement(IdentifierContext.Provider, {
+  }, hasIdentifier ? React__default.createElement(IdentifierContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 32
     },
     __self: this
-  }, React.createElement(CoreContext.Provider, {
+  }, React__default.createElement(CoreContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 33
     },
     __self: this
-  }, children)) : React.createElement(IdentifierContext.Provider, {
+  }, children)) : React__default.createElement(IdentifierContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
@@ -3252,20 +3259,20 @@ function (_React$Component) {
       }).join(' '); // Debug mode - component flag, and account for opt-out of global flag
 
       var isDebugActive = debug || debug !== false && DEBUG_BPC;
-      return React.createElement(React.Fragment, {
+      return React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
           lineNumber: 104
         },
         __self: this
-      }, React.createElement("div", {
+      }, React__default.createElement("div", {
         className: classnames(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noClasses), _cx)),
         __source: {
           fileName: _jsxFileName$1,
           lineNumber: 105
         },
         __self: this
-      }, React.createElement(ResizeDetector, {
+      }, React__default.createElement(ResizeDetector, {
         handleWidth: true,
         onResize: function onResize(size) {
           return _this2.setState({
@@ -3278,14 +3285,14 @@ function (_React$Component) {
           lineNumber: 116
         },
         __self: this
-      }), React.createElement("div", {
+      }), React__default.createElement("div", {
         className: classnames(SELECTORS.BP_CONTENT, className),
         __source: {
           fileName: _jsxFileName$1,
           lineNumber: 121
         },
         __self: this
-      }, React.createElement(WithContext, Object.assign({
+      }, React__default.createElement(WithContext, Object.assign({
         identifier: identifier,
         currentBp: currentBp
       }, {
@@ -3294,20 +3301,20 @@ function (_React$Component) {
           lineNumber: 122
         },
         __self: this
-      }), typeof children === 'function' ? children(currentBp, this.state.size) : children)), isDebugActive && React.createElement(React.Fragment, {
+      }), typeof children === 'function' ? children(currentBp, this.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
           lineNumber: 130
         },
         __self: this
-      }, React.createElement("span", {
+      }, React__default.createElement("span", {
         className: SELECTORS.DEBUG_INDICATOR,
         __source: {
           fileName: _jsxFileName$1,
           lineNumber: 131
         },
         __self: this
-      }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React.createElement("span", {
+      }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
         className: SELECTORS.DEBUG_IDENTIFIER,
         __source: {
           fileName: _jsxFileName$1,
@@ -3319,7 +3326,7 @@ function (_React$Component) {
   }]);
 
   return BreakpointContainer;
-}(React.Component);
+}(React__default.Component);
 
 BreakpointContainer.propTypes = {
   identifier: propTypes.string.isRequired,
@@ -3349,7 +3356,7 @@ var BrowserBreakpoints = function BrowserBreakpoints(_ref) {
   var children = _ref.children,
       bpcProps = _objectWithoutProperties(_ref, ["children"]);
 
-  return React.createElement(BreakpointContainer, Object.assign({
+  return React__default.createElement(BreakpointContainer, Object.assign({
     identifier: ID_BROWSER,
     className: SELECTORS.BP_BROWSER,
     debug: DEBUG_BROWSER
@@ -3365,13 +3372,13 @@ var BrowserBreakpoints = function BrowserBreakpoints(_ref) {
 var _jsxFileName$2 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/HOCs.js";
 function withBreakpointContainer(Component, bpcProps) {
   function WithBpc(props) {
-    return React.createElement(BreakpointContainer, Object.assign({}, bpcProps, {
+    return React__default.createElement(BreakpointContainer, Object.assign({}, bpcProps, {
       __source: {
         fileName: _jsxFileName$2,
         lineNumber: 7
       },
       __self: this
-    }), React.createElement(Component, Object.assign({}, props, {
+    }), React__default.createElement(Component, Object.assign({}, props, {
       __source: {
         fileName: _jsxFileName$2,
         lineNumber: 8
@@ -3387,13 +3394,13 @@ function withBreakpointContainer(Component, bpcProps) {
 
 function withBrowserBreakpoints(Component, bpcProps) {
   function WithBrowserBpc(props) {
-    return React.createElement(BrowserBreakpoints, Object.assign({}, bpcProps, {
+    return React__default.createElement(BrowserBreakpoints, Object.assign({}, bpcProps, {
       __source: {
         fileName: _jsxFileName$2,
         lineNumber: 25
       },
       __self: this
-    }), React.createElement(Component, Object.assign({}, props, {
+    }), React__default.createElement(Component, Object.assign({}, props, {
       __source: {
         fileName: _jsxFileName$2,
         lineNumber: 26
@@ -3422,7 +3429,7 @@ function Breakpoint(_ref) {
       upper = _bpQuery$replace$spli2[1];
 
   var Context = BP_CONTEXTS[identifier];
-  return React.createElement(Context.Consumer, {
+  return React__default.createElement(Context.Consumer, {
     __source: {
       fileName: _jsxFileName$3,
       lineNumber: 17
@@ -3452,5 +3459,10 @@ Breakpoint.defaultProps = {
   identifier: ID_DEFAULT
 };
 
-export default BreakpointContainer;
-export { BrowserBreakpoints, withBreakpointContainer, withBrowserBreakpoints, Breakpoint, BREAKPOINTS, getBpUpperLimit };
+exports.default = BreakpointContainer;
+exports.BrowserBreakpoints = BrowserBreakpoints;
+exports.withBreakpointContainer = withBreakpointContainer;
+exports.withBrowserBreakpoints = withBrowserBreakpoints;
+exports.Breakpoint = Breakpoint;
+exports.BREAKPOINTS = BREAKPOINTS;
+exports.getBpUpperLimit = getBpUpperLimit;
