@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Fix: Mixins.scss relative path fix
+
 ## 0.3.0
 
 - Refactor: Complete restructure, file renaming, separating, ./lib and ./dist dirs
