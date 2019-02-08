@@ -30,7 +30,7 @@ const SELECTORS = {
 // NOTE: These key:value pairs mirror those in this module's SCSS
 // If you're going to add or change bps, check the notes near the top of the SCSS file
 export const BREAKPOINTS = {
-	xxxs: 300,
+	xxxs: 320,
 	xxs: 359,
 	xs: 480,
 	s: 640,
