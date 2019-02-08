@@ -2,22 +2,23 @@
 
 ## 0.2.3
 
-- Fix - 'none' breakpoint class replaced with core 'bpc' class
+- Fix: 'none' breakpoint class replaced with core 'bpc' class
+- Refactor: 'xxxs' breakpoint definition from 300 -> 320px
 
 ## 0.2.2
 
-- Fixed lib/index.js filename mismatches
+- Fix: lib/index.js filename mismatches
 
 ## 0.2.1
 
-- Library now auto-routes to prod/dev script according to NODE_ENV
-- Refactored ./lib structure, some other internal module renaming
+- Feat: Library now auto-routes to prod/dev script according to NODE_ENV
+- Refactor: ./lib structure, some other internal module renaming
 
 ## 0.2.0
 
-- Separate production/develop configs
-- SCSS mixins now separate export
+- Feat: Separate production/develop configs
+- Feat: SCSS mixins now separate export
 
 ## 0.1.0
 
-- Component converted to package repo
+- Feat: Component converted to package repo
