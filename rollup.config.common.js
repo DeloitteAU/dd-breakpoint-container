@@ -25,11 +25,10 @@ export default (isDev = true) => {
 			exports: 'named',
 		},
 		plugins: [
-			(!isDev && replace({
-				'include': 'src/components/BreakpointContainer.js',
-				'delimiters': ['', ''],
-				'DEBUG_BROWSER = true': 'DEBUG_BROWSER = false',
-			})),
+			alias({
+				'resolve': ['.js'],
+				'~': 'src',
+			}),
 			babel({
 				exclude: 'node_modules/**',
 				presets: ['@deloitte-digital-au/babel-preset-app-react'],
