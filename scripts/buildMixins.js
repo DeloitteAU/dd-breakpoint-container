@@ -14,7 +14,7 @@ const fs = require('fs');
 
 const mixins = 'src/mixins.scss';
 const variables = 'src/scss/_variables.scss';
-const importStatement = '@import \'variables\';';
+const importStatement = '@import \'scss/variables\';';
 const output = 'dist/mixins.scss';
 
 fs.readFile(mixins, 'utf8', (err, data) => {
