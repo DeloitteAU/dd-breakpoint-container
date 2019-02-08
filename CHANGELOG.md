@@ -3,7 +3,6 @@
 ## 0.3.0
 
 - Refactor: Complete restructure, file renaming, separating, ./lib and ./dist dirs
-- Refactor: BP_DEBUG env flag, fallback to NODE_ENV for prod build debug indicators
 - Feat: Added more relevant entries in package.json
 
 ## 0.2.4

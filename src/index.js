@@ -1,18 +1,14 @@
-import BreakpointContainer, {
-	BREAKPOINTS,
-	getBpUpperLimit,
-	Breakpoint,
-	BrowserBreakpoints,
-	withBreakpointContainer,
-	withBrowserBreakpoints,
-} from './components/BreakpointContainer';
+import BreakpointContainer, { BrowserBreakpoints } from './components/BreakpointContainer';
+import { withBreakpointContainer, withBrowserBreakpoints } from './components/HOCs';
+import { Breakpoint } from './components/Breakpoint';
+import { BREAKPOINTS, getBpUpperLimit } from './data/breakpoints';
 
 export default BreakpointContainer;
 export {
-	BREAKPOINTS,
-	getBpUpperLimit,
-	Breakpoint,
 	BrowserBreakpoints,
 	withBreakpointContainer,
 	withBrowserBreakpoints,
+	Breakpoint,
+	BREAKPOINTS,
+	getBpUpperLimit,
 };

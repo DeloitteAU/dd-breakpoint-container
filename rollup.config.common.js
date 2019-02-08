@@ -6,7 +6,6 @@ import postcss from 'rollup-plugin-postcss';
 import pcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import alias from 'rollup-plugin-alias';
 import minify from 'rollup-plugin-babel-minify';
 
 const srcFile = 'src/index.js';
@@ -25,14 +24,7 @@ export default (isDev = true) => {
 			exports: 'named',
 		},
 		plugins: [
-			alias({
-				'resolve': ['.js'],
-				'~': 'src',
-			}),
-			babel({
-				exclude: 'node_modules/**',
-				sourceMap,
-			}),
+			babel({ sourceMap }),
 			resolve(),
 			commonjs({ sourceMap }),
 			postcss({

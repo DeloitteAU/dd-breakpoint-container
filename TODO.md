@@ -15,6 +15,7 @@
 - TODO docs, version, licence, etc
 - TODO make sure JSdoc conventions are correct - are there any for classes?
 
+- TODO somehow get absolute imports working again - weird because src becomes lib
 - TODO custom env variable for turning off debug indicators
 - TODO fallback to NODE_ENV
 - TODO dist/lib folders
