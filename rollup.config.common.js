@@ -6,10 +6,10 @@ import postcss from 'rollup-plugin-postcss';
 import pcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import alias from 'rollup-plugin-alias';
 import minify from 'rollup-plugin-babel-minify';
-import replace from 'rollup-plugin-replace';
 
-const srcFile = 'src/index.js';
+const srcFile = 'src/components/BreakpointContainer.js';
 
 export default (isDev = true) => {
 	const sourceMap = isDev ? 'inline' : false;
