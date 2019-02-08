@@ -1,12 +1,9 @@
 * README if you want media queries -> DD breakpoints
-* Get installable via npm
 * Usage docs in readme
 * Decide on library name
 * Cypress unit tests
-* UMD js wrapper...?
 * Doclets?
 * Contributing.md?
-* Accurate changelog - CHANGELOG.md?
 * Write background
 
 ## Legacy TODOs

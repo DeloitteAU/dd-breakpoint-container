@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2
+
+- Feat: Dist format now 'cjs'
+
 ## 0.3.1
 
 - Fix: Mixins.scss relative path fix
