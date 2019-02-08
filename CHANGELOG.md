@@ -4,6 +4,7 @@
 
 - Fix: '0' lower bp definitions are now properly routed to 'none', for <Bpc/> class output too
 - Feat: Added '0' bp, as there is merit to introducing 'none' as an official bp
+- Refactor: Amended overly verbose build process with command double-ups
 
 ## 0.2.3
 
