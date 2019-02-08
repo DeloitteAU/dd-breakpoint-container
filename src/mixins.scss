@@ -26,7 +26,7 @@ $bps: (
 	xxxl: 1690,
 );
 
-// A breakpoint's 'max' to its upper-limit, which we can set by pointing to the 'next' breakpoint up
+// A breakpoint's 'max' is its upper-limit, which we can set by pointing to the 'next' breakpoint up
 $bps-max: (
 	xxxs: xxs,
 	xxs: xs,
@@ -36,7 +36,8 @@ $bps-max: (
 	l: xl,
 	xl: xxl,
 	xxl: xxxl,
-	xxxl: xxxs, // Last entry should wrap back to first entry
+	// This last value has itself as its max, because there is no upper limit threshold
+	xxxl: xxxl,
 );
 
 // ==========================================================================
