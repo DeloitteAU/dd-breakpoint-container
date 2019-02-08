@@ -13,7 +13,7 @@
   "scripts": {
     "build": "run-s build:*",
     "build:pre": "run-s lint && node scripts/text/logo.js",
-    "build:lib": "babel src --out-dir lib",
+    "build:lib": "babel ./src --out-dir lib --copy-files",
     "build:dev": "cross-env NODE_ENV=development && rollup -c rollup.config.dev.js",
     "build:prod": "cross-env NODE_ENV=production && rollup -c rollup.config.prod.js",
     "build:post": "node scripts/buildMixins.js && node scripts/text/build-complete.js",
