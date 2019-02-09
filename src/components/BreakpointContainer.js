@@ -47,7 +47,7 @@ export class BreakpointContainer extends React.Component {
 		noClasses: T.bool,
 
 		// Callbacks
-		onBpChanged: T.func,
+		onChange: T.func,
 	};
 
 	static defaultProps = {
@@ -57,7 +57,7 @@ export class BreakpointContainer extends React.Component {
 		// Debug null instead of false so we can opt-out of global debug
 		debug: null,
 		noClasses: false,
-		onBpChanged: null,
+		onChange: null,
 	};
 
 	constructor() {
@@ -70,11 +70,11 @@ export class BreakpointContainer extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		// Check if bp changed to support 'onBpChanged' callback
-		if (typeof this.props.onBpChanged === 'function' &&
+		// Check if bp changed to support 'onChange' callback
+		if (typeof this.props.onChange === 'function' &&
 			this.state.currentBp !== prevState.currentBp) {
 
-			this.props.onBpChanged(this.state.currentBp);
+			this.props.onChange(this.state.currentBp);
 		}
 	}
 
