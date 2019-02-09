@@ -149,7 +149,7 @@ export default class BreakpointContainer extends React.Component {
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>s
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
 // eslint-disable-next-line react/prop-types
-export const BrowserBreakpoints = ({ children, ...bpcProps }) => (
+export const BrowserContainer = ({ children, ...bpcProps }) => (
 	<BreakpointContainer
 		identifier={ID_BROWSER}
 		className={SELECTORS.BP_BROWSER}

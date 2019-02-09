@@ -1,5 +1,5 @@
 import React from 'react';
-import BreakpointContainer, { BrowserBreakpoints } from './BreakpointContainer.js';
+import BreakpointContainer, { BrowserContainer } from './BreakpointContainer.js';
 
 export function withBreakpointContainer(Component, bpcProps) {
 	function WithBpc(props) {
@@ -19,18 +19,18 @@ export function withBreakpointContainer(Component, bpcProps) {
 
 // ------------------------
 
-export function withBrowserBreakpoints(Component, bpcProps) {
+export function withBrowserContainer(Component, bpcProps) {
 	function WithBrowserBpc(props) {
 		return (
-			<BrowserBreakpoints {...bpcProps}>
+			<BrowserContainer {...bpcProps}>
 				<Component {...props}/>
-			</BrowserBreakpoints>
+			</BrowserContainer>
 		);
 	}
 
 	const wrappedComponentName = Component.displayName
 		|| Component.name || 'Component';
 
-	WithBrowserBpc.displayName = `withBrowserBreakpoints(${wrappedComponentName})`;
+	WithBrowserBpc.displayName = `withBrowserContainer(${wrappedComponentName})`;
 	return WithBrowserBpc;
 }

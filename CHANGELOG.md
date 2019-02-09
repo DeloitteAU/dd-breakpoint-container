@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- Refactor: 'BrowserBreakpoints' export renamed 'BrowserContainer'
+
 ## 0.3.2
 
 - Feat: Dist format now 'cjs'
