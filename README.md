@@ -7,6 +7,7 @@ A container query toolkit for flexible responsive design in React and CSS. Make 
 Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js approaches.
 
 <!-- Note: Re-generate with 'npm run doctoc' (install 'doctoc' globally) -->
+<!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Index
@@ -24,9 +25,10 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 - [Other exports](#markdown-header-other-exports)
 - [Options](#markdown-header-options)
 - [Debug features](#markdown-header-debug-features)
-- [Performance](#markdown-header-performance)
-- [Consider media queries](#markdown-header-consider-media-queries)
-    - [Backwards compatibility](#markdown-header-backwards-compatibility)
+- [Disclaimers](#markdown-header-disclaimers)
+    - [Performance](#markdown-header-performance)
+    - [Consider media queries](#markdown-header-consider-media-queries)
+    - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
 - [About Deloitte Digital Australia](#markdown-header-about-deloitte-digital-australia)
     - [Key contributors](#markdown-header-key-contributors)
     - [Who are we?](#markdown-header-who-are-we)
@@ -155,31 +157,80 @@ export withBrowserContainer(MyComponent, { options });
 
 ## Conditional rendering
 
-TODO `</Breakpoint>`
+You can use the `<Breakpoint/>` export to conditionally render markup according to a breakpoint query, like so:
+
+```
+<div>
+    <Breakpoint query="s">
+        <p>This will only render on s breakpoint and above</p>
+    </Breakpoint>
+    <Breakpoint query="xs, m">
+        <p>This will only render between xs and m</p>
+    </Breakpoint>
+    <Breakpoint query="m, m">
+        <p>This will only render on m bp</p>
+    </Breakpoint>
+</div>
+```
+
+You can also specify exact px:
+
+`<Breakpoint query={300, 600}/>`
+
+The component automatically detects which `<BreakpointContainer/>` it's in. Or, if it's not within one, it falls back to the app's `<BrowserContainer/>`.
 
 ## Other exports
 
+`BREAKPOINTS`: A object of key:value pairs for breakpoint names and their pixel values
+`getBpUpperLimit(bp: string)`: A function that takes a named breakpoint and returns its upper-limit.
+
+The above two exports are most useful for comparing two named breakpoints. For example:
+
+```
+import { BREAKPOINTS, getBpUpperLimit, BreakpointContainer } from 'dd-breakpoint-container';
+...
+<BrowserContainer>
+	{ bp => {
+		const currentBp = BREAKPOINTS[bp];
+		const mobileBp = getBpUpperLimit('s');
+		const isMobile = currentBp < mobileBp;
+
+		return <p>This is { !isMobile && 'not' } mobile</p>;
+	} }
+</BrowserContainer>
+```
+
 ## Options
+
+TODO
 
 ## Debug features
 
-TODO props
-TODO prod build
+By default, `<BrowserContainer>` will show you a helpful breakpoint indicator in the top-left of your screen in your development builds, to show you the active breakpoint of your app. This can be turned off with the the prop `debug={false}`.
+
+Conversely, you can set `debug={true}` on any `<BreakpointContainer/>` module to see the outline of its contents, as will as its own respective active breakpoint. This is very useful 
+
+All debug indicators are turned off if you have `NODE_ENV=production` set in your build, so you needn't worry about them slipping into your builds and deployments.
+
 TODO .env flag overrides
 
-## Performance
+## Disclaimers
 
-TODO ref react resize detector
+### Performance
 
-## Consider media queries
+This library uses [react-resize-detector](https://github.com/maslianok/react-resize-detector) which utilises native browser support for [ResizeObservers](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver), and a [polyfill](https://github.com/que-etc/resize-observer-polyfill) for backwards compatibility with older browsers.
+
+While we haven't experienced any noticeable performance loss in our testing and usage, we would recommend discreet usage of this library by careful and thoughtful design. For example, if your app features a common layout or divider system, you could apply `<BreakpointContainer/>` modules to those containers instead of each of your components.
+
+### Consider media queries
 
 Container queries are very powerful and enable new ways for responsive component development. However, if your needs are simpler and you don't need container queries, consider just using media queries. We highly recommend [**DDBreakpoints**](https://github.com/DeloitteDigitalAPAC/DDBreakpoints); our long-standing and preferred approach towards responsive design, which utilises media queries.
 
-### Backwards compatibility
+### DDBreakpoints Backwards compatibility
 
-**DDBreakpointContainer** can be* a fully backwards-compatible replacement for the original **DDBreakpoints** core SCSS mixin; any existing stylesheets with the `bp()` mixin will work the same. And in your design we would still encourage you use a mix of 'media queries' `bp()` and 'container queries' `bpc()` as makes sense in the context of your app.
+**DDBreakpointContainer** can be* a fully backwards-compatible replacement for the original [**DDBreakpoints**](https://github.com/DeloitteDigitalAPAC/DDBreakpoints) core SCSS mixin; any existing stylesheets with the `bp()` mixin will work the same. And in your design we would still encourage you use a mix of 'media queries' `bp()` and 'container queries' `bpc()` as makes sense in the context of your app.
 
-\* Note that this functionality depends on the proper set-up of the `<BrowserContainer/>` component as per the instructions above in the [Getting started](Getting started) section.
+\* Note that this functionality depends on the proper set-up of the `<BrowserContainer/>` component as per the instructions above in the 'Getting started' section.
 
 ## About Deloitte Digital Australia
 
