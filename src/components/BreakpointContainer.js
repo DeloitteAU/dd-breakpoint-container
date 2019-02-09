@@ -35,7 +35,7 @@ const SELECTORS = {
 // ------------------------
 
 // TODO docs?
-export default class BreakpointContainer extends React.Component {
+export class BreakpointContainer extends React.Component {
 	static propTypes = {
 		identifier: T.string.isRequired,
 		containerClass: T.string,

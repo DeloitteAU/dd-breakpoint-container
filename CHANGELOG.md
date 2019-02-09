@@ -3,6 +3,8 @@
 ## 0.4.0
 
 - Refactor: 'BrowserBreakpoints' export renamed 'BrowserContainer'
+- Refactor: 'BreakpointContainer' no longer default export - all exports are now named
+- Docs: Added README.md
 
 ## 0.3.2
 
