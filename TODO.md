@@ -25,3 +25,6 @@
 - TODO fragments with shortened syntax - lint/highlighting support?
 - TODO does nested BEM @include work the same as DD bps? Or is that the same limitation?
 - TODO can we outright remove 'none' bp in a clean way? challenge here is opting out of class prefix so we can just hook into .bpc core class
+
+- TODO add style/other-props to bpc-content?
+- TODO can we make the breakpoint mixins available as functions for CSS-in-js?

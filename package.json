@@ -11,6 +11,7 @@
   },
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
+    "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket ",
     "build": "run-s build:*",
     "build:pre": "run-s lint && node scripts/text/logo.js",
     "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files",
