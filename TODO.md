@@ -6,7 +6,7 @@
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
 - Check potential bugs with px/number values for upper/lower in <Breakpoint/>
 - Add style/passthrough-props to bpc-content
-- ENV variable overrides both debug indicators, on/off - fallback for NODE_ENV check
+- Verify ENV variable overrides works, on/off - and NODE_ENV fallback
 - Unit tests, and behavioural tests
 - JSdoc and conventions checks
 - Backwards compatibility with DDBreakpoints unit tests
