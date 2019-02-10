@@ -1,5 +1,5 @@
 import React from 'react';
-import BreakpointContainer, { BrowserContainer } from './BreakpointContainer.js';
+import { BreakpointContainer, BrowserContainer } from './BreakpointContainer.js';
 
 export function withBreakpointContainer(Component, bpcProps) {
 	function WithBpc(props) {
