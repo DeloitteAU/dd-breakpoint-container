@@ -3190,9 +3190,11 @@ styleInject(css);
 var _jsxFileName$1 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/BreakpointContainer.js";
 // Variables
 // ------------------------
+// eslint-disable-next-line eqeqeq
 
-var DEBUG_BROWSER = process.env.NODE_ENV === 'development';
-var DEBUG_BPC = false; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
+var DEBUG_BROWSER = process.env.BPC_DEBUG_BROWSER != undefined ? process.env.BPC_DEBUG_BROWSER === 'true' : process.env.NODE_ENV === 'development'; // eslint-disable-next-line eqeqeq
+
+var DEBUG_BPC = process.env.BPC_DEBUG_CONTAINERS != undefined ? process.env.BPC_DEBUG_CONTAINERS === 'true' : false; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
 
 var CLASSES = {
@@ -3231,9 +3233,9 @@ function (_React$Component) {
   _createClass(BreakpointContainer, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
-      // Check if bp changed to support 'onBpChanged' callback
-      if (typeof this.props.onBpChanged === 'function' && this.state.currentBp !== prevState.currentBp) {
-        this.props.onBpChanged(this.state.currentBp);
+      // Check if bp changed to support 'onChange' callback
+      if (typeof this.props.onChange === 'function' && this.state.currentBp !== prevState.currentBp) {
+        this.props.onChange(this.state.currentBp);
       }
     }
   }, {
@@ -3246,7 +3248,7 @@ function (_React$Component) {
           identifier = _this$props.identifier,
           className = _this$props.className,
           containerClass = _this$props.containerClass,
-          noClasses = _this$props.noClasses,
+          noBpClasses = _this$props.noBpClasses,
           debug = _this$props.debug,
           children = _this$props.children;
       var matchingBps = Object.keys(BREAKPOINTS).filter(function (bp) {
@@ -3262,14 +3264,14 @@ function (_React$Component) {
       return React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 104
+          lineNumber: 112
         },
         __self: this
       }, React__default.createElement("div", {
-        className: classnames(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noClasses), _cx)),
+        className: classnames(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 105
+          lineNumber: 113
         },
         __self: this
       }, React__default.createElement(ResizeDetector, {
@@ -3282,14 +3284,14 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 116
+          lineNumber: 124
         },
         __self: this
       }), React__default.createElement("div", {
         className: classnames(SELECTORS.BP_CONTENT, className),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 121
+          lineNumber: 129
         },
         __self: this
       }, React__default.createElement(WithContext, Object.assign({
@@ -3298,27 +3300,27 @@ function (_React$Component) {
       }, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 122
+          lineNumber: 130
         },
         __self: this
       }), typeof children === 'function' ? children(currentBp, this.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 130
+          lineNumber: 138
         },
         __self: this
       }, React__default.createElement("span", {
         className: SELECTORS.DEBUG_INDICATOR,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 131
+          lineNumber: 139
         },
         __self: this
       }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
         className: SELECTORS.DEBUG_IDENTIFIER,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 135
+          lineNumber: 143
         },
         __self: this
       }, identifier))));
@@ -3327,32 +3329,31 @@ function (_React$Component) {
 
   return BreakpointContainer;
 }(React__default.Component);
-
 BreakpointContainer.propTypes = {
-  identifier: propTypes.string.isRequired,
-  containerClass: propTypes.string,
   className: propTypes.string,
+  containerClass: propTypes.string,
   children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired,
+  identifier: propTypes.string.isRequired,
+  // Callbacks
+  onChange: propTypes.func,
   // Flags
   debug: propTypes.bool,
-  noClasses: propTypes.bool,
-  // Callbacks
-  onBpChanged: propTypes.func
+  noBpClasses: propTypes.bool
 };
 BreakpointContainer.defaultProps = {
-  identifier: ID_DEFAULT,
-  containerClass: null,
   className: null,
+  containerClass: null,
+  identifier: ID_DEFAULT,
+  onChange: null,
   // Debug null instead of false so we can opt-out of global debug
   debug: null,
-  noClasses: false,
-  onBpChanged: null
+  noBpClasses: false
 };
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>s
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
 // eslint-disable-next-line react/prop-types
 
-var BrowserBreakpoints = function BrowserBreakpoints(_ref) {
+var BrowserContainer = function BrowserContainer(_ref) {
   var children = _ref.children,
       bpcProps = _objectWithoutProperties(_ref, ["children"]);
 
@@ -3363,7 +3364,7 @@ var BrowserBreakpoints = function BrowserBreakpoints(_ref) {
   }, bpcProps, {
     __source: {
       fileName: _jsxFileName$1,
-      lineNumber: 153
+      lineNumber: 161
     },
     __self: this
   }), children);
@@ -3392,9 +3393,9 @@ function withBreakpointContainer(Component, bpcProps) {
   return WithBpc;
 } // ------------------------
 
-function withBrowserBreakpoints(Component, bpcProps) {
+function withBrowserContainer(Component, bpcProps) {
   function WithBrowserBpc(props) {
-    return React__default.createElement(BrowserBreakpoints, Object.assign({}, bpcProps, {
+    return React__default.createElement(BrowserContainer, Object.assign({}, bpcProps, {
       __source: {
         fileName: _jsxFileName$2,
         lineNumber: 25
@@ -3410,7 +3411,7 @@ function withBrowserBreakpoints(Component, bpcProps) {
   }
 
   var wrappedComponentName = Component.displayName || Component.name || 'Component';
-  WithBrowserBpc.displayName = "withBrowserBreakpoints(".concat(wrappedComponentName, ")");
+  WithBrowserBpc.displayName = "withBrowserContainer(".concat(wrappedComponentName, ")");
   return WithBrowserBpc;
 }
 
@@ -3459,10 +3460,10 @@ Breakpoint.defaultProps = {
   identifier: ID_DEFAULT
 };
 
-exports.default = BreakpointContainer;
-exports.BrowserBreakpoints = BrowserBreakpoints;
+exports.BreakpointContainer = BreakpointContainer;
+exports.BrowserContainer = BrowserContainer;
 exports.withBreakpointContainer = withBreakpointContainer;
-exports.withBrowserBreakpoints = withBrowserBreakpoints;
+exports.withBrowserContainer = withBrowserContainer;
 exports.Breakpoint = Breakpoint;
 exports.BREAKPOINTS = BREAKPOINTS;
 exports.getBpUpperLimit = getBpUpperLimit;
