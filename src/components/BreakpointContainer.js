@@ -43,27 +43,29 @@ const SELECTORS = {
 // TODO docs?
 export class BreakpointContainer extends React.Component {
 	static propTypes = {
-		identifier: T.string.isRequired,
-		containerClass: T.string,
 		className: T.string,
+		containerClass: T.string,
 		children: T.oneOfType([T.node, T.func]).isRequired,
-
-		// Flags
-		debug: T.bool,
-		noClasses: T.bool,
+		identifier: T.string.isRequired,
 
 		// Callbacks
 		onChange: T.func,
+
+		// Flags
+		debug: T.bool,
+		noBpClasses: T.bool,
 	};
 
 	static defaultProps = {
-		identifier: ID_DEFAULT,
-		containerClass: null,
 		className: null,
+		containerClass: null,
+		identifier: ID_DEFAULT,
+
+		onChange: null,
+
 		// Debug null instead of false so we can opt-out of global debug
 		debug: null,
-		noClasses: false,
-		onChange: null,
+		noBpClasses: false,
 	};
 
 	constructor() {
@@ -89,7 +91,7 @@ export class BreakpointContainer extends React.Component {
 			identifier,
 			className,
 			containerClass,
-			noClasses,
+			noBpClasses,
 			debug,
 			children,
 		} = this.props;
@@ -112,11 +114,11 @@ export class BreakpointContainer extends React.Component {
 					CLASSES.CORE,
 					containerClass,
 					{
-						[classBps]: !noClasses,
+						[classBps]: !noBpClasses,
 						[CLASSES.DEBUG_MODIFIER]: isDebugActive,
 						// If there are no class name outputs, BUT debug mode is on,
 						// render the active bp as a class to enable CSS debug indicator
-						[`${CLASSES.BP_PREFIX}${currentBp}`]: debug && noClasses,
+						[`${CLASSES.BP_PREFIX}${currentBp}`]: debug && noBpClasses,
 					},
 				)}>
 					<ReactResizeDetector
