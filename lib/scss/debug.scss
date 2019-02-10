@@ -1,0 +1,54 @@
+// NOTE: This file is the core CSS, bundled in the core JS library
+// It specifically provides styles for the debug indicators
+// (The core mixins 'bp' and 'bpc' are in the adjacent 'mixins.scss')
+
+@import 'variables';
+
+// Ensure breakpoint containers fill the available parent width
+.#{$CORE_CLASS} {
+	width: 100%;
+}
+
+// ==========================================================================
+// DEBUG INDICATORS
+// ==========================================================================
+// Breakpoint size indicators
+// NOTE: These are toggled according to the DEBUG_ variables in the JS file,
+// or by opt-in per <BreakpointContainer/> with the `debug` flag set to true
+
+.#{$DEBUG_MODIFIER} {
+	position: relative;
+
+	.#{$DEBUG_INDICATOR},
+	> .#{$BP_CONTENT}:not(.#{$BP_BROWSER}) ~ .#{$DEBUG_IDENTIFIER} {
+		color: black;
+		background-color: white;
+		border: 1px dashed black;
+		font-size: 10px;
+		display: block;
+		position: absolute;
+		top: 0;
+		min-height: 15px;
+		z-index: 9999;
+		padding: 0 3px;
+		font-family: monospace;
+		content: 'none';
+	}
+
+	.#{$DEBUG_IDENTIFIER} {
+		right: 0;
+	}
+
+	// BPC content containers marked with dashed border
+	> .#{$BP_CONTENT}:not(.#{$BP_BROWSER}) {
+		border: 1px dashed black;
+	}
+
+	// Browser debug indicator always-visible, solid border to distinguish
+	> .#{$BP_BROWSER} ~ .#{$DEBUG_INDICATOR} {
+		position: fixed;
+		border-style: solid;
+		top: 0;
+		left: 0;
+	}
+}

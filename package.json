@@ -1,0 +1,75 @@
+{
+  "name": "dd-breakpoint-container",
+  "version": "0.4.0",
+  "description": "Flexible container queries for responsive design in React and SCSS.",
+  "main": "./lib/index.js",
+  "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/"
+  },
+  "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
+  "scripts": {
+    "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket ",
+    "build": "run-s build:*",
+    "build:pre": "run-s lint && node scripts/text/logo.js",
+    "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files",
+    "build:dev": "cross-env NODE_ENV=development && rollup -c rollup.config.dev.js",
+    "build:prod": "cross-env NODE_ENV=production && rollup -c rollup.config.prod.js",
+    "build:post": "node scripts/buildMixins.js && node scripts/text/build-complete.js",
+    "lint": "run-s lint:*",
+    "lint:js": "eslint ./src --ext .js",
+    "lint:css": "stylelint \"./src/**/*.scss\"",
+    "prepublishOnly": "run-s lint build"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react-resize-detector": "^3.4.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@deloitte-digital-au/babel-preset-app-react": "^1.5.0",
+    "@deloitte-digital-au/eslint-config": "^3.4.0",
+    "@deloitte-digital-au/stylelint-config": "^1.1.0",
+    "autoprefixer": "^9.4.7",
+    "babel-eslint": "^8.2.3",
+    "colors": "^1.3.3",
+    "cross-env": "^5.2.0",
+    "cssnano": "^4.1.8",
+    "eslint": "^5.13.0",
+    "eslint-plugin-react": "^7.9.1",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-preset-env": "^6.5.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-babel-minify": "^7.0.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-postcss": "^2.0.3"
+  },
+  "files": [
+    "lib/",
+    "dist/",
+    "LICENCE",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "keywords": [
+    "container-query",
+    "element-query",
+    "breakpoint",
+    "responsive",
+    "reactjs",
+    "react",
+    "react-component"
+  ],
+  "engines": {
+    "node": ">=8.5.0"
+  }
+}
