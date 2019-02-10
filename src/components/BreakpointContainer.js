@@ -40,7 +40,6 @@ const SELECTORS = {
 // Core Exports
 // ------------------------
 
-// TODO docs?
 export class BreakpointContainer extends React.Component {
 	static propTypes = {
 		className: T.string,
@@ -154,7 +153,7 @@ export class BreakpointContainer extends React.Component {
 
 // ------------------------
 
-// Emulates media query functionality, and enables 'standalone' <Breakpoint/>s
+// Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
 // eslint-disable-next-line react/prop-types
 export const BrowserContainer = ({ children, ...bpcProps }) => (

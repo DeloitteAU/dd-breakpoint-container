@@ -10,7 +10,6 @@ export const BP_CONTEXTS = {
 	[ID_BROWSER]: React.createContext(),
 };
 
-// TODO docs? necessary here with internal comments already? should you doc functional components?
 function WithContext({ identifier, currentBp, children }) {
 	// If a BPC has specified an identifier other than the default
 	const hasIdentifier = identifier !== ID_DEFAULT;

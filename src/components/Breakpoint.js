@@ -6,7 +6,6 @@ import T from 'prop-types';
 import { BREAKPOINTS, getBpUpperLimit } from '../data/breakpoints.js';
 import { BP_CONTEXTS, ID_DEFAULT } from './Context.js';
 
-// TODO docs - also explain inclusive bp, i.e. s-m includes both s & m, whereas just s would be s, s
 function Breakpoint({ q, query, identifier, children }) {
 	const bpQuery = q || query; // Aggregate query shorthand
 	const [lower, upper] = bpQuery.replace(' ', '').split(',');
@@ -32,15 +31,15 @@ function Breakpoint({ q, query, identifier, children }) {
 };
 
 Breakpoint.propTypes = {
-	q: T.oneOfType([T.string, T.number]),
 	query: T.oneOfType([T.string, T.number]),
+	q: T.oneOfType([T.string, T.number]),
 	identifier: T.string.isRequired,
 	children: T.node.isRequired,
 };
 
 Breakpoint.defaultProps = {
-	q: null, // 'query' shorthand
 	query: 0,
+	q: null, // 'query' shorthand
 	identifier: ID_DEFAULT,
 };
 
