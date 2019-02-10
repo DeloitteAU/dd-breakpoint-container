@@ -1,30 +1,32 @@
-* README if you want media queries -> DD breakpoints
-* Usage docs in readme
-* Decide on library name
-* Cypress unit tests
-* Doclets?
-* Contributing.md?
-* Write background
+## Admin
+- Decide on final library name and export names
+- README badges for version, coverage, build, etc
 
-## Legacy TODOs
-- TODO efficiency/performance tests
-- TODO unit tests
-- TODO docs, version, licence, etc
-- TODO make sure JSdoc conventions are correct - are there any for classes?
+## Package
+- Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
+- Check potential bugs with px/number values for upper/lower in <Breakpoint/>
+- Add style/passthrough-props to bpc-content
+- ENV variable overrides both debug indicators, on/off - fallback for NODE_ENV check
+- Unit tests, and behavioural tests
+- JSdoc and conventions checks
+- Backwards compatibility with DDBreakpoints unit tests
+- Absolute imports ('~/')
+	* (problematic because 'src'/'lib' dirs share source files. Separate configs?)
+- How to address first-render snap? 
 
-- TODO somehow get absolute imports working again - weird because src becomes lib
-- TODO custom env variable for turning off debug indicators
-- TODO fallback to NODE_ENV
-- TODO react hooks?
-- TODO what to do about first-pass rendering? react-container-query 'solves' it with initialSize
-- can we do an onMount / constructor container size check? Or initialSize...? Dont see how thats a solution though
-- TODO any way to optimise <Breakpoint/>? General component optimisation?
-- TODO breakpoint height? react-resize-detector seems to support this
-- TODO is it possible to share SCSS / JS vars?
-- TODO do we need bps-max array or can we just derive that?
-- TODO fragments with shortened syntax - lint/highlighting support?
-- TODO does nested BEM @include work the same as DD bps? Or is that the same limitation?
-- TODO can we outright remove 'none' bp in a clean way? challenge here is opting out of class prefix so we can just hook into .bpc core class
+## Known issues
+- First-pass render snaps from 'none' (mobile); can we address this? react-container-query 'solves' it with initialSize prop, but I dont see thats a solution. Could just be a known limitation.
+- Need to check whether mixins nested within BEM selectors are also an issue in DDBreakpoints, or if that limitation is unique and needs to be documents (i.e. root selector level usage of mixins for BEM-style)
 
-- TODO add style/other-props to bpc-content?
-- TODO can we make the breakpoint mixins available as functions for CSS-in-js?
+## TBD
+- React hooks?
+- React fragments shortened syntax - lint/highlighting support?
+- Possible/practical to share SCSS / JS vars? Webpack seems equipped to do it?
+- Can we outright remove 'none' bp in a clean way? Challenge here is gracefully opting out of 'class prefix' in SCSS so we can reference .bpc core class. Worth it or nbd?
+- Do we need 'bps-max' array in SCSS or can derive that in another way?
+- Efficiency/performance tests?
+- Contributing.md?
+- Doclets?
+
+## Future features?
+- Breakpoint height? react-resize-detector supports this with 'handleHeight'

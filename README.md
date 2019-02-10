@@ -175,13 +175,16 @@ You can use the `<Breakpoint/>` export to conditionally render markup according 
 
 You can also specify exact px:
 
-`<Breakpoint query={300, 600}/>`
+`<Breakpoint query="300, 600"/>`
 
 The component automatically detects which `<BreakpointContainer/>` it's in. Or, if it's not within one, it falls back to the app's `<BrowserContainer/>`.
 
 ## Other exports
 
-`BREAKPOINTS`: A object of key:value pairs for breakpoint names and their pixel values
+TODO better presentation of these (in 'Options'?)
+
+`BREAKPOINTS`: A object of key:value pairs for breakpoint names and their pixel values.
+
 `getBpUpperLimit(bp: string)`: A function that takes a named breakpoint and returns its upper-limit.
 
 The above two exports are most useful for comparing two named breakpoints. For example:
