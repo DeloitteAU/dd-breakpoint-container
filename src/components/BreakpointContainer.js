@@ -12,8 +12,14 @@ import '../scss/debug.scss';
 // Variables
 // ------------------------
 
-const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
-const DEBUG_BPC = false;
+// eslint-disable-next-line eqeqeq
+const DEBUG_BROWSER = (process.env.BPC_DEBUG_BROWSER != undefined)
+	? process.env.BPC_DEBUG_BROWSER === 'true'
+	: process.env.NODE_ENV === 'development';
+// eslint-disable-next-line eqeqeq
+const DEBUG_BPC = (process.env.BPC_DEBUG_CONTAINERS != undefined)
+	? process.env.BPC_DEBUG_CONTAINERS === 'true'
+	: false;
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
