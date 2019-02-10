@@ -5,6 +5,7 @@
 - Refactor: 'BrowserBreakpoints' export renamed 'BrowserContainer'
 - Refactor: 'BreakpointContainer' no longer default export - all exports are now named
 - Refactor: 'onBpChanged' callback renamed to just 'onChange'
+- Refactor: 'noClasses' prop renamed to 'noBpClasses'
 - Docs: Added README.md
 
 ## 0.3.2
