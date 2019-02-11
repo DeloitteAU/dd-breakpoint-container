@@ -1,6 +1,7 @@
 ## Admin
 - Decide on final library name and export names
 - README badges for version, coverage, build, etc
+- README description clarity, what/why, GIF example
 
 ## Package
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
@@ -9,6 +10,7 @@
 - Verify ENV variable overrides works, on/off - and NODE_ENV fallback
 - Unit tests, and behavioural tests
 - JSdoc and conventions checks
+- Typescript definitions
 - Backwards compatibility with DDBreakpoints unit tests
 - Absolute imports ('~/')
 	* (problematic because 'src'/'lib' dirs share source files. Separate configs?)
