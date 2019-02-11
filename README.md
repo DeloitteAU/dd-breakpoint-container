@@ -115,7 +115,7 @@ Now you can use the container query mixin in your `.scss` files. Note that the `
 }
 ```
 
-You can also use the legacy `bp()` mixin to specify styles relative to the overall width of your app (emulating the behaviour of media queries). If the above isn't intuitive for you, check out the complete documentation in [**DDBreakpoints**](https://github.com/DeloitteDigitalAPAC/DDBreakpoints), where the behaviour is the same.
+You can also use the existing `bp()` mixin to specify styles relative to the overall width of your app (emulating the behaviour of media queries). If the above isn't intuitive for you, check out the complete documentation in [**DDBreakpoints**](https://github.com/DeloitteDigitalAPAC/DDBreakpoints), where the behaviour is the same.
 
 #### CSS-in-js pattern
 
