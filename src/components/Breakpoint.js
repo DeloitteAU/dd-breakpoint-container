@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 import React from 'react';
 import T from 'prop-types';
 
@@ -43,4 +41,4 @@ Breakpoint.defaultProps = {
 	identifier: ID_DEFAULT,
 };
 
-export { Breakpoint };
+export default Breakpoint;

@@ -1,5 +1,9 @@
 # Changelog
 
+## (Pending release)
+
+- Chore: 'Breakpoint' file now default export (remains named export overall)
+
 ## 0.4.0
 
 - Refactor: 'BrowserBreakpoints' export renamed 'BrowserContainer'
