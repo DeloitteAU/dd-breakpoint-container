@@ -3,6 +3,7 @@
 ## (Pending release)
 
 - Chore: 'Breakpoint' file now default export (remains named export overall)
+- Chore: 'classnames' package moved to peer dependencies
 
 ## 0.4.0
 

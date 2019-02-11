@@ -24,10 +24,10 @@
     "prepublishOnly": "run-s lint build"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
     "react-resize-detector": "^3.4.0"
   },
   "peerDependencies": {
+    "classnames": "^2.2.5",
     "react": "^16.0.0"
   },
   "devDependencies": {
