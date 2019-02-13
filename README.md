@@ -44,7 +44,7 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 To install via [npm](https://www.npmjs.com/):
 
 ```
-npm install git+ssh://git@dvcs.deloittedigital.com.au:22/fed/dd-breakpoint-container.git
+npm install --save git+ssh://dvcs.deloittedigital.com.au:22/fed/dd-breakpoint-container.git
 ```
 
 ## Usage
