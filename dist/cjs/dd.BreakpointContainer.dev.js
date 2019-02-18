@@ -12,6 +12,7 @@ require('core-js/modules/es6.object.keys');
 require('core-js/modules/es6.array.filter');
 var React = require('react');
 var React__default = _interopDefault(React);
+var cx = _interopDefault(require('classnames'));
 require('core-js/modules/es6.array.index-of');
 require('core-js/modules/es6.number.constructor');
 require('core-js/modules/es6.number.is-nan');
@@ -1017,55 +1018,6 @@ if (process.env.NODE_ENV !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = factoryWithThrowingShims();
 }
-});
-
-var classnames = createCommonjsModule(function (module) {
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-
-/* global define */
-(function () {
-
-  var hasOwn = {}.hasOwnProperty;
-
-  function classNames() {
-    var classes = [];
-
-    for (var i = 0; i < arguments.length; i++) {
-      var arg = arguments[i];
-      if (!arg) continue;
-      var argType = typeof arg;
-
-      if (argType === 'string' || argType === 'number') {
-        classes.push(arg);
-      } else if (Array.isArray(arg) && arg.length) {
-        var inner = classNames.apply(null, arg);
-
-        if (inner) {
-          classes.push(inner);
-        }
-      } else if (argType === 'object') {
-        for (var key in arg) {
-          if (hasOwn.call(arg, key) && arg[key]) {
-            classes.push(key);
-          }
-        }
-      }
-    }
-
-    return classes.join(' ');
-  }
-
-  if (module.exports) {
-    classNames.default = classNames;
-    module.exports = classNames;
-  } else {
-    window.classNames = classNames;
-  }
-})();
 });
 
 /**
@@ -3064,7 +3016,7 @@ var _BP_CONTEXTS,
 var ID_DEFAULT = 'default';
 var ID_BROWSER = 'browser'; // NOTE: Other identifier contexts are created as-needed in WithContext
 
-var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React__default.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React__default.createContext()), _BP_CONTEXTS); // TODO docs? necessary here with internal comments already? should you doc functional components?
+var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React__default.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React__default.createContext()), _BP_CONTEXTS);
 
 function WithContext(_ref) {
   var identifier = _ref.identifier,
@@ -3085,28 +3037,28 @@ function WithContext(_ref) {
   return React__default.createElement(React__default.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 29
     },
     __self: this
   }, hasIdentifier ? React__default.createElement(IdentifierContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 31
     },
     __self: this
   }, React__default.createElement(CoreContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 32
     },
     __self: this
   }, children)) : React__default.createElement(IdentifierContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 37
     },
     __self: this
   }, children));
@@ -3210,7 +3162,6 @@ var SELECTORS = {
 }; // ------------------------
 // Core Exports
 // ------------------------
-// TODO docs?
 
 var BreakpointContainer =
 /*#__PURE__*/
@@ -3264,14 +3215,14 @@ function (_React$Component) {
       return React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 112
+          lineNumber: 111
         },
         __self: this
       }, React__default.createElement("div", {
-        className: classnames(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
+        className: cx(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 113
+          lineNumber: 112
         },
         __self: this
       }, React__default.createElement(ResizeDetector, {
@@ -3284,14 +3235,14 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 124
+          lineNumber: 123
         },
         __self: this
       }), React__default.createElement("div", {
-        className: classnames(SELECTORS.BP_CONTENT, className),
+        className: cx(SELECTORS.BP_CONTENT, className),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 129
+          lineNumber: 128
         },
         __self: this
       }, React__default.createElement(WithContext, Object.assign({
@@ -3300,27 +3251,27 @@ function (_React$Component) {
       }, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 130
+          lineNumber: 129
         },
         __self: this
       }), typeof children === 'function' ? children(currentBp, this.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 138
+          lineNumber: 137
         },
         __self: this
       }, React__default.createElement("span", {
         className: SELECTORS.DEBUG_INDICATOR,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 139
+          lineNumber: 138
         },
         __self: this
       }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
         className: SELECTORS.DEBUG_IDENTIFIER,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 143
+          lineNumber: 142
         },
         __self: this
       }, identifier))));
@@ -3349,7 +3300,7 @@ BreakpointContainer.defaultProps = {
   debug: null,
   noBpClasses: false
 };
-// Emulates media query functionality, and enables 'standalone' <Breakpoint/>s
+// Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
 // eslint-disable-next-line react/prop-types
 
@@ -3364,7 +3315,7 @@ var BrowserContainer = function BrowserContainer(_ref) {
   }, bpcProps, {
     __source: {
       fileName: _jsxFileName$1,
-      lineNumber: 161
+      lineNumber: 160
     },
     __self: this
   }), children);
@@ -3433,7 +3384,7 @@ function Breakpoint(_ref) {
   return React__default.createElement(Context.Consumer, {
     __source: {
       fileName: _jsxFileName$3,
-      lineNumber: 17
+      lineNumber: 14
     },
     __self: this
   }, function (bp) {
@@ -3448,15 +3399,15 @@ function Breakpoint(_ref) {
   });
 }
 Breakpoint.propTypes = {
-  q: propTypes.oneOfType([propTypes.string, propTypes.number]),
   query: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  q: propTypes.oneOfType([propTypes.string, propTypes.number]),
   identifier: propTypes.string.isRequired,
   children: propTypes.node.isRequired
 };
 Breakpoint.defaultProps = {
+  query: 0,
   q: null,
   // 'query' shorthand
-  query: 0,
   identifier: ID_DEFAULT
 };
 
