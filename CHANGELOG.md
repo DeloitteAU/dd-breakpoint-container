@@ -2,7 +2,9 @@
 
 ## (Pending release)
 
-- Chore: 'Breakpoint' file now default export (remains named export overall)
+- Feature: Added dev server for local testing and development
+- Refactor: Added 'config' directory and moved relevant files there to clean up project root
+- Chore: 'Breakpoint' component file changed to default export (remains named export in package)
 - Chore: 'classnames' package moved to peer dependencies
 
 ## 0.4.0

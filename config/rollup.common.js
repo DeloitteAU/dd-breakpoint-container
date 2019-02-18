@@ -18,7 +18,7 @@ export default (isDev = true) => {
 		input: 'src/index.js',
 		output: {
 			name: 'dd-breakpoint-container',
-			file: `./dist/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
+			file: `dist/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
 			format: 'cjs',
 			sourceMap,
 			globals: { react: 'React' },
@@ -26,7 +26,12 @@ export default (isDev = true) => {
 		},
 		plugins: [
 			progress(),
-			babel({ sourceMap }),
+			babel({
+				sourceMap,
+				babelrc: false,
+				presets: ['@deloitte-digital-au/babel-preset-app-react'],
+				exclude: 'node_modules/**',
+			}),
 			resolve(),
 			commonjs({ sourceMap }),
 			postcss({
@@ -49,7 +54,7 @@ export default (isDev = true) => {
 				minify(),
 				visualizer({
 					sourceMap: true,
-					filename: './report.html',
+					filename: 'config/report.html',
 					title: 'Production Build Report',
 				}),
 			]),
