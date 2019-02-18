@@ -8,6 +8,7 @@
 - How to install semver while in github repo format
 - README badges for version, coverage, build, etc
 - Add a config folder to free up root dir?
+- ASCII text for tests complete
 
 ## Package
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
