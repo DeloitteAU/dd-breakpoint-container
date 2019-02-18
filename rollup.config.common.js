@@ -45,12 +45,14 @@ export default (isDev = true) => {
 					(!isDev && cssnano()),
 				],
 			}),
-			(!isDev && minify()),
-			(!isDev && visualizer({
-				sourceMap: true,
-				filename: './report.html',
-				title: 'Production Build Report',
-			})),
+			...(isDev ? [] : [
+				minify(),
+				visualizer({
+					sourceMap: true,
+					filename: './report.html',
+					title: 'Production Build Report',
+				}),
+			]),
 		],
 	};
 };
