@@ -9,6 +9,7 @@
 - README badges for version, coverage, build, etc
 - Add a config folder to free up root dir?
 - ASCII text for tests complete
+- Move .babelrc to ./config
 
 ## Package
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
@@ -31,7 +32,7 @@
 ## TBD
 - Reinvestigate context API approach to minimise number of event listeners (i.e. propagate from browser container) - any performance gain?
 - Is there a way to determine the absolute minimum React version for max backwards compatibility? Maybe we can trial and error once unit tests are in?
-- React hooks? Separate version? Opt-in?
+- React hooks
 - React fragments shortened syntax - lint/highlighting support?
 - Possible/practical to share SCSS / JS vars? Webpack seems equipped to do it?
 - Can we outright remove 'none' bp in a clean way? Challenge here is gracefully opting out of 'class prefix' in SCSS so we can reference .bpc core class. Worth it or nbd?

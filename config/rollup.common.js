@@ -26,12 +26,7 @@ export default (isDev = true) => {
 		},
 		plugins: [
 			progress(),
-			babel({
-				sourceMap,
-				babelrc: false,
-				presets: ['@deloitte-digital-au/babel-preset-app-react'],
-				exclude: 'node_modules/**',
-			}),
+			babel({ sourceMap }),
 			resolve(),
 			commonjs({ sourceMap }),
 			postcss({
