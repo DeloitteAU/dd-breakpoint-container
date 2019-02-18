@@ -8,13 +8,12 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import minify from 'rollup-plugin-babel-minify';
 
-const srcFile = 'src/index.js';
 
 export default (isDev = true) => {
 	const sourceMap = isDev ? 'inline' : false;
 
 	return {
-		input: srcFile,
+		input: 'src/index.js',
 		output: {
 			name: 'dd-breakpoint-container',
 			file: `./dist/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
