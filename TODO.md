@@ -18,9 +18,8 @@
 - JSdoc and conventions checks
 - Typescript definitions
 - Backwards compatibility with DDBreakpoints unit tests
-- Absolute imports ('~/')
-	* (problematic because 'src'/'lib' dirs share source files. Separate configs?)
-- How to address first-render snap? 
+- Absolute imports ('~/') 
+- Problematic because 'src'/'lib' dirs share source files. Separate configs?
 
 ## Known issues
 - debug={true} flag not being respected on <BreakpointContainer/>?
