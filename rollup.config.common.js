@@ -7,6 +7,8 @@ import pcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import minify from 'rollup-plugin-babel-minify';
+import visualizer from 'rollup-plugin-visualizer';
+import progress from 'rollup-plugin-progress';
 
 
 export default (isDev = true) => {
@@ -23,6 +25,7 @@ export default (isDev = true) => {
 			exports: 'named',
 		},
 		plugins: [
+			progress(),
 			babel({ sourceMap }),
 			resolve(),
 			commonjs({ sourceMap }),
@@ -43,6 +46,11 @@ export default (isDev = true) => {
 				],
 			}),
 			(!isDev && minify()),
+			(!isDev && visualizer({
+				sourceMap: true,
+				filename: './report.html',
+				title: 'Production Build Report',
+			})),
 		],
 	};
 };

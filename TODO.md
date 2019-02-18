@@ -1,13 +1,13 @@
 ## Deloitte Consensus
 - Package name: include 'react'? include full @dd-au prefix?
+- Rename 'dev' folder? 'demo'?
 - Export names (especially 'BrowserContainer' [rename -> App?] & Breakpoint component)
 
 ## Admin
 - README description clarity, what/why, GIF example
 - How to install semver while in github repo format
 - README badges for version, coverage, build, etc
-- Rollup progress plugin ?
-- Rollup stats plugin ?
+- Add a config folder to free up root dir?
 
 ## Package
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
