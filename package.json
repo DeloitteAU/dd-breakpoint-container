@@ -12,16 +12,16 @@
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
-    "build": "run-s -s build:*",
-    "build:pre": "run-s -s lint && node ./config/scripts/text/logo.js",
+    "build": "run-s --silent build:*",
+    "build:pre": "run-s --silent lint && node ./config/scripts/text/logo.js",
     "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files",
-    "build:dev": "cross-env NODE_ENV=development && rollup -c ./config/rollup.dev.js",
-    "build:prod": "cross-env NODE_ENV=production && rollup -c ./config/rollup.prod.js",
+    "build:dev": "cross-env NODE_ENV=development && rollup --config ./config/rollup.dev.js",
+    "build:prod": "cross-env NODE_ENV=production && rollup --config ./config/rollup.prod.js",
     "build:post": "node ./config/scripts/buildMixins.js && node ./config/scripts/text/build-complete.js",
-    "lint": "run-s -s lint:*",
+    "lint": "run-s --silent lint:*",
     "lint:js": "eslint ./src --ext .js --config ./config/.eslintrc.js --ignore-path ./config/.eslintignore",
     "lint:css": "stylelint \"./src/**/*.scss\" --config ./config/.stylelintrc",
-    "prepublishOnly": "run-s -s lint build"
+    "prepublishOnly": "run-s --silent lint build"
   },
   "dependencies": {
     "react-resize-detector": "^3.4.0"
