@@ -10,7 +10,7 @@
   },
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
-    "start": "cross-env NODE_ENV=development && rollup -c"
+    "start": "cross-env NODE_ENV=development && rollup --config --watch"
   },
   "dependencies": {
     "react": "^16.8.2",
