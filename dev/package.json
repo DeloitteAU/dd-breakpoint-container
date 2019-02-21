@@ -13,6 +13,7 @@
     "start": "cross-env NODE_ENV=development && rollup --config --watch"
   },
   "dependencies": {
+    "dd-breakpoint-container": "git+ssh://dvcs.deloittedigital.com.au:22/fed/dd-breakpoint-container.git",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
   },
@@ -29,10 +30,10 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-delete": "^0.2.1",
     "rollup-plugin-generate-html-template": "^1.1.0",
-    "rollup-plugin-import-alias": "^1.0.5",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.1.0",
     "rollup-plugin-serve": "^1.0.1"
   }
 }
