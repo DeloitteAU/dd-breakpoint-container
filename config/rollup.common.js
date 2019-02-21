@@ -8,6 +8,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import minify from 'rollup-plugin-babel-minify';
 import visualizer from 'rollup-plugin-visualizer';
+import { sizeSnapshot as snapshot } from 'rollup-plugin-size-snapshot';
 import progress from 'rollup-plugin-progress';
 
 
@@ -16,6 +17,7 @@ export default (isDev = true) => {
 
 	return {
 		input: 'src/index.js',
+		external: ['react'],
 		output: {
 			name: 'dd-breakpoint-container',
 			file: `dist/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
@@ -26,8 +28,8 @@ export default (isDev = true) => {
 		},
 		plugins: [
 			progress(),
-			babel({ sourceMap }),
 			resolve(),
+			babel({ sourceMap }),
 			commonjs({ sourceMap }),
 			postcss({
 				inject: true,
@@ -49,8 +51,11 @@ export default (isDev = true) => {
 				minify(),
 				visualizer({
 					sourceMap: true,
-					filename: 'config/report.html',
+					filename: 'config/reports/dependency-graph.html',
 					title: 'Production Build Report',
+				}),
+				snapshot({
+					snapshotPath: 'config/reports/size-snapshot.json',
 				}),
 			]),
 		],

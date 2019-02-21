@@ -53,6 +53,7 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-progress": "^1.0.0",
+    "rollup-plugin-size-snapshot": "^0.8.0",
     "rollup-plugin-visualizer": "^0.9.2"
   },
   "files": [
