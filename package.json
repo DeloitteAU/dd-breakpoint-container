@@ -12,6 +12,7 @@
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
+    "watch": "npm-watch build:lib",
     "build": "run-s --silent build:*",
     "build:pre": "run-s --silent lint && node ./config/scripts/text/logo.js",
     "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files",
@@ -22,6 +23,14 @@
     "lint:js": "eslint ./src --ext .js --config ./config/.eslintrc.js --ignore-path ./config/.eslintignore",
     "lint:css": "stylelint \"./src/**/*.scss\" --config ./config/.stylelintrc",
     "prepublishOnly": "run-s --silent lint build"
+  },
+  "watch": {
+    "build:lib": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,scss"
+    }
   },
   "dependencies": {
     "react-resize-detector": "^3.4.0"
@@ -45,6 +54,7 @@
     "eslint-plugin-react": "^7.9.1",
     "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.6.0",
     "postcss-preset-env": "^6.5.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
