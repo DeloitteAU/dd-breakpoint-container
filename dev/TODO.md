@@ -28,6 +28,7 @@
 - Problematic because 'src'/'lib' dirs share source files. Separate configs?
 
 ## Known issues
+- Workaround for the mass of named exports in dev server commonjs plugin
 - ./lib out dir needs compiled CSS (not SCSS)
 - rollup unresolved dependencies build warnings (related to node-resolve?)
 - deloitte eslint config deprecation
