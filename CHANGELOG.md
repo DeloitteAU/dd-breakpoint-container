@@ -2,7 +2,8 @@
 
 ## (Pending release)
 
-- Feature: Added dev server for local testing and development
+- Feature: Added watch command, and dev server for local testing and development
+- Docs: Added CONTRIBUTING.md
 - Refactor: Added 'config' directory and moved relevant files there to clean up project root
 - Chore: 'Breakpoint' component file changed to default export (remains named export in package)
 - Chore: 'classnames' package moved to peer dependencies

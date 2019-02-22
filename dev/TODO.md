@@ -3,6 +3,7 @@
 - Rename 'dev' folder? 'demo'?
 - Export names (especially 'BrowserContainer' [rename -> App?] & Breakpoint component)
 - config dir? Yes/no?
+- Does classnames really belong as peerdependency?
 
 ## Admin
 - README description clarity, what/why, GIF example
@@ -12,12 +13,13 @@
 - ASCII text for tests complete
 - prepublish command best practice? 
 - husky lint staged?
+- Note peer dependencies in README
 
 ## Package
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
 - Check potential bugs with px/number values for upper/lower in <Breakpoint/>
 - Add style/passthrough-props to bpc-content
-- Verify ENV variable overrides works, on/off - and NODE_ENV fallback
+- NODE_ENV and debug overrides cant be set client side, because process isnt defined
 - Unit tests, and behavioural tests
 - JSdoc and conventions checks
 - Typescript definitions
