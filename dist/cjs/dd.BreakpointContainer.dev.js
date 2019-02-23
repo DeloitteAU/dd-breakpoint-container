@@ -2695,33 +2695,33 @@ function isFunction(value) {
   return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
 }
 
-function _typeof$1(obj) {
+function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof$1 = function _typeof(obj) {
+    _typeof = function _typeof(obj) {
       return typeof obj;
     };
   } else {
-    _typeof$1 = function _typeof(obj) {
+    _typeof = function _typeof(obj) {
       return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
     };
   }
 
-  return _typeof$1(obj);
+  return _typeof(obj);
 }
 
-function _toConsumableArray$1(arr) {
-  return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _nonIterableSpread$1();
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
 }
 
-function _nonIterableSpread$1() {
+function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance");
 }
 
-function _iterableToArray$1(iter) {
+function _iterableToArray(iter) {
   if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
 }
 
-function _arrayWithoutHoles$1(arr) {
+function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) {
     for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
       arr2[i] = arr[i];
@@ -2754,7 +2754,7 @@ function _createClass$1(Constructor, protoProps, staticProps) {
 }
 
 function _possibleConstructorReturn$1(self, call) {
-  if (call && (_typeof$1(call) === "object" || typeof call === "function")) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
   }
 
@@ -2970,7 +2970,7 @@ function (_PureComponent) {
           _this2.el = el;
         }
       });
-      return [resizeDetector, this.handleRenderProp()].concat(_toConsumableArray$1(this.renderChildren()));
+      return [resizeDetector, this.handleRenderProp()].concat(_toConsumableArray(this.renderChildren()));
     }
   }]);
 
@@ -3142,11 +3142,9 @@ styleInject(css);
 var _jsxFileName$1 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/BreakpointContainer.js";
 // Variables
 // ------------------------
-// eslint-disable-next-line eqeqeq
 
-var DEBUG_BROWSER = process.env.BPC_DEBUG_BROWSER != undefined ? process.env.BPC_DEBUG_BROWSER === 'true' : process.env.NODE_ENV === 'development'; // eslint-disable-next-line eqeqeq
-
-var DEBUG_BPC = process.env.BPC_DEBUG_CONTAINERS != undefined ? process.env.BPC_DEBUG_CONTAINERS === 'true' : false; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
+var DEBUG_BROWSER = true;
+var DEBUG_BPC = false; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
 
 var CLASSES = {
@@ -3215,14 +3213,14 @@ function (_React$Component) {
       return React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 111
+          lineNumber: 105
         },
         __self: this
       }, React__default.createElement("div", {
         className: cx(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 112
+          lineNumber: 106
         },
         __self: this
       }, React__default.createElement(ResizeDetector, {
@@ -3235,14 +3233,14 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 123
+          lineNumber: 117
         },
         __self: this
       }), React__default.createElement("div", {
         className: cx(SELECTORS.BP_CONTENT, className),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 128
+          lineNumber: 122
         },
         __self: this
       }, React__default.createElement(WithContext, Object.assign({
@@ -3251,27 +3249,27 @@ function (_React$Component) {
       }, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 129
+          lineNumber: 123
         },
         __self: this
       }), typeof children === 'function' ? children(currentBp, this.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 137
+          lineNumber: 131
         },
         __self: this
       }, React__default.createElement("span", {
         className: SELECTORS.DEBUG_INDICATOR,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 138
+          lineNumber: 132
         },
         __self: this
       }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
         className: SELECTORS.DEBUG_IDENTIFIER,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 142
+          lineNumber: 136
         },
         __self: this
       }, identifier))));
@@ -3315,7 +3313,7 @@ var BrowserContainer = function BrowserContainer(_ref) {
   }, bpcProps, {
     __source: {
       fileName: _jsxFileName$1,
-      lineNumber: 160
+      lineNumber: 154
     },
     __self: this
   }), children);
