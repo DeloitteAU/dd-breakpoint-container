@@ -1,7 +1,7 @@
 # Changelog
 
-## (Pending release)
-
+## 0.4.1
+- Fix: Temporarily removed debug environment variable overrides, due to unverified performance
 - Feature: Added watch command, and dev server for local testing and development
 - Docs: Added CONTRIBUTING.md
 - Refactor: Added 'config' directory and moved relevant files there to clean up project root
