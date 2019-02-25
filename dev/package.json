@@ -1,7 +1,7 @@
 {
   "name": "dd-bpc-dev",
   "description": "Dev server to view and test active changes to the 'dd-breakpoint-container' package",
-  "main": "index.js",
+  "main": "./src/index.js",
   "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
   "license": "BSD-3-Clause",
   "repository": {
@@ -10,7 +10,7 @@
   },
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
-    "start": "cross-env NODE_ENV=development && rollup --config --watch"
+    "start": "rollup --config --watch"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -21,18 +21,12 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@deloitte-digital-au/babel-preset-app-react": "^1.5.0",
-    "autoprefixer": "^9.4.8",
-    "cross-env": "^5.2.0",
-    "node-sass": "^4.11.0",
-    "postcss-preset-env": "^6.5.0",
     "rollup": "^1.2.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-delete": "^0.2.1",
-    "rollup-plugin-generate-html-template": "^1.1.1",
+    "rollup-plugin-generate-html-template": "^1.1.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-replace": "^2.1.0",
     "rollup-plugin-scss": "^1.0.0",
     "rollup-plugin-serve": "^1.0.1"

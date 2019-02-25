@@ -15,8 +15,11 @@ export default {
 		format: 'umd',
 		sourcemap: 'inline',
 	},
+	preserveSymlinks: true,
 	plugins: [
-		resolve(),
+		replace({
+			'process.env.NODE_ENV': JSON.stringify('development'),
+		}),
 		babel({
 			compact: true,
 			sourceMap: true,
@@ -34,6 +37,7 @@ export default {
 				'node_modules/react-dom/index.js': ['render'],
 			},
 		}),
+		resolve(),
 		scss(),
 		html({
 			template: './index.html',
@@ -46,8 +50,5 @@ export default {
 			port: '9000',
 		}),
 		livereload('./dist'),
-		replace({
-			'process.env.NODE_ENV': JSON.stringify('development'),
-		}),
 	],
 };

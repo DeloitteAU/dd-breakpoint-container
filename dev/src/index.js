@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { BreakpointContainer } from 'dd-breakpoint-container';
+import { BrowserContainer } from 'dd-breakpoint-container';
 
 class App extends React.Component {
 	render() {
@@ -11,6 +11,8 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-	<App/>,
+	<BrowserContainer>
+		<App/>
+	</BrowserContainer>,
 	window.document.getElementById('app'),
 );
