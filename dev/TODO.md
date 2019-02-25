@@ -6,6 +6,7 @@
 - Does classnames really belong as peerdependency?
 
 ## Admin
+- Dev livereload not working
 - README description clarity, what/why, GIF example
 - How to install semver while in github repo format?
 - README badges for version, coverage, build, etc

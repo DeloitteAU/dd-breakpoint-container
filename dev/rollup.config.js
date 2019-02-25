@@ -38,7 +38,7 @@ export default {
 			},
 		}),
 		resolve(),
-		scss(),
+		scss({ output: './dist/style.css' }),
 		html({
 			template: './index.html',
 			target: './dist/index.html',

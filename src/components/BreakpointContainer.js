@@ -12,7 +12,7 @@ import '../scss/debug.scss';
 // Variables
 // ------------------------
 
-const DEBUG_BROWSER = true;
+const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
 const DEBUG_BPC = false;
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll

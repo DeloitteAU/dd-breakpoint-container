@@ -4,4 +4,5 @@ TODO
 - `cd dev`
 - `npm link ../`
 - `npm run start`
-- explain dev local dir livereload, versus lib auto-build, then page refresh
+- local change refresh
+- lib change (hard) refresh

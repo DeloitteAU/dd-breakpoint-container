@@ -21,6 +21,7 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@deloitte-digital-au/babel-preset-app-react": "^1.5.0",
+    "core-js": "^2.6.5",
     "rollup": "^1.2.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
