@@ -11,15 +11,13 @@ import replace from 'rollup-plugin-replace';
 export default {
 	input: './src/index.js',
 	output: {
-		file: './dist/index.js',
+		file: './dist/bundle.js',
 		format: 'umd',
 		sourcemap: 'inline',
 	},
 	preserveSymlinks: true,
 	plugins: [
-		replace({
-			'process.env.NODE_ENV': JSON.stringify('development'),
-		}),
+		resolve(),
 		babel({
 			compact: true,
 			sourceMap: true,
@@ -37,7 +35,6 @@ export default {
 				'node_modules/react-dom/index.js': ['render'],
 			},
 		}),
-		resolve(),
 		scss({ output: './dist/style.css' }),
 		html({
 			template: './index.html',
@@ -50,5 +47,8 @@ export default {
 			port: '9000',
 		}),
 		livereload('./dist'),
+		replace({
+			'process.env.NODE_ENV': JSON.stringify('development'),
+		}),
 	],
 };
