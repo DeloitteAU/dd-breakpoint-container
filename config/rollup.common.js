@@ -1,7 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
-import sass from 'node-sass';
 import postcss from 'rollup-plugin-postcss';
 import pcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
@@ -35,12 +34,6 @@ export default (isDev = true) => {
 				inject: true,
 				sourceMap,
 				exclude: 'node_modules/**',
-				preprocessor: (content, id) => (
-					new Promise(resolve => {
-						const result = sass.renderSync({ file: id });
-						resolve({ code: result.css.toString() });
-					})
-				),
 				plugins: [
 					pcssPresetEnv(),
 					autoprefixer(),
