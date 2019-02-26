@@ -10,7 +10,7 @@
   },
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
-    "start": "rollup --config --watch"
+    "start": "npm link ../ && rollup --config --watch"
   },
   "dependencies": {
     "classnames": "^2.2.6",

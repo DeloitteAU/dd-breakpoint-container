@@ -2,7 +2,6 @@ TODO
 
 - `npm run watch`
 - `cd dev`
-- `npm link ../`
 - `npm run start`
-- local change refresh
-- lib change (hard) refresh
+- local change - livereload
+- lib change - manual hard-refresh
