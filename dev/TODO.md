@@ -5,8 +5,11 @@
 - config dir? Yes/no?
 - Does classnames really belong as peerdependency?
 - Should mixins.scss be in scss dir?
+- config/reports - maybe belongs in root/reports, or even dist/reports? 
+- What are the merits, if any, to keeping the a separate /dist dir?
 
 ## Admin
+- Clean up and reorganise TODOs :(
 - README description clarity, what/why, GIF example
 - How to install semver while in github repo format?
 - README badges for version, coverage, build, etc
