@@ -12,10 +12,11 @@
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
-    "watch": "npm-watch build:lib",
+    "start": "npm-watch",
     "build": "run-s --silent build:*",
     "build:pre": "run-s --silent lint && node ./config/scripts/text/logo.js",
-    "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files",
+    "build:sass": "node-sass ./src/scss --output ./src/css",
+    "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files && rm -rf ./lib/scss",
     "build:dev": "cross-env NODE_ENV=development && rollup --config ./config/rollup.dev.js",
     "build:prod": "cross-env NODE_ENV=production && rollup --config ./config/rollup.prod.js",
     "build:post": "node ./config/scripts/buildMixins.js && node ./config/scripts/text/build-complete.js",
@@ -25,11 +26,20 @@
     "prepublishOnly": "run-s --silent lint build"
   },
   "watch": {
+    "build:sass": {
+      "patterns": [
+        "src/scss"
+      ],
+      "extensions": "scss",
+      "runOnChangeOnly": true
+    },
     "build:lib": {
       "patterns": [
         "src"
       ],
-      "extensions": "js,scss"
+      "extensions": "js,scss",
+      "runOnChangeOnly": true,
+      "delay": 2000
     }
   },
   "dependencies": {

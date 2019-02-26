@@ -1,5 +1,9 @@
 # Changelog
 
+## Pending release
+
+- Refactor: Core SCSS styles are now compiled into CSS, so you don't need a SASS compiler if you're just using the component, without the mixins
+
 ## 0.4.1
 - Fix: Temporarily removed debug environment variable overrides, due to unverified performance
 - Feature: Added watch command, and dev server for local testing and development

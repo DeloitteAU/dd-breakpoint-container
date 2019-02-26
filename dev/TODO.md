@@ -4,6 +4,7 @@
 - Export names (especially 'BrowserContainer' [rename -> App?] & Breakpoint component)
 - config dir? Yes/no?
 - Does classnames really belong as peerdependency?
+- Should mixins.scss be in scss dir?
 
 ## Admin
 - README description clarity, what/why, GIF example
@@ -24,13 +25,13 @@
 - JSdoc and conventions checks
 - Typescript definitions
 - Backwards compatibility with DDBreakpoints unit tests
+- Unit tests to test that it works without SASS dependency, for those not using mixins.scss
 - Absolute imports ('~/') 
 - Problematic because 'src'/'lib' dirs share source files. Separate configs?
 
 ## Known issues
 - Dev livereload not working
 - Workaround for the mass of named exports in dev server commonjs plugin
-- ./lib out dir needs compiled CSS (not SCSS)
 - rollup unresolved dependencies build warnings (related to node-resolve?)
 - deloitte eslint config deprecation
 - First-pass render snaps from 'none' (mobile); can we address this? react-container-query 'solves' it with initialSize prop, but I dont see thats a solution. Could just be a known limitation.

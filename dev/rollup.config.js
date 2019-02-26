@@ -1,8 +1,10 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
-import scss from 'rollup-plugin-scss';
 import html from 'rollup-plugin-generate-html-template';
+import postcss from 'rollup-plugin-postcss';
+import pcssPresetEnv from 'postcss-preset-env';
+import autoprefixer from 'autoprefixer';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 import replace from 'rollup-plugin-replace';
@@ -20,10 +22,10 @@ export default {
 		resolve(),
 		babel({
 			compact: true,
-			sourceMap: true,
+			sourceMap: 'inline',
 		}),
 		commonjs({
-			sourceMap: true,
+			sourceMap: 'inline',
 			include: [
 				'node_modules/**',
 			],
@@ -35,7 +37,13 @@ export default {
 				'node_modules/react-dom/index.js': ['render'],
 			},
 		}),
-		scss({ output: './dist/style.css' }),
+		postcss({
+			sourceMap: 'inline',
+			plugins: [
+				pcssPresetEnv(),
+				autoprefixer(),
+			],
+		}),
 		html({
 			template: './index.html',
 			target: './dist/index.html',
