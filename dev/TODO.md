@@ -9,6 +9,7 @@
 - What are the merits, if any, to keeping the a separate /dist dir?
 
 ## Admin
+- Dev dir README.md
 - Clean up and reorganise TODOs :(
 - README description clarity, what/why, GIF example
 - How to install semver while in github repo format?
