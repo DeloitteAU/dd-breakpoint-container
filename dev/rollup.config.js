@@ -19,6 +19,9 @@ export default {
 	},
 	preserveSymlinks: true,
 	plugins: [
+		replace({
+			'process.env.NODE_ENV': JSON.stringify('production'),
+		}),
 		resolve(),
 		babel({
 			compact: true,
@@ -55,8 +58,5 @@ export default {
 			port: '9000',
 		}),
 		livereload('./dist'),
-		replace({
-			'process.env.NODE_ENV': JSON.stringify('development'),
-		}),
 	],
 };
