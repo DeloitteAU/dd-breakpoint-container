@@ -2,10 +2,8 @@
 - Package name: include 'react'? include full @dd-au prefix?
 - Rename 'dev' folder? 'demo'?
 - Export names (especially 'BrowserContainer' [rename -> App?] & Breakpoint component)
-- config dir? Yes/no?
 - Does classnames really belong as peerdependency?
 - Should mixins.scss be in scss dir?
-- config/reports - maybe belongs in root/reports, or even dist/reports? 
 - What are the merits, if any, to keeping the a separate /dist dir?
 
 ## Admin
@@ -37,7 +35,7 @@
 - Dev livereload not working
 - Workaround for the mass of named exports in dev server commonjs plugin
 - rollup unresolved dependencies build warnings (related to node-resolve?)
-- deloitte eslint config deprecation
+- deloitte eslint config deprecation warning
 - First-pass render snaps from 'none' (mobile); can we address this? react-container-query 'solves' it with initialSize prop, but I dont see thats a solution. Could just be a known limitation.
 -- If we're relying on the wrapper container, we could prevent rendering of the app until a base width has been established, then propagate
 - Need to check whether mixins nested within BEM selectors are also an issue in DDBreakpoints, or if that limitation is unique and needs to be documents (i.e. root selector level usage of mixins for BEM-style)

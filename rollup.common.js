@@ -44,11 +44,11 @@ export default (isDev = true) => {
 				minify(),
 				visualizer({
 					sourceMap: true,
-					filename: 'config/reports/dependency-graph.html',
+					filename: 'reports/dependency-graph.html',
 					title: 'Production Build Report',
 				}),
 				snapshot({
-					snapshotPath: 'config/reports/size-snapshot.json',
+					snapshotPath: 'reports/size-snapshot.json',
 				}),
 			]),
 		],

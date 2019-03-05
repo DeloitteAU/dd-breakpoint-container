@@ -1,4 +1,4 @@
-![Deloitte Digital](./config/dd-logo.png)
+![Deloitte Digital](dd-logo.png)
 
 # DDBreakpointContainer
 

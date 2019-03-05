@@ -3,6 +3,7 @@
 ## Pending release
 
 - Refactor: Core SCSS styles are now compiled into CSS, so you don't need a SASS compiler if you're just using the component, without the mixins
+- Refactor: 'config' dir moved to root, as expected by any plugins or extensions looking to consume any config files
 
 ## 0.4.1
 - Fix: Temporarily removed debug environment variable overrides, due to unverified performance

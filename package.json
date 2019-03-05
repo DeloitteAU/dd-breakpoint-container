@@ -13,16 +13,17 @@
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
     "start": "npm-watch",
+    "test": "cypress open",
     "build": "run-s --silent build:*",
-    "build:pre": "run-s --silent lint && node ./config/scripts/text/logo.js",
+    "build:pre": "run-s --silent lint && node ./scripts/text/logo.js",
     "build:sass": "node-sass ./src/scss --output ./src/css",
     "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files && rm -rf ./lib/scss",
-    "build:dev": "cross-env NODE_ENV=development && rollup --config ./config/rollup.dev.js",
-    "build:prod": "cross-env NODE_ENV=production && rollup --config ./config/rollup.prod.js",
-    "build:post": "node ./config/scripts/buildMixins.js && node ./config/scripts/text/build-complete.js",
+    "build:dev": "cross-env NODE_ENV=development && rollup --config ./rollup.dev.js",
+    "build:prod": "cross-env NODE_ENV=production && rollup --config ./rollup.prod.js",
+    "build:post": "node ./scripts/buildMixins.js && node ./scripts/text/build-complete.js",
     "lint": "run-s --silent lint:*",
-    "lint:js": "eslint ./src --ext .js --config ./config/.eslintrc.js --ignore-path ./config/.eslintignore",
-    "lint:css": "stylelint \"./src/**/*.scss\" --config ./config/.stylelintrc",
+    "lint:js": "eslint ./src --ext .js",
+    "lint:css": "stylelint \"./src/**/*.scss\"",
     "prepublishOnly": "run-s --silent lint build"
   },
   "watch": {
