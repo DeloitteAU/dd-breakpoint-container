@@ -1,5 +1,10 @@
 # Changelog
 
+## Pending release
+
+- Added Prettier code formatter; updated associated plugins and eslint config
+- Added husky and lint-staged git-hook for linting on commit
+
 ## 0.4.2
 
 - Refactor: Core SCSS styles are now compiled into CSS, so you don't need a SASS compiler if you're just using the component, without the mixins
