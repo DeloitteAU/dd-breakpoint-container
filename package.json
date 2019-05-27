@@ -22,8 +22,8 @@
     "build:prod": "cross-env NODE_ENV=production && rollup --config ./rollup.prod.js",
     "build:post": "node ./scripts/buildMixins.js && node ./scripts/text/build-complete.js",
     "lint": "run-s --silent lint:*",
-    "lint:js": "eslint ./src/**/*.js --fix",
-    "lint:css": "stylelint ./src/**/*.scss ./src/**/*.css --fix",
+    "lint:js": "eslint ./src/**/*.js",
+    "lint:css": "stylelint ./src/**/*.scss ./src/**/*.css",
     "prepublishOnly": "run-s --silent lint build"
   },
   "watch": {
