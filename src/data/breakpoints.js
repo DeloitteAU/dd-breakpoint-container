@@ -13,12 +13,12 @@ export const BREAKPOINTS = {
 	xxxl: 1690,
 };
 
-/*
+/**
  * Returns the breakpoint 'upper-limit' width in pixels,
- * which is essentially the width of the next breakpoint
+ * which is essentially the width of the next breakpoint.
  *
- * @param {String} bp
- * @returns {Number}
+ * @param {string} bp
+ * @returns {number}
  */
 export function getBpUpperLimit(bp) {
 	if (!Number.isNaN(parseInt(bp))) {

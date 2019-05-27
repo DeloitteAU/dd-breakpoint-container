@@ -26,7 +26,7 @@ function WithContext({ identifier, currentBp, children }) {
 	const IdentifierContext = BP_CONTEXTS[identifier];
 
 	return (
-		<React.Fragment>
+		<>
 			{hasIdentifier ? (
 				<IdentifierContext.Provider value={currentBp}>
 					<CoreContext.Provider value={currentBp}>
@@ -38,7 +38,7 @@ function WithContext({ identifier, currentBp, children }) {
 					{children}
 				</IdentifierContext.Provider>
 			)}
-		</React.Fragment>
+		</>
 	);
 }
 

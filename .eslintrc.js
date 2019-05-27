@@ -59,5 +59,8 @@ module.exports = {
 		// // "jsdoc/require-returns-description": 1,
 		'jsdoc/require-returns-type': 1,
 		'jsdoc/valid-types': 1,
+
+		// No import errors for peer dependencies
+		'import/no-unresolved': [2, { ignore: ['^react$'] }],
 	},
 };
