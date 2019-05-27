@@ -27,20 +27,20 @@ function WithContext({ identifier, currentBp, children }) {
 
 	return (
 		<React.Fragment>
-			{ hasIdentifier ? (
+			{hasIdentifier ? (
 				<IdentifierContext.Provider value={currentBp}>
 					<CoreContext.Provider value={currentBp}>
-						{ children }
+						{children}
 					</CoreContext.Provider>
 				</IdentifierContext.Provider>
 			) : (
 				<IdentifierContext.Provider value={currentBp}>
-					{ children }
+					{children}
 				</IdentifierContext.Provider>
-			) }
+			)}
 		</React.Fragment>
 	);
-};
+}
 
 WithContext.propTypes = {
 	identifier: T.string.isRequired,

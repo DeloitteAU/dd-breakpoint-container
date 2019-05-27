@@ -21,7 +21,9 @@ export const BREAKPOINTS = {
  * @returns {Number}
  */
 export function getBpUpperLimit(bp) {
-	if (!Number.isNaN(parseInt(bp))) { return null; }
+	if (!Number.isNaN(parseInt(bp))) {
+		return null;
+	}
 
 	const bpKeys = Object.keys(BREAKPOINTS);
 	const nextHighestBpIndex = bpKeys.indexOf(bp) + 1;
@@ -29,9 +31,14 @@ export function getBpUpperLimit(bp) {
 	// Check edge-case for when target breakpoint is the last in the array, in which
 	// case Infinity is an acceptable upper-bound, since there is no threshold
 	const nextHighestBpWidth =
-		nextHighestBpIndex !== (BREAKPOINTS.length - 1)
+		nextHighestBpIndex !== BREAKPOINTS.length - 1
 			? BREAKPOINTS[bpKeys[nextHighestBpIndex]]
 			: Infinity;
 
 	return nextHighestBpWidth;
+}
+
+export function resolveBp(query, bp) {
+	const bpQuery = q || query; // Aggregate query shorthand
+	const [lower, upper] = bpQuery.replace(' ', '').split(',');
 }

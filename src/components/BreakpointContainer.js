@@ -72,9 +72,10 @@ export class BreakpointContainer extends React.Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		// Check if bp changed to support 'onChange' callback
-		if (typeof this.props.onChange === 'function' &&
-			this.state.currentBp !== prevState.currentBp) {
-
+		if (
+			typeof this.props.onChange === 'function' &&
+			this.state.currentBp !== prevState.currentBp
+		) {
 			this.props.onChange(this.state.currentBp);
 		}
 	}
@@ -89,31 +90,30 @@ export class BreakpointContainer extends React.Component {
 			children,
 		} = this.props;
 
-		const matchingBps =
-			Object.keys(BREAKPOINTS).filter(bp => (
-				this.state.size >= BREAKPOINTS[bp]
-			));
+		const matchingBps = Object.keys(BREAKPOINTS).filter(
+			bp => this.state.size >= BREAKPOINTS[bp],
+		);
 		const currentBp = matchingBps[matchingBps.length - 1];
 
 		// Formatted breakpoints for className output
-		const classBps = matchingBps.map(bp => `${CLASSES.BP_PREFIX}${bp}`).join(' ');
+		const classBps = matchingBps
+			.map(bp => `${CLASSES.BP_PREFIX}${bp}`)
+			.join(' ');
 
 		// Debug mode - component flag, and account for opt-out of global flag
 		const isDebugActive = debug || (debug !== false && DEBUG_BPC);
 
 		return (
 			<React.Fragment>
-				<div className={cx(
-					CLASSES.CORE,
-					containerClass,
-					{
+				<div
+					className={cx(CLASSES.CORE, containerClass, {
 						[classBps]: !noBpClasses,
 						[CLASSES.DEBUG_MODIFIER]: isDebugActive,
 						// If there are no class name outputs, BUT debug mode is on,
 						// render the active bp as a class to enable CSS debug indicator
 						[`${CLASSES.BP_PREFIX}${currentBp}`]: debug && noBpClasses,
-					},
-				)}>
+					})}
+				>
 					<ReactResizeDetector
 						handleWidth
 						onResize={size => this.setState({ size, currentBp })}
@@ -121,29 +121,27 @@ export class BreakpointContainer extends React.Component {
 
 					<div className={cx(SELECTORS.BP_CONTENT, className)}>
 						<WithContext {...{ identifier, currentBp }}>
-							{ typeof children === 'function'
+							{typeof children === 'function'
 								? children(currentBp, this.state.size)
-								: children }
+								: children}
 						</WithContext>
 					</div>
 
-					{ isDebugActive && (
+					{isDebugActive && (
 						<React.Fragment>
 							<span className={SELECTORS.DEBUG_INDICATOR}>
-								{ currentBp || 'none' }
+								{currentBp || 'none'}
 							</span>
-							{ (identifier !== ID_DEFAULT && identifier !== ID_BROWSER) && (
-								<span className={SELECTORS.DEBUG_IDENTIFIER}>
-									{ identifier }
-								</span>
-							) }
+							{identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (
+								<span className={SELECTORS.DEBUG_IDENTIFIER}>{identifier}</span>
+							)}
 						</React.Fragment>
-					) }
+					)}
 				</div>
 			</React.Fragment>
 		);
 	}
-};
+}
 
 // ------------------------
 
@@ -157,6 +155,6 @@ export const BrowserContainer = ({ children, ...bpcProps }) => (
 		debug={DEBUG_BROWSER}
 		{...bpcProps}
 	>
-		{ children }
+		{children}
 	</BreakpointContainer>
 );
