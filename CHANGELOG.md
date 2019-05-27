@@ -2,8 +2,9 @@
 
 ## Pending release
 
-- Added Prettier code formatter; updated associated plugins and eslint config
-- Added husky and lint-staged git-hook for linting on commit
+- Chore: Added Prettier code formatter; updated associated plugins and eslint/stylelint configs
+- Chore: Normalised dot config files to .js
+- Chore: Added husky and lint-staged git-hook for linting on commit
 
 ## 0.4.2
 

@@ -1,4 +1,0 @@
-{
-  "extends": "@deloitte-digital-au/stylelint-config",
-  "plugins": []
-}
