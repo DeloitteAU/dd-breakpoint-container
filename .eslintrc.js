@@ -3,7 +3,7 @@ const pkg = require('./package.json');
 module.exports = {
 	settings: {
 		react: {
-			version: pkg.peerDependencies.react,
+			version: '16.2',
 		},
 	},
 	extends: [
@@ -27,7 +27,7 @@ module.exports = {
 		'prettier/prettier': 'error',
 
 		// Enforce React.Fragment </> shorthand
-		'react/jsx-fragments': 'error',
+		'react/jsx-fragments': 1,
 
 		// Max one prop per line; improved readability and diff
 		// Commented out in hope of potential Prettier feature integration

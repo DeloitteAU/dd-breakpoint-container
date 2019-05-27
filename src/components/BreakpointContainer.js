@@ -104,7 +104,7 @@ export class BreakpointContainer extends React.Component {
 		const isDebugActive = debug || (debug !== false && DEBUG_BPC);
 
 		return (
-			<React.Fragment>
+			<>
 				<div
 					className={cx(CLASSES.CORE, containerClass, {
 						[classBps]: !noBpClasses,
@@ -128,17 +128,17 @@ export class BreakpointContainer extends React.Component {
 					</div>
 
 					{isDebugActive && (
-						<React.Fragment>
+						<>
 							<span className={SELECTORS.DEBUG_INDICATOR}>
 								{currentBp || 'none'}
 							</span>
 							{identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (
 								<span className={SELECTORS.DEBUG_IDENTIFIER}>{identifier}</span>
 							)}
-						</React.Fragment>
+						</>
 					)}
 				</div>
-			</React.Fragment>
+			</>
 		);
 	}
 }

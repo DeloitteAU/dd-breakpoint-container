@@ -1,4 +1,4 @@
-- Add Prettier
+- Styled Components; remove classnames
 - Rename noBpClasses - something like no SCSS...? Or not?
 - Make 'dev' folder into demo site for dd.io hosting
 - Create exportable function for 'resolveBreakpoint'
@@ -10,7 +10,7 @@
 
 ## Deloitte Consensus
 
-- Export names (especially 'BrowserContainer' [rename -> App?] & Breakpoint component)
+- Export names (especially 'BrowserContainer' [rename -> App?] & 'Breakpoint' component)
 - Does classnames really belong as peerdependency?
 - Should mixins.scss be in scss dir?
 - What are the merits, if any, to keeping a separate '/dist' dir and build pipeline?
