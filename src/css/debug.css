@@ -20,12 +20,15 @@
 	font-family: monospace;
 	content: 'none';
 }
+
 .-debug .bpc__debugIdentifier {
 	right: 0;
 }
+
 .-debug > .bpc__content:not(.bpc__browser) {
 	border: 1px dashed black;
 }
+
 .-debug > .bpc__browser ~ .bpc__debugIndicator {
 	position: fixed;
 	border-style: solid;
