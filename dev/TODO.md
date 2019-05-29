@@ -6,6 +6,7 @@
 - Restructure/clean-up TODOs here
 - Add feature to allow specifying own breakpoints
   -- Normalise 'px' and numerical values
+  -- Will have to be as a provider
 - When to use / when not to use (full-width, media queries etc)
 
 ## Deloitte Consensus

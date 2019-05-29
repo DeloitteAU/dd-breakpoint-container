@@ -38,7 +38,43 @@ export function getBpUpperLimit(bp) {
 	return nextHighestBpWidth;
 }
 
+/**
+ * Resolves a breakpoint query against a specified breakpoint or value. Query
+ * must be in format `${lower}, ${upper}` (comma separated), where lower/upper
+ * are either named breakpoints or px values. Upper is optional.
+ *
+ * @param {string} query - Breakpoint query string.
+ * @param {string|number} bp - Breakpoint name, or px size to resolve query against.
+ * @returns {boolean}
+ */
 export function resolveBp(query, bp) {
-	const bpQuery = q || query; // Aggregate query shorthand
-	const [lower, upper] = bpQuery.replace(' ', '').split(',');
+	// Extract lower and upper-bounds from query
+	// Normalise string and comma/whitespace separation
+	const [lower, upper] = query
+		.toString()
+		.replace(/,?\s/, ',')
+		.split(',');
+
+	// Lower-bound should always exist; either as named breakpoint or px value
+	const lowerWidth = BREAKPOINTS[lower] || parseInt(lower);
+	// Get upper-bound (i.e. next breakpoint threshold), or parse as int, or failing
+	// that use Infinity as a fallback
+	const upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity;
+
+	// Validate query by checking if lower bound exists
+	if (!lowerWidth) {
+		console.warn(
+			`Invalid breakpoint query '${query}' provided. Query must be in format \`\${lower}, \${upper}\` (comma separated), where lower/upper are either named breakpoints or px values. Upper is optional.`,
+		);
+		return false;
+	}
+
+	// Width of current breakpoint
+	const bpWidth = BREAKPOINTS[bp] || parseInt(bp) || 0;
+
+	// Note that lower-bound is inclusive
+	const moreThanLower = bpWidth >= lowerWidth;
+	const lessThanUpper = bpWidth < upperWidth;
+
+	return moreThanLower && lessThanUpper;
 }

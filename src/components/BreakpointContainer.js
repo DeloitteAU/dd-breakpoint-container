@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import T from 'prop-types';
 import cx from 'classnames';

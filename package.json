@@ -13,9 +13,8 @@
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
     "start": "npm-watch",
-    "test": "cypress open",
     "build": "run-s --silent build:*",
-    "build:pre": "run-s --silent lint && node ./scripts/text/logo.js",
+    "build:pre": "run-s --silent && node ./scripts/text/logo.js",
     "build:sass": "node-sass ./src/scss --output ./src/css",
     "build:lib": "babel ./src --out-dir lib --source-maps inline --copy-files && rm -rf ./lib/scss",
     "build:dev": "cross-env NODE_ENV=development && rollup --config ./rollup.dev.js",
