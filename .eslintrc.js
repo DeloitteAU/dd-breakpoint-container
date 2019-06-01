@@ -61,6 +61,6 @@ module.exports = {
 		'jsdoc/valid-types': 1,
 
 		// No import errors for peer dependencies
-		'import/no-unresolved': [2, { ignore: ['^react$'] }],
+		'import/no-unresolved': [2, { ignore: ['^react$', '^classnames$'] }],
 	},
 };
