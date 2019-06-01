@@ -38,7 +38,7 @@ export default class BreakpointContainer extends React.Component {
 		className: T.string,
 		containerClass: T.string,
 		children: T.oneOfType([T.node, T.func]).isRequired,
-		identifier: T.string.isRequired,
+		identifier: T.string,
 
 		// Callbacks
 		onChange: T.func,
