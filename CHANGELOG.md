@@ -1,9 +1,20 @@
 # Changelog
 
-## Pending release
+## Next release
 
-- Chore: Added Prettier code formatter; updated associated plugins and eslint/stylelint configs
-- Chore: Normalised dot config files to .js
+- Feat: Added 'bp' export , completing CSS-in-js pattern
+- Docs: Updated README for CSS-in-js pattern
+- Feat: Added Typescript definition file
+- Chore: JSDoc
+
+## 0.5.0
+
+- Feat: Added 'resolveBp' core function
+- Docs: Updated README to reflect the above
+- Feat: Added 'bpc' export as preliminary support for CSS-in-js container query support
+- Refactor: Moved HOCs into their own folder as separate files
+- Chore: Added Prettier code formatter; updated associated plugins and eslint/stylelint configs; linted as required
+- Chore: Normalised dot config files to \*rc.js
 - Chore: Added husky and lint-staged git-hook for linting on commit
 
 ## 0.4.2
@@ -16,7 +27,7 @@
 ## 0.4.1
 
 - Fix: Temporarily removed debug environment variable overrides, due to unverified performance
-- Feature: Added watch command, and dev server for local testing and development
+- Feat: Added watch command, and dev server for local testing and development
 - Docs: Added CONTRIBUTING.md
 - Refactor: Added 'config' directory and moved relevant files there to clean up project root
 - Chore: 'Breakpoint' component file changed to default export (remains named export in package)

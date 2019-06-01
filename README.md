@@ -10,31 +10,32 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 <!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Index
 
 - [Install](#markdown-header-install)
 - [Getting started](#markdown-header-getting-started)
-    - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
-    - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
-        - [SCSS pattern](#markdown-header-scss-pattern)
-        - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
-        - [Child function pattern](#markdown-header-child-function-pattern)
-        - [Callback pattern](#markdown-header-callback-pattern)
+  - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
+  - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
+    - [SCSS pattern](#markdown-header-scss-pattern)
+    - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
+    - [Child function pattern](#markdown-header-child-function-pattern)
+    - [Callback pattern](#markdown-header-callback-pattern)
 - [Conditional rendering](#markdown-header-conditional-rendering)
 - [Options & exports](#markdown-header-options-exports)
-    - [BreakpointContainer](#markdown-header-breakpointcontainer)
-    - [BrowserContainer component](#markdown-header-browsercontainer-component)
-    - [Breakpoint component](#markdown-header-breakpoint-component)
-    - [HOCs](#markdown-header-hocs)
-    - [Other](#markdown-header-other)
+  - [BreakpointContainer](#markdown-header-breakpointcontainer)
+  - [BrowserContainer component](#markdown-header-browsercontainer-component)
+  - [Breakpoint component](#markdown-header-breakpoint-component)
+  - [HOCs](#markdown-header-hocs)
+  - [Other](#markdown-header-other)
 - [Debug features](#markdown-header-debug-features)
 - [Disclaimers](#markdown-header-disclaimers)
-    - [Performance](#markdown-header-performance)
-    - [Consider media queries](#markdown-header-consider-media-queries)
-    - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
+  - [Performance](#markdown-header-performance)
+  - [Consider media queries](#markdown-header-consider-media-queries)
+  - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
 - [About Deloitte Digital Australia](#markdown-header-about-deloitte-digital-australia)
-    - [Key contributors](#markdown-header-key-contributors)
-    - [Who are we?](#markdown-header-who-are-we)
+  - [Key contributors](#markdown-header-key-contributors)
+  - [Who are we?](#markdown-header-who-are-we)
 - [Licence](#markdown-header-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -60,6 +61,7 @@ import { BrowserContainer } from 'dd-breakpoint-container';
 	<App/>
 <BrowserContainer/>
 ```
+
 This is optional, but recommended. It emulates media queries by acting as a wrapper for your app. It enables standalone usage of the `<Breakpoint/>` component, as well as the `bp()` SCSS mixin. (Also, it doesn't matter if your app isn't fullscreen, the net result is the same).
 
 ### 2. Use `<BreakpointContainer/>` in your components
@@ -71,6 +73,7 @@ import { BreakpointContainer } from 'dd-breakpoint-container';
 	<div>My Component</div>
 <BreakpointContainer/>
 ```
+
 Once you've done this, you have a number of approaches you can use based on preference:
 
 #### SCSS pattern
@@ -128,17 +131,17 @@ If you'd like to work with responsive logic in your component JS, you can expose
 ```
 <BreakpointContainer>
 	{ (bp, size) => {
-		return `The current breakpoint is ${bp}, at size ${size} pixels.`.	
+		return `The current breakpoint is ${bp}, at size ${size} pixels.`.
 	}}
 </BreakpointContainer>
 ```
 
-#### Callback pattern 
+#### Callback pattern
 
-Operate on a callback that triggers when the breakpoint changes. Note: **only** when the active breakpoint changes, not for every change in pixel size).
+Operate on a callback that triggers when the breakpoint changes. **Note: this is only when the active breakpoint changes (not for every change in pixel size!).**
 
 ```
-<BreakpointContainer 
+<BreakpointContainer
 	onChange={bp => {
 		...
 	}}
@@ -177,15 +180,15 @@ The component automatically detects which `<BreakpointContainer/>` it's in. Or, 
 
 `import { BreakpointContainer } from 'dd-breakpoint-container';`
 
-| Name           | Type            | Default value | Description                                                                                                              |
-|----------------|-----------------|---------------|--------------------------------------------------------------------------------------------------------------------------|
-| className      | String          | null          |  Class name(s) applied to container div, i.e. direct parent to component children                     |
-| containerClass | String          | null          |  Class name(s) applied to wrapper div, i.e. grandparent to component children                                        |
-| identifier     | String          | 'default'     |  A unique id for the component. For `<Breakpoint/>` components to reference.                                             |
-| children       | Function / Node | (required)    |  Optionally receive 'bp' (String)  and 'size' (Number) props. Refer to 'Child function pattern' above.                   |
-| onChange       | Function        | null          | Callback when active breakpoint changes                                                                                  |
-| debug          | Boolean         | null          |  Toggles debug mode: border + breakpoint indicator                                                                       |
-| noBpClasses    | Boolean         | false         |  Opt-out of breakpoint classes, if you're not using the SCSS mixins. (Only if you want to keep the DOM a little cleaner) |
+| Name           | Type            | Default value | Description                                                                                                             |
+| -------------- | --------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| className      | String          | null          | Class name(s) applied to container div, i.e. direct parent to component children                                        |
+| containerClass | String          | null          | Class name(s) applied to wrapper div, i.e. grandparent to component children                                            |
+| identifier     | String          | 'default'     | A unique id for the component. For `<Breakpoint/>` components to reference.                                             |
+| children       | Function / Node | (required)    | Optionally receive 'bp' (String) and 'size' (Number) props. Refer to 'Child function pattern' above.                    |
+| onChange       | Function        | null          | Callback when active breakpoint changes                                                                                 |
+| debug          | Boolean         | null          | Toggles debug mode: border + breakpoint indicator                                                                       |
+| noBpClasses    | Boolean         | false         | Opt-out of breakpoint classes, if you're not using the SCSS mixins. (Only if you want to keep the DOM a little cleaner) |
 
 ### BrowserContainer component
 
@@ -196,7 +199,7 @@ This component is the same as `<BreakpointContainer/>`, with `identifier="browse
 `import { Breakpoint } from 'dd-breakpoint-container';`
 
 | Name       | Type            | Default value | Description                                                                                                                                      |
-|------------|-----------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------- | --------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | query      | String / Number | 0             | Breakpoint query string "$lower, $upper", where lower/upper are either named breakpoints or pixel values. Refer to 'Usage' section for examples. |
 | q          | String / Number | -             | Shorthand for `query` prop                                                                                                                       |
 | identifier | String          | 'default'     | Define which `<BreakpointContainer/>` to work with, e.g. if you want to target the browser container.                                            |
@@ -209,54 +212,47 @@ Both `<BreakpointContainer/>` and its derivative `<BrowserContainer/>` are also 
 ```
 export withBreakpointContainer(MyComponent, { ...options });
 ```
+
 ```
 export withBrowserContainer(MyComponent, { ...options });
 ```
 
-### Other
+### Functions
 
-`BREAKPOINTS`: A object of key:value pairs for breakpoint names and their pixel values:
+`resolveBp(query: string, bp: string|number) : boolean`: The core function that much of the library is based on; it resolves a breakpoint query against a specified breakpoint or value.
 
-```
-BREAKPOINTS = {
-	none: 0,
-	xxxs: 320,
-	xxs: 359,
-	xs: 480,
-	s: 640,
-	m: 768,
-	l: 1024,
-	xl: 1244,
-	xxl: 1410,
-	xxxl: 1690,
-}
-```
+The query must be in format `${lower}, ${upper}` (comma/space separated), where lower/upper are either named breakpoints or px values.
 
-`getBpUpperLimit(bp: string)`: A function that takes a named breakpoint and returns its upper-limit.
+The query is generally quite forgiving: the upper value is optional and any pixel values can either be numbers (e.g. 700) or px values (e.g. 700px); they are the same, and are normalised within the function.
+
+`getBpUpperLimit(bp: string) : number`: A function that takes a named breakpoint and returns its upper-limit.
 
 For example, `getBpUpperLimit('s')` returns `768` (the 'm' breakpoint), as that value is the first width at which the 's' breakpoint is no longer active (aka, the upper-limit).
 
-`BREAKPOINTS` and `getBpUpperLimit()` are most useful for comparing two named breakpoints. For example:
+### Other
+
+`BREAKPOINTS`: A object of key:value pairs for breakpoint names and their pixel values. The default values are:
 
 ```
-import { BREAKPOINTS, getBpUpperLimit, BreakpointContainer } from 'dd-breakpoint-container';
-...
-<BrowserContainer>
-	{ bp => {
-		const currentBp = BREAKPOINTS[bp];
-		const mobileBp = getBpUpperLimit('s');
-		const isMobile = currentBp < mobileBp;
-
-		return <p>This is { !isMobile && 'not' } mobile</p>;
-	} }
-</BrowserContainer>
+BREAKPOINTS = {
+  none: 0,
+  xxxs: 320,
+  xxs: 359,
+  xs: 480,
+  s: 640,
+  m: 768,
+  l: 1024,
+  xl: 1244,
+  xxl: 1410,
+  xxxl: 1690,
+};
 ```
 
 ## Debug features
 
 By default, `<BrowserContainer>` will show you a helpful breakpoint indicator in the top-left of your screen in your development builds, to show you the active breakpoint of your app. This can be turned off with the the prop `debug={false}`.
 
-Conversely, you can set `debug={true}` on any `<BreakpointContainer/>` module to see the outline of its contents, as will as its own respective active breakpoint. This is very useful 
+Conversely, you can set `debug={true}` on any `<BreakpointContainer/>` module to see the outline of its contents, as will as its own respective active breakpoint. This is very useful
 
 All debug indicators are turned off if you have `NODE_ENV=production` set in your build, so you needn't worry about them slipping into your builds and deployments.
 
@@ -276,13 +272,14 @@ Container queries are very powerful and enable new ways for responsive component
 
 ### DDBreakpoints Backwards compatibility
 
-**DDBreakpointContainer** can be* a fully backwards-compatible replacement for the original [**DDBreakpoints**](https://github.com/DeloitteDigitalAPAC/DDBreakpoints) core SCSS mixin; any existing stylesheets with the `bp()` mixin will work the same. And in your design we would still encourage you use a mix of 'media queries' `bp()` and 'container queries' `bpc()` as makes sense in the context of your app.
+**DDBreakpointContainer** can be\* a fully backwards-compatible replacement for the original [**DDBreakpoints**](https://github.com/DeloitteDigitalAPAC/DDBreakpoints) core SCSS mixin; any existing stylesheets with the `bp()` mixin will work the same. And in your design we would still encourage you use a mix of 'media queries' `bp()` and 'container queries' `bpc()` as makes sense in the context of your app.
 
 \* Note that this functionality depends on the proper set-up of the `<BrowserContainer/>` component as per the instructions above in the 'Getting started' section.
 
 ## About Deloitte Digital Australia
 
 ### Key contributors
+
 - @saxoncameron
 
 ### Who are we?
@@ -294,4 +291,5 @@ Pioneered in Australia, Deloitte Digital is committed to helping clients unlock 
 [http://www.deloittedigital.com/au](http://www.deloittedigital.com/au)
 
 ## Licence
+
 BSD-3-Clause ([View License](LICENSE))

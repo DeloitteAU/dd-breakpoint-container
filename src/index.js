@@ -7,16 +7,28 @@ import {
 	withBrowserContainer,
 } from './components/HOCs';
 import Breakpoint from './components/Breakpoint';
-import { bpc } from './styled-components/styled-components';
-import { BREAKPOINTS, getBpUpperLimit } from './data/breakpoints';
+import { bp, bpc } from './data/css-in-js';
+import { BREAKPOINTS, getBpUpperLimit, resolveBp } from './data/breakpoints';
 
 export {
-	bpc,
+	// ---------------------
+	// Constants
+	BREAKPOINTS,
+	// ---------------------
+	// Components
 	BreakpointContainer,
 	BrowserContainer,
+	Breakpoint,
+	// ---------------------
+	// HOCs
 	withBreakpointContainer,
 	withBrowserContainer,
-	Breakpoint,
-	BREAKPOINTS,
+	// ---------------------
+	// Functions
 	getBpUpperLimit,
+	resolveBp,
+	// ---------------------
+	// CSS-in-js
+	// bp,
+	bpc,
 };
