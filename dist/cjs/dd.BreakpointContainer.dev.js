@@ -3303,7 +3303,7 @@ BreakpointContainer.propTypes = {
   className: propTypes.string,
   containerClass: propTypes.string,
   children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired,
-  identifier: propTypes.string.isRequired,
+  identifier: propTypes.string,
   // Callbacks
   onChange: propTypes.func,
   // Flags
