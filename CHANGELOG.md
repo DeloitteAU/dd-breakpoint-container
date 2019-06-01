@@ -13,6 +13,7 @@
 - Docs: Updated README to reflect the above
 - Feat: Added 'bpc' export as preliminary support for CSS-in-js container query support
 - Refactor: Moved HOCs into their own folder as separate files
+- Refactor: Separated out Breakpoint/Browser containers to separate component files
 - Chore: Added Prettier code formatter; updated associated plugins and eslint/stylelint configs; linted as required
 - Chore: Normalised dot config files to \*rc.js
 - Chore: Added husky and lint-staged git-hook for linting on commit

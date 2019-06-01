@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import T from 'prop-types';
 import cx from 'classnames';
@@ -13,7 +12,6 @@ import '../css/debug.css';
 // Variables
 // ------------------------
 
-const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
 const DEBUG_BPC = false;
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
@@ -32,10 +30,10 @@ const SELECTORS = {
 };
 
 // ------------------------
-// Core Exports
+// Export
 // ------------------------
 
-export class BreakpointContainer extends React.Component {
+export default class BreakpointContainer extends React.Component {
 	static propTypes = {
 		className: T.string,
 		containerClass: T.string,
@@ -143,19 +141,3 @@ export class BreakpointContainer extends React.Component {
 		);
 	}
 }
-
-// ------------------------
-
-// Emulates media query functionality, and enables 'standalone' <Breakpoint/>
-// Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
-// eslint-disable-next-line react/prop-types
-export const BrowserContainer = ({ children, ...bpcProps }) => (
-	<BreakpointContainer
-		identifier={ID_BROWSER}
-		className={SELECTORS.BP_BROWSER}
-		debug={DEBUG_BROWSER}
-		{...bpcProps}
-	>
-		{children}
-	</BreakpointContainer>
-);
