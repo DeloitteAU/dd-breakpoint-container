@@ -1,11 +1,9 @@
 # Changelog
 
-## Next release
+## 0.5.1
 
-- Feat: Added 'bp' export , completing CSS-in-js pattern
-- Docs: Updated README for CSS-in-js pattern
-- Feat: Added Typescript definition file
-- Chore: JSDoc
+- Feat: Added WIP Typescript definition file; added to package.json
+- Chore: Cleaned excess files/folders from old builds from /lib
 
 ## 0.5.0
 
