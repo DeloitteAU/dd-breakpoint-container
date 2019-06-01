@@ -1,6 +1,5 @@
-/* eslint-disable */
 import React from 'react';
-import { BrowserContainer } from '../BreakpointContainer.js';
+import BrowserContainer from '../BrowserContainer.js';
 
 export default function withBrowserContainer(Component, bpcProps) {
 	function WithBrowserBpc(props) {

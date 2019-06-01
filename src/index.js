@@ -1,7 +1,5 @@
-import {
-	BreakpointContainer,
-	BrowserContainer,
-} from './components/BreakpointContainer';
+import BreakpointContainer from './components/BreakpointContainer';
+import BrowserContainer from './components/BrowserContainer';
 import {
 	withBreakpointContainer,
 	withBrowserContainer,
