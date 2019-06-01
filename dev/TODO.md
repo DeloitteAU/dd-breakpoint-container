@@ -1,7 +1,15 @@
+- Valide index.d.ts file - should this be in ./src?
+- /lib dir output - should we be cleaning this every build?
+  -- If so, what's not being transferred there at build time that should/could be?
+- Validate upper/lower if theyve provided something we cant recognise and are using fallbacks
 - Styled Components; remove classnames
+- Should library be decoupled from SCSS altogether?
+- Should we even have HOCs? What are their use cases? Dont you /always/ need to pass in queries, no matter the usage pattern?
+- Should library be split up into smaller libraries?
+- How could DynamicSubLayout be integrated into this project? Core functionality? Separate with peer dependency on this lib?
 - Rename noBpClasses - something like no SCSS...? Or not?
+- Support render props?
 - Make 'dev' folder into demo site for dd.io hosting
-- Create exportable function for 'resolveBreakpoint'
 - Add above function for parsing, in 'Breakpoint' export
 - Restructure/clean-up TODOs here
 - Add feature to allow specifying own breakpoints
