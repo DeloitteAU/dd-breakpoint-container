@@ -90,42 +90,6 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -3343,25 +3307,22 @@ var SELECTORS$1 = {
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
 
-var BrowserContainer = function BrowserContainer(_ref) {
-  var children = _ref.children,
-      bpcProps = _objectWithoutProperties(_ref, ["children"]);
-
+var BrowserContainer = function BrowserContainer(props) {
   return React__default.createElement(BreakpointContainer, Object.assign({
     identifier: ID_BROWSER,
     className: SELECTORS$1.BP_BROWSER,
     debug: DEBUG_BROWSER
-  }, bpcProps, {
+  }, props, {
     __source: {
       fileName: _jsxFileName$2,
       lineNumber: 36
     },
     __self: this
-  }), children);
+  }));
 };
 
 BrowserContainer.propTypes = {
-  children: propTypes.node.isRequired
+  children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired
 };
 
 var _jsxFileName$3 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/HOCs/_withBreakpointContainer.js";
