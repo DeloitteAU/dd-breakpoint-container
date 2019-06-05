@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2
+
+- Fix: `BrowserContainer` now supports child function, with prop-types validation to match
+
 ## 0.5.1
 
 - Feat: Added WIP Typescript definition file; added to package.json

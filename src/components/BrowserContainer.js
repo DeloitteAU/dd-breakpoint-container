@@ -32,19 +32,17 @@ const SELECTORS = {
 
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
-const BrowserContainer = ({ children, ...bpcProps }) => (
+const BrowserContainer = props => (
 	<BreakpointContainer
 		identifier={ID_BROWSER}
 		className={SELECTORS.BP_BROWSER}
 		debug={DEBUG_BROWSER}
-		{...bpcProps}
-	>
-		{children}
-	</BreakpointContainer>
+		{...props}
+	/>
 );
 
 BrowserContainer.propTypes = {
-	children: T.node.isRequired,
+	children: T.oneOfType([T.node, T.func]).isRequired,
 };
 
 export default BrowserContainer;
