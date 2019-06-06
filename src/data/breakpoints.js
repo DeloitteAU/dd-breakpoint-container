@@ -60,17 +60,22 @@ export function resolveBp(query, bp) {
 	// Get upper-bound (i.e. next breakpoint threshold), or parse as int, or failing
 	// that use Infinity as a fallback
 	const upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity;
+	// Width of current breakpoint
+	const bpWidth = BREAKPOINTS[bp] || parseInt(bp);
 
 	// Validate query by checking if lower bound exists
-	if (!lowerWidth) {
+	// Account for '0' lowerWidth, which would otherwise evaluate as falsy
+	if (!lowerWidth && lowerWidth !== 0) {
 		console.warn(
 			`Invalid breakpoint query '${query}' provided. Query must be in format \`\${lower}, \${upper}\` (comma separated), where lower/upper are either named breakpoints or px values. Upper is optional.`,
 		);
 		return false;
+	} else if (!bpWidth && bpWidth !== 0) {
+		console.warn(
+			`Invalid breakpoint value '${bp}' provided. Breakpoint should either be named, or a pixel value.`,
+		);
+		return false;
 	}
-
-	// Width of current breakpoint
-	const bpWidth = BREAKPOINTS[bp] || parseInt(bp) || 0;
 
 	// Note that lower-bound is inclusive
 	const moreThanLower = bpWidth >= lowerWidth;

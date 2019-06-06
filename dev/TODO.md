@@ -1,4 +1,5 @@
-- Valide index.d.ts file - should this be in ./src?
+- Add BrowserContainer Context API export
+- Validate index.d.ts file - should this be in ./src?
 - /lib dir output - should we be cleaning this every build?
   -- If so, what's not being transferred there at build time that should/could be?
 - Validate upper/lower if theyve provided something we cant recognise and are using fallbacks
