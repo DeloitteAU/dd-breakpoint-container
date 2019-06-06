@@ -3089,15 +3089,19 @@ function resolveBp(query, bp) {
   var lowerWidth = BREAKPOINTS[lower] || parseInt(lower); // Get upper-bound (i.e. next breakpoint threshold), or parse as int, or failing
   // that use Infinity as a fallback
 
-  var upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity; // Validate query by checking if lower bound exists
+  var upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity; // Width of current breakpoint
 
-  if (!lowerWidth) {
+  var bpWidth = BREAKPOINTS[bp] || parseInt(bp); // Validate query by checking if lower bound exists
+  // Account for '0' lowerWidth, which would otherwise evaluate as falsy
+
+  if (!lowerWidth && lowerWidth !== 0) {
     console.warn("Invalid breakpoint query '".concat(query, "' provided. Query must be in format `${lower}, ${upper}` (comma separated), where lower/upper are either named breakpoints or px values. Upper is optional."));
     return false;
-  } // Width of current breakpoint
+  } else if (!bpWidth && bpWidth !== 0) {
+    console.warn("Invalid breakpoint value '".concat(bp, "' provided. Breakpoint should either be named, or a pixel value."));
+    return false;
+  } // Note that lower-bound is inclusive
 
-
-  var bpWidth = BREAKPOINTS[bp] || parseInt(bp) || 0; // Note that lower-bound is inclusive
 
   var moreThanLower = bpWidth >= lowerWidth;
   var lessThanUpper = bpWidth < upperWidth;

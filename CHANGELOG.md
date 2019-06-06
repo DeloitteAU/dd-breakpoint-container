@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.4
+
+- Fix: Didn't build for previous version
+
 ## 0.5.3
 
 - Fix: `resolveBp` function export now properly parses '0' lower values, whereas before it'd give a validation warning. Breakpoing validation now in-place in addition to query validation.
