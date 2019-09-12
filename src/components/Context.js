@@ -10,6 +10,12 @@ export const BP_CONTEXTS = {
 	[ID_BROWSER]: React.createContext(),
 };
 
+/**
+ * TODO.
+ *
+ * @param {*} params
+ * @returns {Function}
+ */
 function WithContext({ identifier, currentBp, children }) {
 	// If a BPC has specified an identifier other than the default
 	const hasIdentifier = identifier !== ID_DEFAULT;

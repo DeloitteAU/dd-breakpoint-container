@@ -4,13 +4,7 @@ import T from 'prop-types';
 import { resolveBp } from '../data/breakpoints.js';
 import { BP_CONTEXTS, ID_DEFAULT } from './Context.js';
 
-/**
- *
- *
- * @param {*} { - Q, query, identifier, children }.
- * @returns
- */
-function Breakpoint({ q, query, identifier, children }) {
+const Breakpoint = ({ q, query, identifier, children }) => {
 	const bpQuery = q || query; // Aggregate query shorthand
 	const Context = BP_CONTEXTS[identifier];
 
@@ -20,7 +14,7 @@ function Breakpoint({ q, query, identifier, children }) {
 			{bp => resolveBp(bpQuery, bp) && children}
 		</Context.Consumer>
 	);
-}
+};
 
 Breakpoint.propTypes = {
 	query: T.oneOfType([T.string, T.number]),
