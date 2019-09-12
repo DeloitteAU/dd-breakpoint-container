@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.5.6
+
+- Fix: `resolveBp` 'none'/'0' parsing fixes in 0.5.5 and 0.5.3 were invalid. This was due to the fact that although named breakpoint 'none' correctly resolves to '0' pixels, this is evaluated as falsey and therefore skips to attempting parseInt. This has now been fixed.
+
 ## 0.5.5
 
-- Fix: `resolveBp` accepts string 'none' and treats it as 0. Suppresses named bp 'none' printing console warnings.
+- (Invalid) Fix: `resolveBp` accepts string 'none' and treats it as 0. Suppresses named bp 'none' printing console warnings.
 - Chore: Resolved linting issues.
 
 ## 0.5.4
@@ -11,7 +15,7 @@
 
 ## 0.5.3
 
-- Fix: `resolveBp` function export now properly parses '0' lower values, whereas before it'd give a validation warning. Breakpoing validation now in-place in addition to query validation.
+- (Invalid) Fix: `resolveBp` function export now properly parses '0' lower values, whereas before it'd give a validation warning. Breakpoint validation now in-place in addition to query validation.
 
 ## 0.5.2
 
