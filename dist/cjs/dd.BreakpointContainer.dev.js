@@ -2983,6 +2983,12 @@ var ID_DEFAULT = 'default';
 var ID_BROWSER = 'browser'; // NOTE: Other identifier contexts are created as-needed in WithContext
 
 var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React__default.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React__default.createContext()), _BP_CONTEXTS);
+/**
+ * TODO.
+ *
+ * @param {*} params
+ * @returns {Function}
+ */
 
 function WithContext(_ref) {
   var identifier = _ref.identifier,
@@ -3004,21 +3010,21 @@ function WithContext(_ref) {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 37
     },
     __self: this
   }, React__default.createElement(CoreContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 38
     },
     __self: this
   }, children)) : React__default.createElement(IdentifierContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 43
     },
     __self: this
   }, children));
@@ -3069,7 +3075,7 @@ function getBpUpperLimit(bp) {
 }
 /**
  * Resolves a breakpoint query against a specified breakpoint or value. Query
- * must be in format `${lower}, ${upper}` (comma separated), where lower/upper
+ * string must be in format `${lower}, ${upper}` (comma separated), where lower/upper
  * are either named breakpoints or px values. Upper is optional.
  *
  * @param {string} query - Breakpoint query string.
@@ -3086,8 +3092,10 @@ function resolveBp(query, bp) {
       upper = _query$toString$repla2[1]; // Lower-bound should always exist; either as named breakpoint or px value
 
 
-  var lowerWidth = BREAKPOINTS[lower] || parseInt(lower); // Get upper-bound (i.e. next breakpoint threshold), or parse as int, or failing
-  // that use Infinity as a fallback
+  var lowerWidth = BREAKPOINTS[lower] || parseInt(lower); // Account for named breakpoint 'none', and evaluate it as 0px
+
+  lowerWidth = lower === 'none' ? 0 : lowerWidth; // Get upper-bound (i.e. next breakpoint threshold), or parse as int,
+  // or, failing that, use Infinity as a fallback
 
   var upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity; // Width of current breakpoint
 
@@ -3376,14 +3384,8 @@ function withBrowserContainer(Component, bpcProps) {
 }
 
 var _jsxFileName$5 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/Breakpoint.js";
-/**
- *
- *
- * @param {*} { - Q, query, identifier, children }.
- * @returns
- */
 
-function Breakpoint(_ref) {
+var Breakpoint = function Breakpoint(_ref) {
   var q = _ref.q,
       query = _ref.query,
       identifier = _ref.identifier,
@@ -3394,13 +3396,13 @@ function Breakpoint(_ref) {
   return React__default.createElement(Context.Consumer, {
     __source: {
       fileName: _jsxFileName$5,
-      lineNumber: 18
+      lineNumber: 12
     },
     __self: this
   }, function (bp) {
     return resolveBp(bpQuery, bp) && children;
   });
-}
+};
 
 Breakpoint.propTypes = {
   query: propTypes.oneOfType([propTypes.string, propTypes.number]),
@@ -3415,11 +3417,21 @@ Breakpoint.defaultProps = {
   identifier: ID_DEFAULT
 };
 
-function bpc(query, bp) {
+/**
+ * Conditionally render css via template literal (CSS in JS)
+ * by providing query string and breakpoint to measure against.
+ * Acts as a proxy to `resolveBp` core function.
+ *
+ * @param {string} query - Breakpoint query string.
+ * @param {string|number} bp - Breakpoint name, or px size to resolve query against.
+ * @returns {string|undefined} CSS.
+ */
+
+var bpc = function bpc(query, bp) {
   return function (css) {
     return !!resolveBp(query, bp) ? css : null;
   };
-}
+};
 
 exports.BREAKPOINTS = BREAKPOINTS;
 exports.Breakpoint = Breakpoint;
