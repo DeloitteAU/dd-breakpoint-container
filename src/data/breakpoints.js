@@ -40,7 +40,7 @@ export function getBpUpperLimit(bp) {
 
 /**
  * Resolves a breakpoint query against a specified breakpoint or value. Query
- * must be in format `${lower}, ${upper}` (comma separated), where lower/upper
+ * string must be in format `${lower}, ${upper}` (comma separated), where lower/upper
  * are either named breakpoints or px values. Upper is optional.
  *
  * @param {string} query - Breakpoint query string.
@@ -56,10 +56,14 @@ export function resolveBp(query, bp) {
 		.split(',');
 
 	// Lower-bound should always exist; either as named breakpoint or px value
-	const lowerWidth = BREAKPOINTS[lower] || parseInt(lower);
-	// Get upper-bound (i.e. next breakpoint threshold), or parse as int, or failing
-	// that use Infinity as a fallback
+	let lowerWidth = BREAKPOINTS[lower] || parseInt(lower);
+	// Account for named breakpoint 'none', and evaluate it as 0px
+	lowerWidth = lower === 'none' ? 0 : lowerWidth;
+
+	// Get upper-bound (i.e. next breakpoint threshold), or parse as int,
+	// or, failing that, use Infinity as a fallback
 	const upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity;
+
 	// Width of current breakpoint
 	const bpWidth = BREAKPOINTS[bp] || parseInt(bp);
 
