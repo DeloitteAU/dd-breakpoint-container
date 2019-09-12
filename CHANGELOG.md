@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.5
+
+- Fix: `resolveBp` accepts string 'none' and treats it as 0. Suppresses named bp 'none' printing console warnings.
+- Chore: Resolved linting issues.
+
 ## 0.5.4
 
 - Fix: Didn't build for previous version
@@ -19,7 +24,7 @@
 
 ## 0.5.0
 
-- Feat: Added 'resolveBp' core function
+- Feat: Added `resolveBp` core function
 - Docs: Updated README to reflect the above
 - Feat: Added 'bpc' export as preliminary support for CSS-in-js container query support
 - Refactor: Moved HOCs into their own folder as separate files
