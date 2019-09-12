@@ -3084,22 +3084,26 @@ function getBpUpperLimit(bp) {
  */
 
 function resolveBp(query, bp) {
-  // Extract lower and upper-bounds from query
+  // Helper function to parse breakpoint into pixels
+  // Non-strict null check to avoid '0' being evaluated as falsey
+  var parseBp = function parseBp(bp) {
+    return BREAKPOINTS[bp] != null ? BREAKPOINTS[bp] : parseInt(bp);
+  }; // Extract lower and upper-bounds from query
   // Normalise string and comma/whitespace separation
+
+
   var _query$toString$repla = query.toString().replace(/,?\s/, ',').split(','),
       _query$toString$repla2 = _slicedToArray(_query$toString$repla, 2),
       lower = _query$toString$repla2[0],
       upper = _query$toString$repla2[1]; // Lower-bound should always exist; either as named breakpoint or px value
 
 
-  var lowerWidth = BREAKPOINTS[lower] || parseInt(lower); // Account for named breakpoint 'none', and evaluate it as 0px
-
-  lowerWidth = lower === 'none' ? 0 : lowerWidth; // Get upper-bound (i.e. next breakpoint threshold), or parse as int,
+  var lowerWidth = parseBp(lower); // Get upper-bound (i.e. next breakpoint threshold), or parse as int,
   // or, failing that, use Infinity as a fallback
 
   var upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity; // Width of current breakpoint
 
-  var bpWidth = BREAKPOINTS[bp] || parseInt(bp); // Validate query by checking if lower bound exists
+  var bpWidth = parseBp(bp); // Validate query by checking if lower bound exists
   // Account for '0' lowerWidth, which would otherwise evaluate as falsy
 
   if (!lowerWidth && lowerWidth !== 0) {
