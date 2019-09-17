@@ -9,7 +9,6 @@ import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 import replace from 'rollup-plugin-replace';
 
-
 export default {
 	input: './src/index.js',
 	output: {
@@ -29,23 +28,24 @@ export default {
 		}),
 		commonjs({
 			sourceMap: 'inline',
-			include: [
-				'node_modules/**',
-			],
-			exclude: [
-				'node_modules/process-es6/**',
-			],
+			include: ['node_modules/**'],
+			exclude: ['node_modules/process-es6/**'],
 			namedExports: {
-				'node_modules/react/index.js': ['Children', 'Component', 'PropTypes', 'createElement', 'cloneElement', 'isValidElement', 'PureComponent'],
+				'node_modules/react/index.js': [
+					'Children',
+					'Component',
+					'PropTypes',
+					'createElement',
+					'cloneElement',
+					'isValidElement',
+					'PureComponent',
+				],
 				'node_modules/react-dom/index.js': ['render'],
 			},
 		}),
 		postcss({
 			sourceMap: 'inline',
-			plugins: [
-				pcssPresetEnv(),
-				autoprefixer(),
-			],
+			plugins: [pcssPresetEnv(), autoprefixer()],
 		}),
 		html({
 			template: './index.html',
