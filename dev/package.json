@@ -4,11 +4,6 @@
   "main": "./src/index.js",
   "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
   "license": "BSD-3-Clause",
-  "repository": {
-    "type": "git",
-    "url": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/"
-  },
-  "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "scripts": {
     "start": "npm link ../ && rollup --config --watch"
   },
