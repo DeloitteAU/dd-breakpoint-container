@@ -90,54 +90,52 @@ export default class BreakpointContainer extends React.Component {
 		} = this.props;
 
 		const matchingBps = Object.keys(BREAKPOINTS).filter(
-			bp => this.state.size >= BREAKPOINTS[bp],
+			bpName => this.state.size >= BREAKPOINTS[bpName],
 		);
 		const currentBp = matchingBps[matchingBps.length - 1];
 
 		// Formatted breakpoints for className output
 		const classBps = matchingBps
-			.map(bp => `${CLASSES.BP_PREFIX}${bp}`)
+			.map(bpName => `${CLASSES.BP_PREFIX}${bpName}`)
 			.join(' ');
 
 		// Debug mode - component flag, and account for opt-out of global flag
 		const isDebugActive = debug || (debug !== false && DEBUG_BPC);
 
 		return (
-			<>
-				<div
-					className={cx(CLASSES.CORE, containerClass, {
-						[classBps]: !noBpClasses,
-						[CLASSES.DEBUG_MODIFIER]: isDebugActive,
-						// If there are no class name outputs, BUT debug mode is on,
-						// render the active bp as a class to enable CSS debug indicator
-						[`${CLASSES.BP_PREFIX}${currentBp}`]: debug && noBpClasses,
-					})}
-				>
-					<ReactResizeDetector
-						handleWidth
-						onResize={size => this.setState({ size, currentBp })}
-					/>
+			<div
+				className={cx(CLASSES.CORE, containerClass, {
+					[classBps]: !noBpClasses,
+					[CLASSES.DEBUG_MODIFIER]: isDebugActive,
+					// If there are no class name outputs, BUT debug mode is on,
+					// render the active bp as a class to enable CSS debug indicator
+					[`${CLASSES.BP_PREFIX}${currentBp}`]: debug && noBpClasses,
+				})}
+			>
+				<ReactResizeDetector
+					handleWidth
+					onResize={size => this.setState({ size, currentBp })}
+				/>
 
-					<div className={cx(SELECTORS.BP_CONTENT, className)}>
-						<WithContext {...{ identifier, currentBp }}>
-							{typeof children === 'function'
-								? children(currentBp, this.state.size)
-								: children}
-						</WithContext>
-					</div>
-
-					{isDebugActive && (
-						<>
-							<span className={SELECTORS.DEBUG_INDICATOR}>
-								{currentBp || 'none'}
-							</span>
-							{identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (
-								<span className={SELECTORS.DEBUG_IDENTIFIER}>{identifier}</span>
-							)}
-						</>
-					)}
+				<div className={cx(SELECTORS.BP_CONTENT, className)}>
+					<WithContext {...{ identifier, currentBp }}>
+						{typeof children === 'function'
+							? children(currentBp, this.state.size)
+							: children}
+					</WithContext>
 				</div>
-			</>
+
+				{isDebugActive && (
+					<>
+						<span className={SELECTORS.DEBUG_INDICATOR}>
+							{currentBp || 'none'}
+						</span>
+						{identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (
+							<span className={SELECTORS.DEBUG_IDENTIFIER}>{identifier}</span>
+						)}
+					</>
+				)}
+			</div>
 		);
 	}
 }

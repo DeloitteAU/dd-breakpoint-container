@@ -17,16 +17,16 @@ export const BREAKPOINTS = {
  * Returns the breakpoint 'upper-limit' width in pixels,
  * which is essentially the width of the next breakpoint.
  *
- * @param {string} bp
+ * @param {string} bpName - Named breakpoint
  * @returns {number}
  */
-export function getBpUpperLimit(bp) {
-	if (!Number.isNaN(parseInt(bp))) {
+export function getBpUpperLimit(bpName) {
+	if (!Number.isNaN(parseInt(bpName))) {
 		return null;
 	}
 
 	const bpKeys = Object.keys(BREAKPOINTS);
-	const nextHighestBpIndex = bpKeys.indexOf(bp) + 1;
+	const nextHighestBpIndex = bpKeys.indexOf(bpName) + 1;
 
 	// Check edge-case for when target breakpoint is the last in the array, in which
 	// case Infinity is an acceptable upper-bound, since there is no threshold
