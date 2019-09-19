@@ -217,6 +217,8 @@ export withBreakpointContainer(MyComponent, { ...options });
 export withBrowserContainer(MyComponent, { ...options });
 ```
 
+Which expose the `bpName: string` (the name of the active breakpoint) and `bpSize: number` (the size of the container in pixels) props to the wrapped component.
+
 ### Functions
 
 `resolveBp(query: string, bp: string|number) : boolean`: The core function that much of the library is based on; it resolves a breakpoint query against a specified breakpoint or value.
