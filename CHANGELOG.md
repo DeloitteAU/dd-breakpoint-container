@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+
+- Feature: Added `AppBreakpoint` React Context export, (the `<Provider/>` of which lives in `<BrowserContainer/>`).
+
 ## 0.5.7
 
 - Refactor: HOC code consolidated, now exposing `bpName` and `bpSize` props.
