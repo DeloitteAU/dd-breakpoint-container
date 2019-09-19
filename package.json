@@ -20,6 +20,7 @@
     "build:dev": "cross-env NODE_ENV=development && rollup --config ./rollup.dev.js",
     "build:prod": "cross-env NODE_ENV=production && rollup --config ./rollup.prod.js",
     "build:post": "node ./scripts/buildMixins.js && node ./scripts/text/build-complete.js",
+    "prettier": "prettier",
     "lint": "run-s --silent lint:*",
     "lint:js": "eslint ./src/**/*.js",
     "lint:css": "stylelint ./src/**/*.scss ./src/**/*.css",

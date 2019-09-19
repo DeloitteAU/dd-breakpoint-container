@@ -90,6 +90,42 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -3304,7 +3340,8 @@ var _jsxFileName$2 = "/Users/sacameron/Sites/dd-breakpoint-container/src/compone
 // Variables
 // ------------------------
 
-var DEBUG_BROWSER = process.env.NODE_ENV === 'development'; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
+var DEBUG_BROWSER = process.env.NODE_ENV === 'development';
+var AppBreakpoint = React__default.createContext(); // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
 
 var CLASSES$1 = {
@@ -3323,7 +3360,10 @@ var SELECTORS$1 = {
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
 
-var BrowserContainer = function BrowserContainer(props) {
+var BrowserContainer = function BrowserContainer(_ref) {
+  var children = _ref.children,
+      props = _objectWithoutProperties(_ref, ["children"]);
+
   return React__default.createElement(BreakpointContainer, Object.assign({
     identifier: ID_BROWSER,
     className: SELECTORS$1.BP_BROWSER,
@@ -3331,10 +3371,22 @@ var BrowserContainer = function BrowserContainer(props) {
   }, props, {
     __source: {
       fileName: _jsxFileName$2,
-      lineNumber: 36
+      lineNumber: 38
     },
     __self: this
-  }));
+  }), function (bpName, bpSize) {
+    return React__default.createElement(AppBreakpoint.Provider, {
+      value: {
+        bpName: bpName,
+        bpSize: bpSize
+      },
+      __source: {
+        fileName: _jsxFileName$2,
+        lineNumber: 45
+      },
+      __self: this
+    }, React__default.createElement(React__default.Fragment, null, children));
+  });
 };
 
 BrowserContainer.propTypes = {
@@ -3437,6 +3489,7 @@ var bpc = function bpc(query, bp) {
   };
 };
 
+exports.AppBreakpoint = AppBreakpoint;
 exports.BREAKPOINTS = BREAKPOINTS;
 exports.Breakpoint = Breakpoint;
 exports.BreakpointContainer = BreakpointContainer;
