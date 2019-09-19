@@ -1,22 +1,16 @@
-- Add BrowserContainer Context API export
-- Validate index.d.ts file - should this be in ./src?
 - /lib dir output - should we be cleaning this every build?
   -- If so, what's not being transferred there at build time that should/could be?
-- Validate upper/lower if theyve provided something we cant recognise and are using fallbacks
 - Styled Components; remove classnames
 - Should library be decoupled from SCSS altogether?
-- Should we even have HOCs? What are their use cases? Dont you /always/ need to pass in queries, no matter the usage pattern?
 - Should library be split up into smaller libraries?
 - How could DynamicSubLayout be integrated into this project? Core functionality? Separate with peer dependency on this lib?
 - Rename noBpClasses - something like no SCSS...? Or not?
 - Support render props?
 - Make 'dev' folder into demo site for dd.io hosting
-- Add above function for parsing, in 'Breakpoint' export
 - Restructure/clean-up TODOs here
 - Add feature to allow specifying own breakpoints
   -- Normalise 'px' and numerical values
   -- Will have to be as a provider
-- When to use / when not to use (full-width, media queries etc)
 
 ## Deloitte Consensus
 
@@ -40,12 +34,10 @@
 ## Package
 
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
-- Check potential bugs with px/number values for upper/lower in <Breakpoint/>
 - Add style/passthrough-props to bpc-content
-- NODE_ENV and debug overrides cant be set client side, because process isnt defined
-- Unit tests, and behavioural tests
-- JSdoc and conventions checks
-- Typescript definitions
+- NODE_ENV and debug overrides cant be set client side, because process isnt defined (?)
+- Unit tests, and integration/behavioural tests
+- Typescript refactor
 - Backwards compatibility with DDBreakpoints unit tests
 - Unit tests to test that it works without SASS dependency, for those not using mixins.scss
 - Absolute imports ('~/')
@@ -53,7 +45,7 @@
 
 ## Known issues
 
-- Dev livereload not working
+- Dev livereload not setup
 - Workaround for the mass of named exports in dev server commonjs plugin
 - rollup unresolved dependencies build warnings (related to node-resolve?)
 - deloitte eslint config deprecation warning
@@ -68,11 +60,9 @@
 - Is there a way to determine the absolute minimum React version for max backwards compatibility? Maybe we can trial and error once unit tests are in?
 - React hooks
 - React fragments shortened syntax - lint/highlighting support?
-- Possible/practical to share SCSS / JS vars? Webpack seems equipped to do it?
-- Can we outright remove 'none' bp in a clean way? Challenge here is gracefully opting out of 'class prefix' in SCSS so we can reference .bpc core class. Worth it or nbd?
+- Possible/practical to share SCSS / JS vars? Webpack seems equipped to do it? (Styled Components...?)
 - Do we need 'bps-max' array in SCSS or can derive that in another way?
 - Efficiency/performance tests?
-- Doclets?
 - Alpha 1 (MLC URE) 2 + 3 (MQ pre and post major refactor) orphan branches
 
 ## Future features?
