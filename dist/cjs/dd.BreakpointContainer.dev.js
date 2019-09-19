@@ -3046,21 +3046,21 @@ function WithContext(_ref) {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 45
     },
     __self: this
   }, React__default.createElement(CoreContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 46
     },
     __self: this
   }, children)) : React__default.createElement(IdentifierContext.Provider, {
     value: currentBp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 51
     },
     __self: this
   }, children));
@@ -3093,17 +3093,17 @@ var BREAKPOINTS = {
  * Returns the breakpoint 'upper-limit' width in pixels,
  * which is essentially the width of the next breakpoint.
  *
- * @param {string} bp
+ * @param {string} bpName - Named breakpoint
  * @returns {number}
  */
 
-function getBpUpperLimit(bp) {
-  if (!Number.isNaN(parseInt(bp))) {
+function getBpUpperLimit(bpName) {
+  if (!Number.isNaN(parseInt(bpName))) {
     return null;
   }
 
   var bpKeys = Object.keys(BREAKPOINTS);
-  var nextHighestBpIndex = bpKeys.indexOf(bp) + 1; // Check edge-case for when target breakpoint is the last in the array, in which
+  var nextHighestBpIndex = bpKeys.indexOf(bpName) + 1; // Check edge-case for when target breakpoint is the last in the array, in which
   // case Infinity is an acceptable upper-bound, since there is no threshold
 
   var nextHighestBpWidth = nextHighestBpIndex !== BREAKPOINTS.length - 1 ? BREAKPOINTS[bpKeys[nextHighestBpIndex]] : Infinity;
@@ -3248,21 +3248,21 @@ function (_React$Component) {
           noBpClasses = _this$props.noBpClasses,
           debug = _this$props.debug,
           children = _this$props.children;
-      var matchingBps = Object.keys(BREAKPOINTS).filter(function (bp) {
-        return _this2.state.size >= BREAKPOINTS[bp];
+      var matchingBps = Object.keys(BREAKPOINTS).filter(function (bpName) {
+        return _this2.state.size >= BREAKPOINTS[bpName];
       });
       var currentBp = matchingBps[matchingBps.length - 1]; // Formatted breakpoints for className output
 
-      var classBps = matchingBps.map(function (bp) {
-        return "".concat(CLASSES.BP_PREFIX).concat(bp);
+      var classBps = matchingBps.map(function (bpName) {
+        return "".concat(CLASSES.BP_PREFIX).concat(bpName);
       }).join(' '); // Debug mode - component flag, and account for opt-out of global flag
 
       var isDebugActive = debug || debug !== false && DEBUG_BPC;
-      return React__default.createElement(React__default.Fragment, null, React__default.createElement("div", {
+      return React__default.createElement("div", {
         className: cx(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 107
+          lineNumber: 106
         },
         __self: this
       }, React__default.createElement(ResizeDetector, {
@@ -3275,14 +3275,14 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 116
+          lineNumber: 115
         },
         __self: this
       }), React__default.createElement("div", {
         className: cx(SELECTORS.BP_CONTENT, className),
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 121
+          lineNumber: 120
         },
         __self: this
       }, React__default.createElement(WithContext, Object.assign({
@@ -3291,24 +3291,24 @@ function (_React$Component) {
       }, {
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 122
+          lineNumber: 121
         },
         __self: this
       }), typeof children === 'function' ? children(currentBp, this.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, null, React__default.createElement("span", {
         className: SELECTORS.DEBUG_INDICATOR,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 131
+          lineNumber: 130
         },
         __self: this
       }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
         className: SELECTORS.DEBUG_IDENTIFIER,
         __source: {
           fileName: _jsxFileName$1,
-          lineNumber: 135
+          lineNumber: 134
         },
         __self: this
-      }, identifier))));
+      }, identifier)));
     }
   }]);
 
