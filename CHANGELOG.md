@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.7
+
+- Refactor: HOC code consolidated, now exposing `bpName` and `bpSize` props.
+- Fix: Removed faulty TypeScript definitions; this will come through in future TS refactor.
+
 ## 0.5.6
 
 - Fix: `resolveBp` 'none'/'0' parsing fixes in 0.5.5 and 0.5.3 were invalid. This was due to the fact that although named breakpoint 'none' correctly resolves to '0' pixels, this is evaluated as falsey and therefore skips to attempting parseInt. This has now been fixed.
