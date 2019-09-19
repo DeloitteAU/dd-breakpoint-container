@@ -1,3 +1,11 @@
+/**
+ * TODO:
+ *
+ * More explanation around the existence of
+ * of this file, what it's is for (<Breakpoint/>
+ * component parsing support) etc
+ */
+
 import React from 'react';
 import T from 'prop-types';
 

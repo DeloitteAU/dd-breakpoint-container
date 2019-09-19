@@ -10,7 +10,7 @@ const Breakpoint = ({ q, query, identifier, children }) => {
 
 	return (
 		<Context.Consumer>
-			{/* Render children on if breakpoint query resolves */}
+			{/* Render children only if breakpoint query resolves */}
 			{bp => resolveBp(bpQuery, bp) && children}
 		</Context.Consumer>
 	);
