@@ -3,7 +3,6 @@
   "version": "0.5.6",
   "description": "Flexible container queries for responsive design in React and SCSS.",
   "main": "./lib/index.js",
-  "types": "./index.d.ts",
   "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
   "license": "BSD-3-Clause",
   "repository": {
