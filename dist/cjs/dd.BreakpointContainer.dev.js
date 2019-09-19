@@ -3341,53 +3341,53 @@ BrowserContainer.propTypes = {
   children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired
 };
 
-var _jsxFileName$3 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/HOCs/_withBreakpointContainer.js";
-function withBreakpointContainer(Component, bpcProps) {
-  function WithBpc(props) {
-    return React__default.createElement(BreakpointContainer, Object.assign({}, bpcProps, {
+var _jsxFileName$3 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/HOCs/HOCs.js";
+/**
+ * Centralised BreakpointContainer HOC template
+ * for Breakpoint/Browser container HOCs.
+ *
+ * @param {*} BreakpointWrapper - BreakpointContainer (or BrowserContainer).
+ * @param {*} Component - Component; i.e. contents of HOC.
+ * @param {*} bpcProps - BreakpointContainer props.
+ */
+
+function withBpcTemplate(BreakpointWrapper, Component, bpcProps) {
+  var WithBpc = function WithBpc(props) {
+    return React__default.createElement(BreakpointWrapper, Object.assign({}, bpcProps, {
       __source: {
         fileName: _jsxFileName$3,
-        lineNumber: 7
+        lineNumber: 17
       },
       __self: this
-    }), React__default.createElement(Component, Object.assign({}, props, {
-      __source: {
-        fileName: _jsxFileName$3,
-        lineNumber: 8
-      },
-      __self: this
-    })));
-  }
+    }), function (bpName, bpSize) {
+      return React__default.createElement(Component, Object.assign({}, props, {
+        bpName: bpName,
+        bpSize: bpSize
+      }, {
+        __source: {
+          fileName: _jsxFileName$3,
+          lineNumber: 19
+        },
+        __self: this
+      }));
+    });
+  };
 
   var wrappedComponentName = Component.displayName || Component.name || 'Component';
   WithBpc.displayName = "withBreakpointContainer(".concat(wrappedComponentName, ")");
   return WithBpc;
-}
+} // ------------------------
 
-var _jsxFileName$4 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/HOCs/_withBrowserContainer.js";
-function withBrowserContainer(Component, bpcProps) {
-  function WithBrowserBpc(props) {
-    return React__default.createElement(BrowserContainer, Object.assign({}, bpcProps, {
-      __source: {
-        fileName: _jsxFileName$4,
-        lineNumber: 7
-      },
-      __self: this
-    }), React__default.createElement(Component, Object.assign({}, props, {
-      __source: {
-        fileName: _jsxFileName$4,
-        lineNumber: 8
-      },
-      __self: this
-    })));
-  }
 
-  var wrappedComponentName = Component.displayName || Component.name || 'Component';
-  WithBrowserBpc.displayName = "withBrowserContainer(".concat(wrappedComponentName, ")");
-  return WithBrowserBpc;
-}
+var withBreakpointContainer = function withBreakpointContainer(Component, bpcProps) {
+  return withBpcTemplate(BreakpointContainer, Component, bpcProps);
+};
 
-var _jsxFileName$5 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/Breakpoint.js";
+var withBrowserContainer = function withBrowserContainer(Component, bpcProps) {
+  return withBpcTemplate(BrowserContainer, Component, bpcProps);
+}; // ------------------------
+
+var _jsxFileName$4 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/Breakpoint.js";
 
 var Breakpoint = function Breakpoint(_ref) {
   var q = _ref.q,
@@ -3399,7 +3399,7 @@ var Breakpoint = function Breakpoint(_ref) {
   var Context = BP_CONTEXTS[identifier];
   return React__default.createElement(Context.Consumer, {
     __source: {
-      fileName: _jsxFileName$5,
+      fileName: _jsxFileName$4,
       lineNumber: 12
     },
     __self: this
