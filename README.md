@@ -10,32 +10,33 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 <!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Index
 
 - [Install](#markdown-header-install)
-- [Getting started](#markdown-header-getting-started)
-  - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
-  - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
-    - [SCSS pattern](#markdown-header-scss-pattern)
-    - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
-    - [Child function pattern](#markdown-header-child-function-pattern)
-    - [Callback pattern](#markdown-header-callback-pattern)
+- [Usage](#markdown-header-usage)
+    - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
+    - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
+        - [SCSS pattern](#markdown-header-scss-pattern)
+        - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
+        - [Child function pattern](#markdown-header-child-function-pattern)
+        - [Callback pattern](#markdown-header-callback-pattern)
 - [Conditional rendering](#markdown-header-conditional-rendering)
 - [Options & exports](#markdown-header-options-exports)
-  - [BreakpointContainer](#markdown-header-breakpointcontainer)
-  - [BrowserContainer component](#markdown-header-browsercontainer-component)
-  - [Breakpoint component](#markdown-header-breakpoint-component)
-  - [HOCs](#markdown-header-hocs)
-  - [Other](#markdown-header-other)
+    - [BreakpointContainer](#markdown-header-breakpointcontainer)
+    - [BrowserContainer component](#markdown-header-browsercontainer-component)
+        - [AppBreakpoint context](#markdown-header-appbreakpoint-context)
+    - [Breakpoint component](#markdown-header-breakpoint-component)
+    - [HOCs](#markdown-header-hocs)
+    - [Functions](#markdown-header-functions)
+    - [Other](#markdown-header-other)
 - [Debug features](#markdown-header-debug-features)
 - [Disclaimers](#markdown-header-disclaimers)
-  - [Performance](#markdown-header-performance)
-  - [Consider media queries](#markdown-header-consider-media-queries)
-  - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
+    - [Performance](#markdown-header-performance)
+    - [Consider media queries](#markdown-header-consider-media-queries)
+    - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
 - [About Deloitte Digital Australia](#markdown-header-about-deloitte-digital-australia)
-  - [Key contributors](#markdown-header-key-contributors)
-  - [Who are we?](#markdown-header-who-are-we)
+    - [Key contributors](#markdown-header-key-contributors)
+    - [Who are we?](#markdown-header-who-are-we)
 - [Licence](#markdown-header-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -97,7 +98,7 @@ Now you can use the container query mixin in your `.scss` files. Note that the `
 	// Core styles
 
 	// Between 0px width and 'xs' mixin (inclusive)
-	@include bp (0, xs) {
+	@include bp(0, xs) {
 		...
 	}
 
@@ -130,8 +131,8 @@ If you'd like to work with responsive logic in your component JS, you can expose
 
 ```
 <BreakpointContainer>
-	{ (bp, size) => {
-		return `The current breakpoint is ${bp}, at size ${size} pixels.`.
+	{ (bpName, bpSize) => {
+		return `The current breakpoint is ${bpName}, at size ${bpSize} pixels.`.
 	}}
 </BreakpointContainer>
 ```
@@ -142,7 +143,7 @@ Operate on a callback that triggers when the breakpoint changes. **Note: this is
 
 ```
 <BreakpointContainer
-	onChange={bp => {
+	onChange={bpName => {
 		...
 	}}
 >
@@ -157,13 +158,13 @@ You can use the `<Breakpoint/>` export to conditionally render markup according 
 ```
 <div>
     <Breakpoint query="s">
-        <p>This will only render on s breakpoint and above</p>
+        <p>This will only render on 's' breakpoint and above</p>
     </Breakpoint>
     <Breakpoint query="xs, m">
-        <p>This will only render between xs and m</p>
+        <p>This will only render between 'xs' and 'm'</p>
     </Breakpoint>
     <Breakpoint query="m, m">
-        <p>This will only render on m bp</p>
+        <p>This will only render on 'm' bp</p>
     </Breakpoint>
 </div>
 ```
@@ -185,14 +186,29 @@ The component automatically detects which `<BreakpointContainer/>` it's in. Or, 
 | className      | String          | null          | Class name(s) applied to container div, i.e. direct parent to component children                                        |
 | containerClass | String          | null          | Class name(s) applied to wrapper div, i.e. grandparent to component children                                            |
 | identifier     | String          | 'default'     | A unique id for the component. For `<Breakpoint/>` components to reference.                                             |
-| children       | Function / Node | (required)    | Optionally receive 'bp' (String) and 'size' (Number) props. Refer to 'Child function pattern' above.                    |
+| children       | Function / Node | (required)    | Optionally receive 'bpName' (String) and 'bpSize' (Number) props. Refer to 'Child function pattern' above.              |
 | onChange       | Function        | null          | Callback when active breakpoint changes                                                                                 |
 | debug          | Boolean         | null          | Toggles debug mode: border + breakpoint indicator                                                                       |
 | noBpClasses    | Boolean         | false         | Opt-out of breakpoint classes, if you're not using the SCSS mixins. (Only if you want to keep the DOM a little cleaner) |
 
 ### BrowserContainer component
 
-This component is the same as `<BreakpointContainer/>`, with `identifier="browser"` and `className="bpc__browser"`.
+This is a proxy component for `<BreakpointContainer/>`, with options `identifier="browser"` and `className="bpc__browser"`.
+
+#### AppBreakpoint context
+
+This React Context export provides the `value` of `({ bpName: string, bpSize: number })` of the app's `<BrowserContainer/>` wrapper, so you can access the browser/app's breakpoint in your components.
+
+```
+import { AppBreakpoint } from 'dd-breakpoint-container';
+...
+<AppBreakpoint.Consumer>
+	{({ bpName, bpSize }) =>
+		<p>`Current bp name is: '${bpName}'`</p>
+		<p>`Current bp size: '${bpSize}'`</p>
+	}
+</AppBreakpoint.Consumer>
+```
 
 ### Breakpoint component
 
@@ -227,7 +243,7 @@ The query must be in format `${lower}, ${upper}` (comma/space separated), where 
 
 The query is generally quite forgiving: the upper value is optional and any pixel values can either be numbers (e.g. 700) or px values (e.g. 700px); they are the same, and are normalised within the function.
 
-`getBpUpperLimit(bp: string) : number`: A function that takes a named breakpoint and returns its upper-limit.
+`getBpUpperLimit(bpName: string) : number`: A function that takes a named breakpoint and returns its upper-limit.
 
 For example, `getBpUpperLimit('s')` returns `768` (the 'm' breakpoint), as that value is the first width at which the 's' breakpoint is no longer active (aka, the upper-limit).
 

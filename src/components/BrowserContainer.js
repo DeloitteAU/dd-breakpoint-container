@@ -11,6 +11,8 @@ import '../css/debug.css';
 
 const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
 
+export const AppBreakpoint = React.createContext();
+
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
 const CLASSES = {
@@ -32,13 +34,25 @@ const SELECTORS = {
 
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
-const BrowserContainer = props => (
+const BrowserContainer = ({ children, ...props }) => (
 	<BreakpointContainer
 		identifier={ID_BROWSER}
 		className={SELECTORS.BP_BROWSER}
 		debug={DEBUG_BROWSER}
 		{...props}
-	/>
+	>
+		{(bpName, bpSize) => (
+			<AppBreakpoint.Provider value={{ bpName, bpSize }}>
+				<>
+					{/* Note: This is wrapped in a fragment to be
+					certain that the above Provider only has one
+					child, which is a strict requirement that would
+					otherwise depend on how children are passed */}
+					{children}
+				</>
+			</AppBreakpoint.Provider>
+		)}
+	</BreakpointContainer>
 );
 
 BrowserContainer.propTypes = {

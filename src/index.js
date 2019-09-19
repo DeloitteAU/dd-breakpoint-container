@@ -1,5 +1,5 @@
 import BreakpointContainer from './components/BreakpointContainer';
-import BrowserContainer from './components/BrowserContainer';
+import BrowserContainer, { AppBreakpoint } from './components/BrowserContainer';
 import {
 	withBreakpointContainer,
 	withBrowserContainer,
@@ -25,6 +25,9 @@ export {
 	// Functions
 	getBpUpperLimit,
 	resolveBp,
+	// ---------------------
+	// Context
+	AppBreakpoint,
 	// ---------------------
 	// CSS-in-js
 	// bp,
