@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.0
+
+- Feature: Added `customBreakpoints` prop to override default breakpoint names/sizes.
+- Fix: No more first-pass render flashes when there's no breakpoint-on-load. Will prevent your components flash rendering mobile styles before settling on a desktop breakpoint.
+
 ## 0.6.0
 
 - Feature: Added `AppBreakpoint` React Context export, (the `<Provider/>` of which lives in `<BrowserContainer/>`).
