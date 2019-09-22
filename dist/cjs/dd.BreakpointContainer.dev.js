@@ -3013,68 +3013,6 @@ ResizeDetector.defaultProps = {
   nodeType: 'div'
 };
 
-var _BP_CONTEXTS,
-    _jsxFileName = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/Context.js";
-var ID_DEFAULT = 'default';
-var ID_BROWSER = 'browser'; // NOTE: Other identifier contexts are created as-needed in WithContext
-
-var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React__default.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React__default.createContext()), _BP_CONTEXTS);
-/**
- * TODO.
- *
- * @param {*} params
- * @returns {Function}
- */
-
-function WithContext(_ref) {
-  var identifier = _ref.identifier,
-      currentBp = _ref.currentBp,
-      children = _ref.children;
-  // If a BPC has specified an identifier other than the default
-  var hasIdentifier = identifier !== ID_DEFAULT; // Create specific context if it doesn't already exist
-
-  if (hasIdentifier && !BP_CONTEXTS[identifier]) {
-    BP_CONTEXTS[identifier] = React__default.createContext();
-  } // CoreContext aka 'default' context must always be present, even if the
-  // BPC has a specified identifier - this is to enable the default behaviour
-  // of <Breakpoint/> components that don't specify an target BPC identifier
-
-
-  var CoreContext = BP_CONTEXTS[ID_DEFAULT];
-  var IdentifierContext = BP_CONTEXTS[identifier];
-  return React__default.createElement(React__default.Fragment, null, hasIdentifier ? React__default.createElement(IdentifierContext.Provider, {
-    value: currentBp,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 45
-    },
-    __self: this
-  }, React__default.createElement(CoreContext.Provider, {
-    value: currentBp,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46
-    },
-    __self: this
-  }, children)) : React__default.createElement(IdentifierContext.Provider, {
-    value: currentBp,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51
-    },
-    __self: this
-  }, children));
-}
-
-WithContext.propTypes = {
-  identifier: propTypes.string.isRequired,
-  currentBp: propTypes.string,
-  children: propTypes.node.isRequired
-};
-WithContext.defaultProps = {
-  currentBp: null
-};
-
 // NOTE: These key:value pairs mirror those in this module's SCSS
 // If you're going to add or change bps, check the notes near the top of the SCSS file
 var BREAKPOINTS = {
@@ -3156,6 +3094,68 @@ function resolveBp(query, bp) {
   return moreThanLower && lessThanUpper;
 }
 
+var _BP_CONTEXTS,
+    _jsxFileName = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/Context.js";
+var ID_DEFAULT = 'default';
+var ID_BROWSER = 'browser'; // NOTE: Other identifier contexts are created as-needed in WithContext
+
+var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React__default.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React__default.createContext()), _BP_CONTEXTS);
+/**
+ * TODO.
+ *
+ * @param {*} params
+ * @returns {Function}
+ */
+
+function WithContext(_ref) {
+  var identifier = _ref.identifier,
+      currentBp = _ref.currentBp,
+      children = _ref.children;
+  // If a BPC has specified an identifier other than the default
+  var hasIdentifier = identifier !== ID_DEFAULT; // Create specific context if it doesn't already exist
+
+  if (hasIdentifier && !BP_CONTEXTS[identifier]) {
+    BP_CONTEXTS[identifier] = React__default.createContext();
+  } // CoreContext aka 'default' context must always be present, even if the
+  // BPC has a specified identifier - this is to enable the default behaviour
+  // of <Breakpoint/> components that don't specify an target BPC identifier
+
+
+  var CoreContext = BP_CONTEXTS[ID_DEFAULT];
+  var IdentifierContext = BP_CONTEXTS[identifier];
+  return React__default.createElement(React__default.Fragment, null, hasIdentifier ? React__default.createElement(IdentifierContext.Provider, {
+    value: currentBp,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: this
+  }, React__default.createElement(CoreContext.Provider, {
+    value: currentBp,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: this
+  }, children)) : React__default.createElement(IdentifierContext.Provider, {
+    value: currentBp,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: this
+  }, children));
+}
+
+WithContext.propTypes = {
+  identifier: propTypes.string.isRequired,
+  currentBp: propTypes.string,
+  children: propTypes.node.isRequired
+};
+WithContext.defaultProps = {
+  currentBp: null
+};
+
 function styleInject(css, ref) {
   if (ref === void 0) ref = {};
   var insertAt = ref.insertAt;
@@ -3192,7 +3192,11 @@ var _jsxFileName$1 = "/Users/sacameron/Sites/dd-breakpoint-container/src/compone
 // Variables
 // ------------------------
 
-var DEBUG_BPC = false; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
+var DEBUG_BPC = false; // Although these root Contexts are used in <BrowserContainer/>, they
+// are defined here to avoid circular dependencies (via `import ...`)
+
+var BreakpointDefinitions = React__default.createContext(BREAKPOINTS);
+var AppBreakpoint = React__default.createContext(); // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
 
 var CLASSES = {
@@ -3221,7 +3225,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BreakpointContainer).call(this));
     _this.state = {
-      size: 0,
+      size: null,
       currentBp: null
     };
     return _this;
@@ -3238,8 +3242,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this,
-          _cx;
+      var _this2 = this;
 
       var _this$props = this.props,
           identifier = _this$props.identifier,
@@ -3247,68 +3250,80 @@ function (_React$Component) {
           containerClass = _this$props.containerClass,
           noBpClasses = _this$props.noBpClasses,
           debug = _this$props.debug,
-          children = _this$props.children;
-      var matchingBps = Object.keys(BREAKPOINTS).filter(function (bpName) {
-        return _this2.state.size >= BREAKPOINTS[bpName];
-      });
-      var currentBp = matchingBps[matchingBps.length - 1]; // Formatted breakpoints for className output
-
-      var classBps = matchingBps.map(function (bpName) {
-        return "".concat(CLASSES.BP_PREFIX).concat(bpName);
-      }).join(' '); // Debug mode - component flag, and account for opt-out of global flag
+          customBreakpoints = _this$props.customBreakpoints,
+          children = _this$props.children; // Debug mode - component flag, and account for opt-out of global flag
 
       var isDebugActive = debug || debug !== false && DEBUG_BPC;
-      return React__default.createElement("div", {
-        className: cx(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
+      return React__default.createElement(BreakpointDefinitions.Consumer, {
         __source: {
           fileName: _jsxFileName$1,
           lineNumber: 106
         },
         __self: this
-      }, React__default.createElement(ResizeDetector, {
-        handleWidth: true,
-        onResize: function onResize(size) {
-          return _this2.setState({
-            size: size,
-            currentBp: currentBp
-          });
-        },
-        __source: {
-          fileName: _jsxFileName$1,
-          lineNumber: 115
-        },
-        __self: this
-      }), React__default.createElement("div", {
-        className: cx(SELECTORS.BP_CONTENT, className),
-        __source: {
-          fileName: _jsxFileName$1,
-          lineNumber: 120
-        },
-        __self: this
-      }, React__default.createElement(WithContext, Object.assign({
-        identifier: identifier,
-        currentBp: currentBp
-      }, {
-        __source: {
-          fileName: _jsxFileName$1,
-          lineNumber: 121
-        },
-        __self: this
-      }), typeof children === 'function' ? children(currentBp, this.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, null, React__default.createElement("span", {
-        className: SELECTORS.DEBUG_INDICATOR,
-        __source: {
-          fileName: _jsxFileName$1,
-          lineNumber: 130
-        },
-        __self: this
-      }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
-        className: SELECTORS.DEBUG_IDENTIFIER,
-        __source: {
-          fileName: _jsxFileName$1,
-          lineNumber: 134
-        },
-        __self: this
-      }, identifier)));
+      }, function (breakpoints) {
+        var _cx;
+
+        var breakpointList = customBreakpoints || breakpoints;
+        var matchingBps = Object.keys(breakpointList).filter(function (bpName) {
+          return _this2.state.size >= breakpointList[bpName];
+        });
+        var currentBp = matchingBps[matchingBps.length - 1]; // Formatted breakpoints for className output
+
+        var classBps = matchingBps.map(function (bpName) {
+          return "".concat(CLASSES.BP_PREFIX).concat(bpName);
+        }).join(' ');
+        return React__default.createElement("div", {
+          className: cx(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
+          __source: {
+            fileName: _jsxFileName$1,
+            lineNumber: 121
+          },
+          __self: this
+        }, React__default.createElement(ResizeDetector, {
+          handleWidth: true,
+          onResize: function onResize(size) {
+            return _this2.setState({
+              size: size,
+              currentBp: currentBp
+            });
+          },
+          __source: {
+            fileName: _jsxFileName$1,
+            lineNumber: 130
+          },
+          __self: this
+        }), _this2.state.size !== null && React__default.createElement(React__default.Fragment, null, React__default.createElement("div", {
+          className: cx(SELECTORS.BP_CONTENT, className),
+          __source: {
+            fileName: _jsxFileName$1,
+            lineNumber: 142
+          },
+          __self: this
+        }, React__default.createElement(WithContext, Object.assign({
+          identifier: identifier,
+          currentBp: currentBp
+        }, {
+          __source: {
+            fileName: _jsxFileName$1,
+            lineNumber: 143
+          },
+          __self: this
+        }), typeof children === 'function' ? children(currentBp, _this2.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, null, React__default.createElement("span", {
+          className: SELECTORS.DEBUG_INDICATOR,
+          __source: {
+            fileName: _jsxFileName$1,
+            lineNumber: 152
+          },
+          __self: this
+        }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
+          className: SELECTORS.DEBUG_IDENTIFIER,
+          __source: {
+            fileName: _jsxFileName$1,
+            lineNumber: 157
+          },
+          __self: this
+        }, identifier))));
+      });
     }
   }]);
 
@@ -3320,6 +3335,7 @@ BreakpointContainer.propTypes = {
   containerClass: propTypes.string,
   children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired,
   identifier: propTypes.string,
+  customBreakpoints: propTypes.object,
   // Callbacks
   onChange: propTypes.func,
   // Flags
@@ -3330,6 +3346,7 @@ BreakpointContainer.defaultProps = {
   className: null,
   containerClass: null,
   identifier: ID_DEFAULT,
+  customBreakpoints: null,
   onChange: null,
   // Debug null instead of false so we can opt-out of global debug
   debug: null,
@@ -3340,8 +3357,7 @@ var _jsxFileName$2 = "/Users/sacameron/Sites/dd-breakpoint-container/src/compone
 // Variables
 // ------------------------
 
-var DEBUG_BROWSER = process.env.NODE_ENV === 'development';
-var AppBreakpoint = React__default.createContext(); // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
+var DEBUG_BROWSER = process.env.NODE_ENV === 'development'; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
 
 var CLASSES$1 = {
@@ -3362,35 +3378,48 @@ var SELECTORS$1 = {
 
 var BrowserContainer = function BrowserContainer(_ref) {
   var children = _ref.children,
-      props = _objectWithoutProperties(_ref, ["children"]);
+      customBreakpoints = _ref.customBreakpoints,
+      props = _objectWithoutProperties(_ref, ["children", "customBreakpoints"]);
 
   return React__default.createElement(BreakpointContainer, Object.assign({
     identifier: ID_BROWSER,
     className: SELECTORS$1.BP_BROWSER,
-    debug: DEBUG_BROWSER
+    debug: DEBUG_BROWSER,
+    customBreakpoints: customBreakpoints
   }, props, {
     __source: {
       fileName: _jsxFileName$2,
-      lineNumber: 38
+      lineNumber: 41
     },
     __self: this
   }), function (bpName, bpSize) {
-    return React__default.createElement(AppBreakpoint.Provider, {
+    return React__default.createElement(BreakpointDefinitions.Provider, {
+      value: customBreakpoints || BREAKPOINTS,
+      __source: {
+        fileName: _jsxFileName$2,
+        lineNumber: 49
+      },
+      __self: this
+    }, React__default.createElement(AppBreakpoint.Provider, {
       value: {
         bpName: bpName,
         bpSize: bpSize
       },
       __source: {
         fileName: _jsxFileName$2,
-        lineNumber: 45
+        lineNumber: 50
       },
       __self: this
-    }, React__default.createElement(React__default.Fragment, null, children));
+    }, React__default.createElement(React__default.Fragment, null, children)));
   });
 };
 
 BrowserContainer.propTypes = {
+  customBreakpoints: propTypes.object,
   children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired
+};
+BrowserContainer.defaultProps = {
+  customBreakpoints: null
 };
 
 var _jsxFileName$3 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/HOCs/HOCs.js";
