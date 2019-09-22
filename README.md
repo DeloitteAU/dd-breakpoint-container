@@ -10,33 +10,34 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 <!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Index
 
 - [Install](#markdown-header-install)
 - [Usage](#markdown-header-usage)
-    - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
-    - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
-        - [SCSS pattern](#markdown-header-scss-pattern)
-        - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
-        - [Child function pattern](#markdown-header-child-function-pattern)
-        - [Callback pattern](#markdown-header-callback-pattern)
+  - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
+  - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
+    - [SCSS pattern](#markdown-header-scss-pattern)
+    - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
+    - [Child function pattern](#markdown-header-child-function-pattern)
+    - [Callback pattern](#markdown-header-callback-pattern)
 - [Conditional rendering](#markdown-header-conditional-rendering)
 - [Options & exports](#markdown-header-options-exports)
-    - [BreakpointContainer](#markdown-header-breakpointcontainer)
-    - [BrowserContainer component](#markdown-header-browsercontainer-component)
-        - [AppBreakpoint context](#markdown-header-appbreakpoint-context)
-    - [Breakpoint component](#markdown-header-breakpoint-component)
-    - [HOCs](#markdown-header-hocs)
-    - [Functions](#markdown-header-functions)
-    - [Other](#markdown-header-other)
+  - [BreakpointContainer](#markdown-header-breakpointcontainer)
+  - [BrowserContainer component](#markdown-header-browsercontainer-component)
+    - [AppBreakpoint context](#markdown-header-appbreakpoint-context)
+  - [Breakpoint component](#markdown-header-breakpoint-component)
+  - [HOCs](#markdown-header-hocs)
+  - [Functions](#markdown-header-functions)
+  - [Other](#markdown-header-other)
 - [Debug features](#markdown-header-debug-features)
 - [Disclaimers](#markdown-header-disclaimers)
-    - [Performance](#markdown-header-performance)
-    - [Consider media queries](#markdown-header-consider-media-queries)
-    - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
+  - [Performance](#markdown-header-performance)
+  - [Consider media queries](#markdown-header-consider-media-queries)
+  - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
 - [About Deloitte Digital Australia](#markdown-header-about-deloitte-digital-australia)
-    - [Key contributors](#markdown-header-key-contributors)
-    - [Who are we?](#markdown-header-who-are-we)
+  - [Key contributors](#markdown-header-key-contributors)
+  - [Who are we?](#markdown-header-who-are-we)
 - [Licence](#markdown-header-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -63,7 +64,14 @@ import { BrowserContainer } from 'dd-breakpoint-container';
 <BrowserContainer/>
 ```
 
-This is optional, but recommended. It emulates media queries by acting as a wrapper for your app. It enables standalone usage of the `<Breakpoint/>` component, as well as the `bp()` SCSS mixin. (Also, it doesn't matter if your app isn't fullscreen, the net result is the same).
+**Don't skip this step!** Here's why this is important:
+
+- Provides backwards-compatibility for media-query like functionality in your CSS (via the legacy `bp()` mixin/function)
+- Contains the `AppBreakpoint` React Context Provider, which makes your app's overall size/breakpoint available to your components
+- Allows `<Breakpoint/>` modules to be used anywhere within your app, not just within a `<BreakpointContainer/>`
+- If you're using `customBreakpoints`, you can set it once on `<BrowserContainer/>` instead on each and every `<BreakpointContainer/>`
+
+(Also, it doesn't matter if your app isn't fullscreen, the net result is the same).
 
 ### 2. Use `<BreakpointContainer/>` in your components
 
@@ -91,7 +99,7 @@ Then you'll need to import the library's stylesheet in your own SCSS stylesheet:
 
 `@import '~dd-breakpoint-container/lib/mixins.scss';`
 
-Now you can use the container query mixin in your `.scss` files. Note that the `className` you specified must be the parent selector.
+Now you can use the container query mixin in your `.scss` files. Note that the `className` you specified on your component must be the parent selector.
 
 ```
 .my-component {
@@ -181,23 +189,28 @@ The component automatically detects which `<BreakpointContainer/>` it's in. Or, 
 
 `import { BreakpointContainer } from 'dd-breakpoint-container';`
 
-| Name           | Type            | Default value | Description                                                                                                             |
-| -------------- | --------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| className      | String          | null          | Class name(s) applied to container div, i.e. direct parent to component children                                        |
-| containerClass | String          | null          | Class name(s) applied to wrapper div, i.e. grandparent to component children                                            |
-| identifier     | String          | 'default'     | A unique id for the component. For `<Breakpoint/>` components to reference.                                             |
-| children       | Function / Node | (required)    | Optionally receive 'bpName' (String) and 'bpSize' (Number) props. Refer to 'Child function pattern' above.              |
-| onChange       | Function        | null          | Callback when active breakpoint changes                                                                                 |
-| debug          | Boolean         | null          | Toggles debug mode: border + breakpoint indicator                                                                       |
-| noBpClasses    | Boolean         | false         | Opt-out of breakpoint classes, if you're not using the SCSS mixins. (Only if you want to keep the DOM a little cleaner) |
+| Name              | Type            | Default value | Description                                                                                                                                                                                         |
+| ----------------- | --------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| className         | String          | null          | Class name(s) applied to container div, i.e. direct parent to component children                                                                                                                    |
+| containerClass    | String          | null          | Class name(s) applied to wrapper div, i.e. grandparent to component children                                                                                                                        |
+| customBreakpoints | Object          | null          | Provide your own custom breakpoints by passing in an object of key:value pairs, where the key (string) is the breakpoint name, and the value (number) is the corresponding minimum width in pixels. |
+| identifier        | String          | 'default'     | A unique id for the component. For `<Breakpoint/>` components to reference.                                                                                                                         |
+| children          | Function / Node | (required)    | Optionally receive 'bpName' (String) and 'bpSize' (Number) props. Refer to 'Child function pattern' above.                                                                                          |
+| onChange          | Function        | null          | Callback when active breakpoint changes                                                                                                                                                             |
+| debug             | Boolean         | null          | Toggles debug mode: border + breakpoint indicator                                                                                                                                                   |
+| noBpClasses       | Boolean         | false         | Opt-out of breakpoint classes, if you're not using the SCSS mixins. (Only if you want to keep the DOM a little cleaner)                                                                             |
 
 ### BrowserContainer component
 
-This is a proxy component for `<BreakpointContainer/>`, with options `identifier="browser"` and `className="bpc__browser"`.
+See above options table; this is essentially a proxy component for `<BreakpointContainer/>`, with pre-configured options `identifier="browser"` and `className="bpc__browser"`.
+
+The only real difference is the behaviour of `customBreakpoints`, which, if set on your app's `<BrowserContainer/>`, will propagate down to all of the `<BreakpointContainer/>` modules within.
 
 #### AppBreakpoint context
 
-This React Context export provides the `value` of `({ bpName: string, bpSize: number })` of the app's `<BrowserContainer/>` wrapper, so you can access the browser/app's breakpoint in your components.
+This React Context export provides the `value` of `({ bpName: string, bpSize: number })` of the app's `<BrowserContainer/>` wrapper, so you can access your app's breakpoint in your components.
+
+Note this Context value export is an object, which you can destructure like so:
 
 ```
 import { AppBreakpoint } from 'dd-breakpoint-container';

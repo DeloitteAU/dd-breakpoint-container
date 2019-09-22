@@ -1,3 +1,6 @@
+- Might be prudent to renamed BreakpointDefinitions context
+  -- Should our context var names have `Context` as a var suffix?
+- Do we need 'none' in BREAKPOINTS? I dont think we do?
 - /lib dir output - should we be cleaning this every build?
   -- If so, what's not being transferred there at build time that should/could be?
 - Styled Components; remove classnames
@@ -8,9 +11,6 @@
 - Support render props?
 - Make 'dev' folder into demo site for dd.io hosting
 - Restructure/clean-up TODOs here
-- Add feature to allow specifying own breakpoints
-  -- Normalise 'px' and numerical values
-  -- Will have to be as a provider
 
 ## Deloitte Consensus
 
@@ -23,13 +23,11 @@
 
 - Dev dir README.md
 - README description clarity, what/why, GIF example
-- How to install semver while in github repo format?
 - README badges for version, coverage, build, etc
 - ASCII text for tests complete
 - prepublish command best practice?
-- husky lint staged?
 - Note peer dependencies in README
-- Contributing.md
+- CONTRIBUTING.md: dev process (`npm start` then `cd dev && npm start`)
 
 ## Package
 
@@ -45,13 +43,9 @@
 
 ## Known issues
 
-- Dev livereload not setup
 - Workaround for the mass of named exports in dev server commonjs plugin
 - rollup unresolved dependencies build warnings (related to node-resolve?)
 - deloitte eslint config deprecation warning
-- First-pass render snaps from 'none' (mobile); can we address this? react-container-query 'solves' it with initialSize prop, but I dont see thats a solution. Could just be a known limitation.
-  -- If we're relying on the wrapper container, we could prevent rendering of the app until a base width has been established, then propagate
-  -- POTENTIAL SOLUTION: will require refactor to use the Context API for cascading/dependent browser width calls; then we only need to wait for the first pass render to resolve before we can show the whole app. This will need to be clearly documents (that this needs to be app root pertaining to anything visual, and explained in FAQs)
 - Need to check whether mixins nested within BEM selectors are also an issue in DDBreakpoints, or if that limitation is unique and needs to be documents (i.e. root selector level usage of mixins for BEM-style)
 
 ## TBD

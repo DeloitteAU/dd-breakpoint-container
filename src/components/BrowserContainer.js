@@ -1,6 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import BreakpointContainer from './BreakpointContainer';
+import { BREAKPOINTS } from '../data/breakpoints.js';
 import { ID_BROWSER } from './Context.js';
 
 import '../css/debug.css';
@@ -12,6 +13,7 @@ import '../css/debug.css';
 const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
 
 export const AppBreakpoint = React.createContext();
+export const BreakpointDefinitions = React.createContext(BREAKPOINTS);
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
@@ -34,29 +36,37 @@ const SELECTORS = {
 
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
-const BrowserContainer = ({ children, ...props }) => (
+const BrowserContainer = ({ children, customBreakpoints, ...props }) => (
 	<BreakpointContainer
 		identifier={ID_BROWSER}
 		className={SELECTORS.BP_BROWSER}
 		debug={DEBUG_BROWSER}
+		customBreakpoints={customBreakpoints}
 		{...props}
 	>
 		{(bpName, bpSize) => (
-			<AppBreakpoint.Provider value={{ bpName, bpSize }}>
-				<>
-					{/* Note: This is wrapped in a fragment to be
-					certain that the above Provider only has one
-					child, which is a strict requirement that would
-					otherwise depend on how children are passed */}
-					{children}
-				</>
-			</AppBreakpoint.Provider>
+			<BreakpointDefinitions.Provider value={customBreakpoints || BREAKPOINTS}>
+				<AppBreakpoint.Provider value={{ bpName, bpSize }}>
+					<>
+						{/* Note: This is wrapped in a fragment to be
+						certain that the above Provider only has one
+						child, which is a strict requirement that would
+						otherwise depend on how children are passed */}
+						{children}
+					</>
+				</AppBreakpoint.Provider>
+			</BreakpointDefinitions.Provider>
 		)}
 	</BreakpointContainer>
 );
 
 BrowserContainer.propTypes = {
+	customBreakpoints: T.object,
 	children: T.oneOfType([T.node, T.func]).isRequired,
+};
+
+BrowserContainer.defaultProps = {
+	customBreakpoints: null,
 };
 
 export default BrowserContainer;

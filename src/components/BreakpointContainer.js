@@ -3,8 +3,8 @@ import T from 'prop-types';
 import cx from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 
+import { BreakpointDefinitions } from './BrowserContainer';
 import { WithContext, ID_DEFAULT, ID_BROWSER } from './Context.js';
-import { BREAKPOINTS } from '../data/breakpoints.js';
 
 import '../css/debug.css';
 
@@ -40,6 +40,8 @@ export default class BreakpointContainer extends React.Component {
 		children: T.oneOfType([T.node, T.func]).isRequired,
 		identifier: T.string,
 
+		customBreakpoints: T.object,
+
 		// Callbacks
 		onChange: T.func,
 
@@ -53,6 +55,8 @@ export default class BreakpointContainer extends React.Component {
 		containerClass: null,
 		identifier: ID_DEFAULT,
 
+		customBreakpoints: null,
+
 		onChange: null,
 
 		// Debug null instead of false so we can opt-out of global debug
@@ -64,7 +68,7 @@ export default class BreakpointContainer extends React.Component {
 		super();
 
 		this.state = {
-			size: 0,
+			size: null,
 			currentBp: null,
 		};
 	}
@@ -86,56 +90,77 @@ export default class BreakpointContainer extends React.Component {
 			containerClass,
 			noBpClasses,
 			debug,
+			customBreakpoints,
 			children,
 		} = this.props;
-
-		const matchingBps = Object.keys(BREAKPOINTS).filter(
-			bpName => this.state.size >= BREAKPOINTS[bpName],
-		);
-		const currentBp = matchingBps[matchingBps.length - 1];
-
-		// Formatted breakpoints for className output
-		const classBps = matchingBps
-			.map(bpName => `${CLASSES.BP_PREFIX}${bpName}`)
-			.join(' ');
 
 		// Debug mode - component flag, and account for opt-out of global flag
 		const isDebugActive = debug || (debug !== false && DEBUG_BPC);
 
 		return (
-			<div
-				className={cx(CLASSES.CORE, containerClass, {
-					[classBps]: !noBpClasses,
-					[CLASSES.DEBUG_MODIFIER]: isDebugActive,
-					// If there are no class name outputs, BUT debug mode is on,
-					// render the active bp as a class to enable CSS debug indicator
-					[`${CLASSES.BP_PREFIX}${currentBp}`]: debug && noBpClasses,
-				})}
-			>
-				<ReactResizeDetector
-					handleWidth
-					onResize={size => this.setState({ size, currentBp })}
-				/>
+			<BreakpointDefinitions.Consumer>
+				{breakpoints => {
+					const breakpointList = customBreakpoints || breakpoints;
 
-				<div className={cx(SELECTORS.BP_CONTENT, className)}>
-					<WithContext {...{ identifier, currentBp }}>
-						{typeof children === 'function'
-							? children(currentBp, this.state.size)
-							: children}
-					</WithContext>
-				</div>
+					const matchingBps = Object.keys(breakpointList).filter(
+						bpName => this.state.size >= breakpointList[bpName],
+					);
+					const currentBp = matchingBps[matchingBps.length - 1];
 
-				{isDebugActive && (
-					<>
-						<span className={SELECTORS.DEBUG_INDICATOR}>
-							{currentBp || 'none'}
-						</span>
-						{identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (
-							<span className={SELECTORS.DEBUG_IDENTIFIER}>{identifier}</span>
-						)}
-					</>
-				)}
-			</div>
+					// Formatted breakpoints for className output
+					const classBps = matchingBps
+						.map(bpName => `${CLASSES.BP_PREFIX}${bpName}`)
+						.join(' ');
+
+					return (
+						<div
+							className={cx(CLASSES.CORE, containerClass, {
+								[classBps]: !noBpClasses,
+								[CLASSES.DEBUG_MODIFIER]: isDebugActive,
+								// If there are no class name outputs, BUT debug mode is on,
+								// render the active bp as a class to enable CSS debug indicator
+								[`${CLASSES.BP_PREFIX}${currentBp}`]: debug && noBpClasses,
+							})}
+						>
+							<ReactResizeDetector
+								handleWidth
+								onResize={size => this.setState({ size, currentBp })}
+							/>
+
+							{/* Only render contents if we know what the breakpoint is;
+							this prevents content from rendering prematurely (first-pass)
+							and causing flashes (i.e. rendering at 'none' bp before true
+							breakpoint 'l' is calculated and communicated to children. Causes
+							mobile content/styles to flash render in many cases). */}
+							{this.state.size !== null && (
+								<>
+									<div className={cx(SELECTORS.BP_CONTENT, className)}>
+										<WithContext {...{ identifier, currentBp }}>
+											{typeof children === 'function'
+												? children(currentBp, this.state.size)
+												: children}
+										</WithContext>
+									</div>
+
+									{isDebugActive && (
+										<>
+											<span className={SELECTORS.DEBUG_INDICATOR}>
+												{currentBp || 'none'}
+											</span>
+											{identifier !== ID_DEFAULT &&
+												identifier !== ID_BROWSER && (
+													<span className={SELECTORS.DEBUG_IDENTIFIER}>
+														{identifier}
+													</span>
+												)}
+										</>
+									)}
+								</>
+							)}
+						</div>
+					);
+				}}
+			</BreakpointDefinitions.Consumer>
 		);
 	}
 }
