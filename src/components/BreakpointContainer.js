@@ -3,7 +3,7 @@ import T from 'prop-types';
 import cx from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { BreakpointDefinitions } from './BrowserContainer';
+import { BREAKPOINTS } from '../data/breakpoints.js';
 import { WithContext, ID_DEFAULT, ID_BROWSER } from './Context.js';
 
 import '../css/debug.css';
@@ -13,6 +13,11 @@ import '../css/debug.css';
 // ------------------------
 
 const DEBUG_BPC = false;
+
+// Although these root Contexts are used in <BrowserContainer/>, they
+// are defined here to avoid circular dependencies (via `import ...`)
+export const BreakpointDefinitions = React.createContext(BREAKPOINTS);
+export const AppBreakpoint = React.createContext();
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file

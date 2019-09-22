@@ -1,6 +1,10 @@
 import React from 'react';
 import T from 'prop-types';
-import BreakpointContainer from './BreakpointContainer';
+
+import BreakpointContainer, {
+	AppBreakpoint,
+	BreakpointDefinitions,
+} from './BreakpointContainer';
 import { BREAKPOINTS } from '../data/breakpoints.js';
 import { ID_BROWSER } from './Context.js';
 
@@ -11,9 +15,6 @@ import '../css/debug.css';
 // ------------------------
 
 const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
-
-export const AppBreakpoint = React.createContext();
-export const BreakpointDefinitions = React.createContext(BREAKPOINTS);
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
