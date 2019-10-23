@@ -88,15 +88,15 @@
     "lint": "run-s --silent lint:* && node scripts/text/no-issues.js",
     "lint:js": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
     "lint:css": "stylelint --fix ./src/**/*.{scss,css,js,js,ts,tsx}",
-    "test": "run-s --silent test:* && && node scripts/text/no-issues.js",
-    "test:unit": "",
+    "test": "run-s --silent test:* && node scripts/text/no-issues.js",
+    "test:unit": "node scripts/text/no-issues.js",
     "test:coverage": "npm run test:unit -- --coverage",
     "prepublishOnly": "run-s --silent lint check-types test build"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm run test:unit -- --bail && npm run check-types"
+      "pre-push": "npm run test:unit && npm run check-types"
     }
   },
   "lint-staged": {
