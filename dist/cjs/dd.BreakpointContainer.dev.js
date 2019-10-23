@@ -4,185 +4,123 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-require('core-js/modules/es6.object.assign');
-require('core-js/modules/es6.array.map');
-require('core-js/modules/web.dom.iterable');
-require('core-js/modules/es6.array.iterator');
-require('core-js/modules/es6.object.keys');
-require('core-js/modules/es6.array.filter');
 var React = require('react');
 var React__default = _interopDefault(React);
-var cx = _interopDefault(require('classnames'));
-require('core-js/modules/es6.regexp.to-string');
-require('core-js/modules/es6.date.to-string');
-require('core-js/modules/es6.regexp.replace');
-require('core-js/modules/es6.regexp.split');
-require('core-js/modules/es6.array.index-of');
-require('core-js/modules/es6.number.constructor');
-require('core-js/modules/es6.number.is-nan');
-require('core-js/modules/es6.function.name');
+require('css/debug.css');
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
 
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
 
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
+/* global Reflect, Promise */
+var extendStatics = function (d, b) {
+  extendStatics = Object.setPrototypeOf || {
+    __proto__: []
+  } instanceof Array && function (d, b) {
+    d.__proto__ = b;
+  } || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
   };
 
-  return _setPrototypeOf(o, p);
-}
+  return extendStatics(d, b);
+};
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
+function __extends(d, b) {
+  extendStatics(d, b);
 
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
+  function __() {
+    this.constructor = d;
   }
 
-  return target;
+  d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
+var __assign = function () {
+  __assign = Object.assign || function __assign(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
 
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
     }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
+function __rest(s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
   }
-
-  return target;
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (typeof call === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  return t;
 }
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
+
+var classnames = createCommonjsModule(function (module) {
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+/* global define */
+(function () {
+
+  var hasOwn = {}.hasOwnProperty;
+
+  function classNames() {
+    var classes = [];
+
+    for (var i = 0; i < arguments.length; i++) {
+      var arg = arguments[i];
+      if (!arg) continue;
+      var argType = typeof arg;
+
+      if (argType === 'string' || argType === 'number') {
+        classes.push(arg);
+      } else if (Array.isArray(arg) && arg.length) {
+        var inner = classNames.apply(null, arg);
+
+        if (inner) {
+          classes.push(inner);
+        }
+      } else if (argType === 'object') {
+        for (var key in arg) {
+          if (hasOwn.call(arg, key) && arg[key]) {
+            classes.push(key);
+          }
+        }
+      }
+    }
+
+    return classes.join(' ');
+  }
+
+  if ( module.exports) {
+    classNames.default = classNames;
+    module.exports = classNames;
+  } else {
+    window.classNames = classNames;
+  }
+})();
+});
 
 /*
 object-assign
@@ -2733,13 +2671,13 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
-function _classCallCheck$1(instance, Constructor) {
+function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-function _defineProperties$1(target, props) {
+function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
     descriptor.enumerable = descriptor.enumerable || false;
@@ -2749,28 +2687,28 @@ function _defineProperties$1(target, props) {
   }
 }
 
-function _createClass$1(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties$1(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties$1(Constructor, staticProps);
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
 }
 
-function _possibleConstructorReturn$1(self, call) {
+function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
   }
 
-  return _assertThisInitialized$1(self);
+  return _assertThisInitialized(self);
 }
 
-function _getPrototypeOf$1(o) {
-  _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
-  return _getPrototypeOf$1(o);
+  return _getPrototypeOf(o);
 }
 
-function _inherits$1(subClass, superClass) {
+function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
   }
@@ -2782,19 +2720,19 @@ function _inherits$1(subClass, superClass) {
       configurable: true
     }
   });
-  if (superClass) _setPrototypeOf$1(subClass, superClass);
+  if (superClass) _setPrototypeOf(subClass, superClass);
 }
 
-function _setPrototypeOf$1(o, p) {
-  _setPrototypeOf$1 = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
     o.__proto__ = p;
     return o;
   };
 
-  return _setPrototypeOf$1(o, p);
+  return _setPrototypeOf(o, p);
 }
 
-function _assertThisInitialized$1(self) {
+function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
@@ -2802,7 +2740,7 @@ function _assertThisInitialized$1(self) {
   return self;
 }
 
-function _defineProperty$1(obj, key, value) {
+function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -2841,16 +2779,16 @@ function convertChildrenToArray(children) {
 var ResizeDetector =
 /*#__PURE__*/
 function (_PureComponent) {
-  _inherits$1(ResizeDetector, _PureComponent);
+  _inherits(ResizeDetector, _PureComponent);
 
   function ResizeDetector(props) {
     var _this;
 
-    _classCallCheck$1(this, ResizeDetector);
+    _classCallCheck(this, ResizeDetector);
 
-    _this = _possibleConstructorReturn$1(this, _getPrototypeOf$1(ResizeDetector).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResizeDetector).call(this, props));
 
-    _defineProperty$1(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "getElement", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getElement", function () {
       var resizableElementId = _this.props.resizableElementId;
       var otherElement = resizableElementId && document.getElementById(resizableElementId);
       var parentElement = _this.el && _this.el.parentElement;
@@ -2858,7 +2796,7 @@ function (_PureComponent) {
       return resizableElement;
     });
 
-    _defineProperty$1(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "createResizeHandler", function (entries) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "createResizeHandler", function (entries) {
       var _this$props = _this.props,
           handleWidth = _this$props.handleWidth,
           handleHeight = _this$props.handleHeight,
@@ -2885,7 +2823,7 @@ function (_PureComponent) {
       });
     });
 
-    _defineProperty$1(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "handleRenderProp", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleRenderProp", function () {
       var _this$state = _this.state,
           width = _this$state.width,
           height = _this$state.height;
@@ -2903,7 +2841,7 @@ function (_PureComponent) {
       return undefined;
     });
 
-    _defineProperty$1(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "renderChildren", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderChildren", function () {
       var _this$state2 = _this.state,
           width = _this$state2.width,
           height = _this$state2.height;
@@ -2938,7 +2876,7 @@ function (_PureComponent) {
     return _this;
   }
 
-  _createClass$1(ResizeDetector, [{
+  _createClass(ResizeDetector, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var resizableElement = this.getElement();
@@ -3016,144 +2954,115 @@ ResizeDetector.defaultProps = {
 // NOTE: These key:value pairs mirror those in this module's SCSS
 // If you're going to add or change bps, check the notes near the top of the SCSS file
 var BREAKPOINTS = {
-  none: 0,
-  xxxs: 320,
-  xxs: 359,
-  xs: 480,
-  s: 640,
-  m: 768,
-  l: 1024,
-  xl: 1244,
-  xxl: 1410,
-  xxxl: 1690
+    none: 0,
+    xxxs: 320,
+    xxs: 359,
+    xs: 480,
+    s: 640,
+    m: 768,
+    l: 1024,
+    xl: 1244,
+    xxl: 1410,
+    xxxl: 1690,
 };
 /**
  * Returns the breakpoint 'upper-limit' width in pixels,
  * which is essentially the width of the next breakpoint.
  *
- * @param {string} bpName - Named breakpoint
- * @returns {number}
+ * @param bpName - Named breakpoint
  */
-
 function getBpUpperLimit(bpName) {
-  if (!Number.isNaN(parseInt(bpName))) {
-    return null;
-  }
-
-  var bpKeys = Object.keys(BREAKPOINTS);
-  var nextHighestBpIndex = bpKeys.indexOf(bpName) + 1; // Check edge-case for when target breakpoint is the last in the array, in which
-  // case Infinity is an acceptable upper-bound, since there is no threshold
-
-  var nextHighestBpWidth = nextHighestBpIndex !== BREAKPOINTS.length - 1 ? BREAKPOINTS[bpKeys[nextHighestBpIndex]] : Infinity;
-  return nextHighestBpWidth;
+    if (!Number.isNaN(parseInt(bpName))) {
+        return null;
+    }
+    var bpKeys = Object.keys(BREAKPOINTS);
+    var nextHighestBpIndex = bpKeys.indexOf(bpName) + 1;
+    // Check edge-case for when target breakpoint is the last in the array, in which
+    // case Infinity is an acceptable upper-bound, since there is no threshold
+    var nextHighestBpWidth = nextHighestBpIndex !== bpKeys.length - 1
+        ? BREAKPOINTS[bpKeys[nextHighestBpIndex]]
+        : Infinity;
+    return nextHighestBpWidth;
 }
 /**
  * Resolves a breakpoint query against a specified breakpoint or value. Query
  * string must be in format `${lower}, ${upper}` (comma separated), where lower/upper
  * are either named breakpoints or px values. Upper is optional.
  *
- * @param {string} query - Breakpoint query string.
- * @param {string|number} bp - Breakpoint name, or px size to resolve query against.
- * @returns {boolean}
+ * @param query - Breakpoint query string.
+ * @param bp - Breakpoint name, or px size to resolve query against.
  */
-
 function resolveBp(query, bp) {
-  // Helper function to parse breakpoint into pixels
-  // Non-strict null check to avoid '0' being evaluated as falsey
-  var parseBp = function parseBp(bp) {
-    return BREAKPOINTS[bp] != null ? BREAKPOINTS[bp] : parseInt(bp);
-  }; // Extract lower and upper-bounds from query
-  // Normalise string and comma/whitespace separation
-
-
-  var _query$toString$repla = query.toString().replace(/,?\s/, ',').split(','),
-      _query$toString$repla2 = _slicedToArray(_query$toString$repla, 2),
-      lower = _query$toString$repla2[0],
-      upper = _query$toString$repla2[1]; // Lower-bound should always exist; either as named breakpoint or px value
-
-
-  var lowerWidth = parseBp(lower); // Get upper-bound (i.e. next breakpoint threshold), or parse as int,
-  // or, failing that, use Infinity as a fallback
-
-  var upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity; // Width of current breakpoint
-
-  var bpWidth = parseBp(bp); // Validate query by checking if lower bound exists
-  // Account for '0' lowerWidth, which would otherwise evaluate as falsy
-
-  if (!lowerWidth && lowerWidth !== 0) {
-    console.warn("Invalid breakpoint query '".concat(query, "' provided. Query must be in format `${lower}, ${upper}` (comma separated), where lower/upper are either named breakpoints or px values. Upper is optional."));
-    return false;
-  } else if (!bpWidth && bpWidth !== 0) {
-    console.warn("Invalid breakpoint value '".concat(bp, "' provided. Breakpoint should either be named, or a pixel value."));
-    return false;
-  } // Note that lower-bound is inclusive
-
-
-  var moreThanLower = bpWidth >= lowerWidth;
-  var lessThanUpper = bpWidth < upperWidth;
-  return moreThanLower && lessThanUpper;
+    // Helper function to parse breakpoint into pixels
+    // Non-strict null check to avoid '0' being evaluated as falsey
+    var parseBp = function (bp) {
+        return BREAKPOINTS[bp] != null ? BREAKPOINTS[bp] : parseInt(bp);
+    };
+    // Extract lower and upper-bounds from query
+    // Normalise string and comma/whitespace separation
+    var _a = query
+        .toString()
+        .replace(/,?\s/, ',')
+        .split(','), lower = _a[0], upper = _a[1];
+    // Lower-bound should always exist; either as named breakpoint or px value
+    var lowerWidth = parseBp(lower);
+    // Get upper-bound (i.e. next breakpoint threshold), or parse as int,
+    // or, failing that, use Infinity as a fallback
+    var upperWidth = getBpUpperLimit(upper) || parseInt(upper) || Infinity;
+    // Width of current breakpoint
+    var bpWidth = parseBp(bp);
+    // Validate query by checking if lower bound exists
+    // Account for '0' lowerWidth, which would otherwise evaluate as falsy
+    if (!lowerWidth && lowerWidth !== 0) {
+        console.warn("Invalid breakpoint query '" + query + "' provided. Query must be in format `${lower}, ${upper}` (comma separated), where lower/upper are either named breakpoints or px values. Upper is optional.");
+        return false;
+    }
+    else if (!bpWidth && bpWidth !== 0) {
+        console.warn("Invalid breakpoint value '" + bp + "' provided. Breakpoint should either be named, or a pixel value.");
+        return false;
+    }
+    // Note that lower-bound is inclusive
+    var moreThanLower = bpWidth >= lowerWidth;
+    var lessThanUpper = bpWidth < upperWidth;
+    return moreThanLower && lessThanUpper;
 }
 
-var _BP_CONTEXTS,
-    _jsxFileName = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/Context.js";
+/**
+ * TODO:
+ *
+ * More explanation around the existence of
+ * of this file, what it's is for (<Breakpoint/>
+ * component parsing support) etc
+ */
+var _a;
 var ID_DEFAULT = 'default';
-var ID_BROWSER = 'browser'; // NOTE: Other identifier contexts are created as-needed in WithContext
-
-var BP_CONTEXTS = (_BP_CONTEXTS = {}, _defineProperty(_BP_CONTEXTS, ID_DEFAULT, React__default.createContext()), _defineProperty(_BP_CONTEXTS, ID_BROWSER, React__default.createContext()), _BP_CONTEXTS);
+var ID_BROWSER = 'browser';
+// NOTE: Other identifier contexts are created as-needed in WithContext
+var BP_CONTEXTS = (_a = {},
+    _a[ID_DEFAULT] = React.createContext(null),
+    _a[ID_BROWSER] = React.createContext(null),
+    _a);
 /**
  * TODO.
- *
- * @param {*} params
- * @returns {Function}
  */
-
-function WithContext(_ref) {
-  var identifier = _ref.identifier,
-      currentBp = _ref.currentBp,
-      children = _ref.children;
-  // If a BPC has specified an identifier other than the default
-  var hasIdentifier = identifier !== ID_DEFAULT; // Create specific context if it doesn't already exist
-
-  if (hasIdentifier && !BP_CONTEXTS[identifier]) {
-    BP_CONTEXTS[identifier] = React__default.createContext();
-  } // CoreContext aka 'default' context must always be present, even if the
-  // BPC has a specified identifier - this is to enable the default behaviour
-  // of <Breakpoint/> components that don't specify an target BPC identifier
-
-
-  var CoreContext = BP_CONTEXTS[ID_DEFAULT];
-  var IdentifierContext = BP_CONTEXTS[identifier];
-  return React__default.createElement(React__default.Fragment, null, hasIdentifier ? React__default.createElement(IdentifierContext.Provider, {
-    value: currentBp,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 45
-    },
-    __self: this
-  }, React__default.createElement(CoreContext.Provider, {
-    value: currentBp,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46
-    },
-    __self: this
-  }, children)) : React__default.createElement(IdentifierContext.Provider, {
-    value: currentBp,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51
-    },
-    __self: this
-  }, children));
-}
-
-WithContext.propTypes = {
-  identifier: propTypes.string.isRequired,
-  currentBp: propTypes.string,
-  children: propTypes.node.isRequired
+var WithContext = function (_a) {
+    var identifier = _a.identifier, currentBp = _a.currentBp, children = _a.children;
+    // If a BPC has specified an identifier other than the default
+    var hasIdentifier = identifier !== ID_DEFAULT;
+    // Create specific context if it doesn't already exist
+    if (hasIdentifier && !BP_CONTEXTS[identifier]) {
+        BP_CONTEXTS[identifier] = React.createContext(null);
+    }
+    // CoreContext aka 'default' context must always be present, even if the
+    // BPC has a specified identifier - this is to enable the default behaviour
+    // of <Breakpoint/> components that don't specify an target BPC identifier
+    var CoreContext = BP_CONTEXTS[ID_DEFAULT];
+    var IdentifierContext = BP_CONTEXTS[identifier];
+    return (React.createElement(React.Fragment, null, hasIdentifier ? (React.createElement(IdentifierContext.Provider, { value: currentBp },
+        React.createElement(CoreContext.Provider, { value: currentBp }, children))) : (React.createElement(IdentifierContext.Provider, { value: currentBp }, children))));
 };
 WithContext.defaultProps = {
-  currentBp: null
+    currentBp: null,
 };
 
 function styleInject(css, ref) {
@@ -3188,335 +3097,153 @@ function styleInject(css, ref) {
 var css = ".bpc {\n  width: 100%; }\n\n.-debug {\n  position: relative; }\n  .-debug .bpc__debugIndicator,\n  .-debug > .bpc__content:not(.bpc__browser) ~ .bpc__debugIdentifier {\n    color: black;\n    background-color: white;\n    border: 1px dashed black;\n    font-size: 10px;\n    display: block;\n    position: absolute;\n    top: 0;\n    min-height: 15px;\n    z-index: 9999;\n    padding: 0 3px;\n    font-family: monospace;\n    content: 'none'; }\n  .-debug .bpc__debugIdentifier {\n    right: 0; }\n  .-debug > .bpc__content:not(.bpc__browser) {\n    border: 1px dashed black; }\n  .-debug > .bpc__browser ~ .bpc__debugIndicator {\n    position: fixed;\n    border-style: solid;\n    top: 0;\n    left: 0; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRlYnVnLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVcsRUFBRTs7QUFFZjtFQUNFLGtCQUFrQixFQUFFO0VBQ3BCOztJQUVFLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsd0JBQXdCO0lBQ3hCLGVBQWU7SUFDZixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixnQkFBZ0I7SUFDaEIsYUFBYTtJQUNiLGNBQWM7SUFDZCxzQkFBc0I7SUFDdEIsZUFBZSxFQUFFO0VBQ25CO0lBQ0UsUUFBUSxFQUFFO0VBQ1o7SUFDRSx3QkFBd0IsRUFBRTtFQUM1QjtJQUNFLGVBQWU7SUFDZixtQkFBbUI7SUFDbkIsTUFBTTtJQUNOLE9BQU8sRUFBRSIsImZpbGUiOiJkZWJ1Zy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYnBjIHtcbiAgd2lkdGg6IDEwMCU7IH1cblxuLi1kZWJ1ZyB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTsgfVxuICAuLWRlYnVnIC5icGNfX2RlYnVnSW5kaWNhdG9yLFxuICAuLWRlYnVnID4gLmJwY19fY29udGVudDpub3QoLmJwY19fYnJvd3NlcikgfiAuYnBjX19kZWJ1Z0lkZW50aWZpZXIge1xuICAgIGNvbG9yOiBibGFjaztcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICBib3JkZXI6IDFweCBkYXNoZWQgYmxhY2s7XG4gICAgZm9udC1zaXplOiAxMHB4O1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbWluLWhlaWdodDogMTVweDtcbiAgICB6LWluZGV4OiA5OTk5O1xuICAgIHBhZGRpbmc6IDAgM3B4O1xuICAgIGZvbnQtZmFtaWx5OiBtb25vc3BhY2U7XG4gICAgY29udGVudDogJ25vbmUnOyB9XG4gIC4tZGVidWcgLmJwY19fZGVidWdJZGVudGlmaWVyIHtcbiAgICByaWdodDogMDsgfVxuICAuLWRlYnVnID4gLmJwY19fY29udGVudDpub3QoLmJwY19fYnJvd3Nlcikge1xuICAgIGJvcmRlcjogMXB4IGRhc2hlZCBibGFjazsgfVxuICAuLWRlYnVnID4gLmJwY19fYnJvd3NlciB+IC5icGNfX2RlYnVnSW5kaWNhdG9yIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDsgfVxuIl19 */";
 styleInject(css);
 
-var _jsxFileName$1 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/BreakpointContainer.js";
+// ------------------------
 // Variables
 // ------------------------
-
-var DEBUG_BPC = false; // Although these root Contexts are used in <BrowserContainer/>, they
+var DEBUG_BPC = false;
+// Although these root Contexts are used in <BrowserContainer/>, they
 // are defined here to avoid circular dependencies (via `import ...`)
-
-var BreakpointDefinitions = React__default.createContext(BREAKPOINTS);
-var AppBreakpoint = React__default.createContext(); // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
+var BreakpointDefinitions = React.createContext(BREAKPOINTS);
+var AppBreakpoint = React.createContext({});
+// NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
-
 var CLASSES = {
-  CORE: 'bpc',
-  BP_PREFIX: '-',
-  DEBUG_MODIFIER: '-debug'
+    CORE: 'bpc',
+    BP_PREFIX: '-',
+    DEBUG_MODIFIER: '-debug',
 };
 var SELECTORS = {
-  BP_BROWSER: "".concat(CLASSES.CORE, "__browser"),
-  BP_CONTENT: "".concat(CLASSES.CORE, "__content"),
-  DEBUG_INDICATOR: "".concat(CLASSES.CORE, "__debugIndicator"),
-  DEBUG_IDENTIFIER: "".concat(CLASSES.CORE, "__debugIdentifier")
-}; // ------------------------
-// Export
-// ------------------------
-
-var BreakpointContainer =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(BreakpointContainer, _React$Component);
-
-  function BreakpointContainer() {
-    var _this;
-
-    _classCallCheck(this, BreakpointContainer);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(BreakpointContainer).call(this));
-    _this.state = {
-      size: null,
-      currentBp: null
+    BP_BROWSER: CLASSES.CORE + "__browser",
+    BP_CONTENT: CLASSES.CORE + "__content",
+    DEBUG_INDICATOR: CLASSES.CORE + "__debugIndicator",
+    DEBUG_IDENTIFIER: CLASSES.CORE + "__debugIdentifier",
+};
+var BreakpointContainer = /** @class */ (function (_super) {
+    __extends(BreakpointContainer, _super);
+    function BreakpointContainer() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    BreakpointContainer.prototype.componentDidUpdate = function (prevProps, prevState) {
+        // Check if bp changed to support 'onChange' callback
+        if (typeof this.props.onChange === 'function' &&
+            this.state.currentBp !== prevState.currentBp) {
+            this.props.onChange(this.state.currentBp, this.state.size);
+        }
     };
-    return _this;
-  }
+    BreakpointContainer.prototype.render = function () {
+        var _this = this;
+        var _a = this.props, _b = _a.identifier, identifier = _b === void 0 ? ID_DEFAULT : _b, className = _a.className, containerClass = _a.containerClass, _c = _a.noBpClasses, noBpClasses = _c === void 0 ? false : _c, _d = _a.debug, debug = _d === void 0 ? null : _d, customBreakpoints = _a.customBreakpoints, children = _a.children;
+        // Debug mode - component flag, and account for opt-out of global flag
+        var isDebugActive = debug || (debug !== false && DEBUG_BPC);
+        return (React.createElement(BreakpointDefinitions.Consumer, null, function (breakpoints) {
+            var _a;
+            var breakpointList = customBreakpoints || breakpoints;
+            var matchingBps = Object.keys(breakpointList).filter(function (bpName) { return _this.state.size >= breakpointList[bpName]; });
+            var currentBp = matchingBps[matchingBps.length - 1];
+            // Formatted breakpoints for className output
+            var classBps = matchingBps
+                .map(function (bpName) { return "" + CLASSES.BP_PREFIX + bpName; })
+                .join(' ');
+            return (React.createElement("div", { className: classnames(CLASSES.CORE, containerClass, (_a = {},
+                    _a[classBps] = !noBpClasses,
+                    _a[CLASSES.DEBUG_MODIFIER] = isDebugActive,
+                    // If there are no class name outputs, BUT debug mode is on,
+                    // render the active bp as a class to enable CSS debug indicator
+                    _a["" + CLASSES.BP_PREFIX + currentBp] = debug && noBpClasses,
+                    _a)) },
+                React.createElement(ResizeDetector, { handleWidth: true, onResize: function (size) { return _this.setState({ size: size, currentBp: currentBp }); } }),
+                !!_this.state.size && (React.createElement(React.Fragment, null,
+                    React.createElement("div", { className: classnames(SELECTORS.BP_CONTENT, className) },
+                        React.createElement(WithContext, __assign({}, { identifier: identifier, currentBp: currentBp }), typeof children === 'function'
+                            ? children(currentBp, _this.state.size)
+                            : children)),
+                    isDebugActive && (React.createElement(React.Fragment, null,
+                        React.createElement("span", { className: SELECTORS.DEBUG_INDICATOR }, currentBp || 'none'),
+                        identifier !== ID_DEFAULT &&
+                            identifier !== ID_BROWSER && (React.createElement("span", { className: SELECTORS.DEBUG_IDENTIFIER }, identifier))))))));
+        }));
+    };
+    return BreakpointContainer;
+}(React.Component));
 
-  _createClass(BreakpointContainer, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      // Check if bp changed to support 'onChange' callback
-      if (typeof this.props.onChange === 'function' && this.state.currentBp !== prevState.currentBp) {
-        this.props.onChange(this.state.currentBp);
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          identifier = _this$props.identifier,
-          className = _this$props.className,
-          containerClass = _this$props.containerClass,
-          noBpClasses = _this$props.noBpClasses,
-          debug = _this$props.debug,
-          customBreakpoints = _this$props.customBreakpoints,
-          children = _this$props.children; // Debug mode - component flag, and account for opt-out of global flag
-
-      var isDebugActive = debug || debug !== false && DEBUG_BPC;
-      return React__default.createElement(BreakpointDefinitions.Consumer, {
-        __source: {
-          fileName: _jsxFileName$1,
-          lineNumber: 106
-        },
-        __self: this
-      }, function (breakpoints) {
-        var _cx;
-
-        var breakpointList = customBreakpoints || breakpoints;
-        var matchingBps = Object.keys(breakpointList).filter(function (bpName) {
-          return _this2.state.size >= breakpointList[bpName];
-        });
-        var currentBp = matchingBps[matchingBps.length - 1]; // Formatted breakpoints for className output
-
-        var classBps = matchingBps.map(function (bpName) {
-          return "".concat(CLASSES.BP_PREFIX).concat(bpName);
-        }).join(' ');
-        return React__default.createElement("div", {
-          className: cx(CLASSES.CORE, containerClass, (_cx = {}, _defineProperty(_cx, classBps, !noBpClasses), _defineProperty(_cx, CLASSES.DEBUG_MODIFIER, isDebugActive), _defineProperty(_cx, "".concat(CLASSES.BP_PREFIX).concat(currentBp), debug && noBpClasses), _cx)),
-          __source: {
-            fileName: _jsxFileName$1,
-            lineNumber: 121
-          },
-          __self: this
-        }, React__default.createElement(ResizeDetector, {
-          handleWidth: true,
-          onResize: function onResize(size) {
-            return _this2.setState({
-              size: size,
-              currentBp: currentBp
-            });
-          },
-          __source: {
-            fileName: _jsxFileName$1,
-            lineNumber: 130
-          },
-          __self: this
-        }), _this2.state.size !== null && React__default.createElement(React__default.Fragment, null, React__default.createElement("div", {
-          className: cx(SELECTORS.BP_CONTENT, className),
-          __source: {
-            fileName: _jsxFileName$1,
-            lineNumber: 142
-          },
-          __self: this
-        }, React__default.createElement(WithContext, Object.assign({
-          identifier: identifier,
-          currentBp: currentBp
-        }, {
-          __source: {
-            fileName: _jsxFileName$1,
-            lineNumber: 143
-          },
-          __self: this
-        }), typeof children === 'function' ? children(currentBp, _this2.state.size) : children)), isDebugActive && React__default.createElement(React__default.Fragment, null, React__default.createElement("span", {
-          className: SELECTORS.DEBUG_INDICATOR,
-          __source: {
-            fileName: _jsxFileName$1,
-            lineNumber: 152
-          },
-          __self: this
-        }, currentBp || 'none'), identifier !== ID_DEFAULT && identifier !== ID_BROWSER && React__default.createElement("span", {
-          className: SELECTORS.DEBUG_IDENTIFIER,
-          __source: {
-            fileName: _jsxFileName$1,
-            lineNumber: 157
-          },
-          __self: this
-        }, identifier))));
-      });
-    }
-  }]);
-
-  return BreakpointContainer;
-}(React__default.Component);
-
-BreakpointContainer.propTypes = {
-  className: propTypes.string,
-  containerClass: propTypes.string,
-  children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired,
-  identifier: propTypes.string,
-  customBreakpoints: propTypes.object,
-  // Callbacks
-  onChange: propTypes.func,
-  // Flags
-  debug: propTypes.bool,
-  noBpClasses: propTypes.bool
-};
-BreakpointContainer.defaultProps = {
-  className: null,
-  containerClass: null,
-  identifier: ID_DEFAULT,
-  customBreakpoints: null,
-  onChange: null,
-  // Debug null instead of false so we can opt-out of global debug
-  debug: null,
-  noBpClasses: false
-};
-
-var _jsxFileName$2 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/BrowserContainer.js";
+// ------------------------
 // Variables
 // ------------------------
-
-var DEBUG_BROWSER = process.env.NODE_ENV === 'development'; // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
+var DEBUG_BROWSER = process.env.NODE_ENV === 'development';
+// NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
-
 var CLASSES$1 = {
-  CORE: 'bpc',
-  BP_PREFIX: '-',
-  DEBUG_MODIFIER: '-debug'
+    CORE: 'bpc',
+    BP_PREFIX: '-',
+    DEBUG_MODIFIER: '-debug',
 };
 var SELECTORS$1 = {
-  BP_BROWSER: "".concat(CLASSES$1.CORE, "__browser"),
-  BP_CONTENT: "".concat(CLASSES$1.CORE, "__content"),
-  DEBUG_INDICATOR: "".concat(CLASSES$1.CORE, "__debugIndicator"),
-  DEBUG_IDENTIFIER: "".concat(CLASSES$1.CORE, "__debugIdentifier")
-}; // ------------------------
+    BP_BROWSER: CLASSES$1.CORE + "__browser",
+    BP_CONTENT: CLASSES$1.CORE + "__content",
+    DEBUG_INDICATOR: CLASSES$1.CORE + "__debugIndicator",
+    DEBUG_IDENTIFIER: CLASSES$1.CORE + "__debugIdentifier",
+};
+// ------------------------
 // Export
 // ------------------------
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
-
-var BrowserContainer = function BrowserContainer(_ref) {
-  var children = _ref.children,
-      customBreakpoints = _ref.customBreakpoints,
-      props = _objectWithoutProperties(_ref, ["children", "customBreakpoints"]);
-
-  return React__default.createElement(BreakpointContainer, Object.assign({
-    identifier: ID_BROWSER,
-    className: SELECTORS$1.BP_BROWSER,
-    debug: DEBUG_BROWSER,
-    customBreakpoints: customBreakpoints
-  }, props, {
-    __source: {
-      fileName: _jsxFileName$2,
-      lineNumber: 41
-    },
-    __self: this
-  }), function (bpName, bpSize) {
-    return React__default.createElement(BreakpointDefinitions.Provider, {
-      value: customBreakpoints || BREAKPOINTS,
-      __source: {
-        fileName: _jsxFileName$2,
-        lineNumber: 49
-      },
-      __self: this
-    }, React__default.createElement(AppBreakpoint.Provider, {
-      value: {
-        bpName: bpName,
-        bpSize: bpSize
-      },
-      __source: {
-        fileName: _jsxFileName$2,
-        lineNumber: 50
-      },
-      __self: this
-    }, React__default.createElement(React__default.Fragment, null, children)));
-  });
+var BrowserContainer = function (_a) {
+    var children = _a.children, customBreakpoints = _a.customBreakpoints, props = __rest(_a, ["children", "customBreakpoints"]);
+    return (React.createElement(BreakpointContainer, __assign({ identifier: ID_BROWSER, className: SELECTORS$1.BP_BROWSER, debug: DEBUG_BROWSER, customBreakpoints: customBreakpoints }, props), function (bpName, bpSize) { return (React.createElement(BreakpointDefinitions.Provider, { value: customBreakpoints || BREAKPOINTS },
+        React.createElement(AppBreakpoint.Provider, { value: { bpName: bpName, bpSize: bpSize } },
+            React.createElement(React.Fragment, null, children)))); }));
 };
 
-BrowserContainer.propTypes = {
-  customBreakpoints: propTypes.object,
-  children: propTypes.oneOfType([propTypes.node, propTypes.func]).isRequired
-};
-BrowserContainer.defaultProps = {
-  customBreakpoints: null
-};
-
-var _jsxFileName$3 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/HOCs/HOCs.js";
 /**
  * Centralised BreakpointContainer HOC template
  * for Breakpoint/Browser container HOCs.
  *
- * @param {*} BreakpointWrapper - BreakpointContainer (or BrowserContainer).
- * @param {*} Component - Component; i.e. contents of HOC.
- * @param {*} bpcProps - BreakpointContainer props.
+ * @param BreakpointWrapper - BreakpointContainer (or BrowserContainer).
+ * @param Component - Component; i.e. contents of HOC.
+ * @param bpcProps - BreakpointContainer props.
  */
-
-function withBpcTemplate(BreakpointWrapper, Component, bpcProps) {
-  var WithBpc = function WithBpc(props) {
-    return React__default.createElement(BreakpointWrapper, Object.assign({}, bpcProps, {
-      __source: {
-        fileName: _jsxFileName$3,
-        lineNumber: 17
-      },
-      __self: this
-    }), function (bpName, bpSize) {
-      return React__default.createElement(Component, Object.assign({}, props, {
+var withBpcTemplate = function (BreakpointWrapper, Component, bpcProps) {
+    var WithBpc = function (props) { return (React.createElement(BreakpointWrapper, __assign({}, bpcProps), function (bpName, bpSize) { return (React.createElement(Component, __assign({}, props, {
         bpName: bpName,
-        bpSize: bpSize
-      }, {
-        __source: {
-          fileName: _jsxFileName$3,
-          lineNumber: 19
-        },
-        __self: this
-      }));
-    });
-  };
-
-  var wrappedComponentName = Component.displayName || Component.name || 'Component';
-  WithBpc.displayName = "withBreakpointContainer(".concat(wrappedComponentName, ")");
-  return WithBpc;
-} // ------------------------
-
-
-var withBreakpointContainer = function withBreakpointContainer(Component, bpcProps) {
-  return withBpcTemplate(BreakpointContainer, Component, bpcProps);
+        bpSize: bpSize,
+    }))); })); };
+    var wrappedComponentName = Component.displayName || Component.name || 'Component';
+    WithBpc.displayName = "withBreakpointContainer(" + wrappedComponentName + ")";
+    return WithBpc;
+};
+// ------------------------
+var withBreakpointContainer = function (Component, bpcProps) {
+    return withBpcTemplate(BreakpointContainer, Component, bpcProps);
+};
+var withBrowserContainer = function (Component, bpcProps) {
+    return withBpcTemplate(BrowserContainer, Component, bpcProps);
 };
 
-var withBrowserContainer = function withBrowserContainer(Component, bpcProps) {
-  return withBpcTemplate(BrowserContainer, Component, bpcProps);
-}; // ------------------------
-
-var _jsxFileName$4 = "/Users/sacameron/Sites/dd-breakpoint-container/src/components/Breakpoint.js";
-
-var Breakpoint = function Breakpoint(_ref) {
-  var q = _ref.q,
-      query = _ref.query,
-      identifier = _ref.identifier,
-      children = _ref.children;
-  var bpQuery = q || query; // Aggregate query shorthand
-
-  var Context = BP_CONTEXTS[identifier];
-  return React__default.createElement(Context.Consumer, {
-    __source: {
-      fileName: _jsxFileName$4,
-      lineNumber: 12
-    },
-    __self: this
-  }, function (bp) {
-    return resolveBp(bpQuery, bp) && children;
-  });
+var Breakpoint = function (_a) {
+    var q = _a.q, _b = _a.query, query = _b === void 0 ? 0 : _b, identifier = _a.identifier, children = _a.children;
+    var bpQuery = q || query; // Aggregate query shorthand
+    var Context = BP_CONTEXTS[identifier];
+    return (React.createElement(Context.Consumer, null, function (bp) { return resolveBp(bpQuery.toString(), bp) && children; }));
 };
 
-Breakpoint.propTypes = {
-  query: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  q: propTypes.oneOfType([propTypes.string, propTypes.number]),
-  identifier: propTypes.string.isRequired,
-  children: propTypes.node.isRequired
-};
-Breakpoint.defaultProps = {
-  query: 0,
-  q: null,
-  // 'query' shorthand
-  identifier: ID_DEFAULT
-};
-
+// TODO remove this when other CSS in JS patterns exist
+/**
+ * TODO.
+ */
+// export function bp() {}
 /**
  * Conditionally render css via template literal (CSS in JS)
  * by providing query string and breakpoint to measure against.
  * Acts as a proxy to `resolveBp` core function.
  *
- * @param {string} query - Breakpoint query string.
- * @param {string|number} bp - Breakpoint name, or px size to resolve query against.
- * @returns {string|undefined} CSS.
+ * @param query - Breakpoint query string.
+ * @param bp - Breakpoint name, or px size to resolve query against.
+ * @returns CSS.
  */
-
-var bpc = function bpc(query, bp) {
-  return function (css) {
-    return !!resolveBp(query, bp) ? css : null;
-  };
-};
+var bpc = function (query, bpName) { return function (css) {
+    return !!resolveBp(query, bpName) ? css : null;
+}; };
 
 exports.AppBreakpoint = AppBreakpoint;
 exports.BREAKPOINTS = BREAKPOINTS;
