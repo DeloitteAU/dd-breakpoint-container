@@ -1,3 +1,3 @@
 import generate from './rollup.common.js';
 
-export default generate(true);
+export default generate({ isDev: true });

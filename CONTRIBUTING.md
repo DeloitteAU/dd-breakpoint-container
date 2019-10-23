@@ -1,7 +1,13 @@
-TODO
+# TODO
 
-- `npm run watch`
-- `cd dev`
+Active development
+
 - `npm run start`
-- local change - livereload
-- lib change - manual hard-refresh
+- new tab:
+  - `cd dev`
+  - `npm run start`
+
+Behaviour
+
+- changes within ./dev - livereload
+- changes within ./src - manual hard-refresh

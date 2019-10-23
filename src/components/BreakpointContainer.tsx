@@ -1,10 +1,9 @@
-import React from 'react';
-import T from 'prop-types';
+import * as React from 'react';
 import cx from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { BREAKPOINTS } from '../data/breakpoints.js';
-import { WithContext, ID_DEFAULT, ID_BROWSER } from './Context.js';
+import { BREAKPOINTS } from 'data/breakpoints';
+import { WithContext, ID_DEFAULT, ID_BROWSER } from 'components/Context';
 
 import '../css/debug.css';
 
@@ -17,7 +16,7 @@ const DEBUG_BPC = false;
 // Although these root Contexts are used in <BrowserContainer/>, they
 // are defined here to avoid circular dependencies (via `import ...`)
 export const BreakpointDefinitions = React.createContext(BREAKPOINTS);
-export const AppBreakpoint = React.createContext();
+export const AppBreakpoint = React.createContext({});
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
@@ -38,63 +37,52 @@ const SELECTORS = {
 // Export
 // ------------------------
 
-export default class BreakpointContainer extends React.Component {
-	static propTypes = {
-		className: T.string,
-		containerClass: T.string,
-		children: T.oneOfType([T.node, T.func]).isRequired,
-		identifier: T.string,
+export interface IProps {
+	className?: string;
+	containerClass?: string;
+	children:
+		| React.ReactNode
+		| ((bpName: string, bpSize: number) => React.ReactNode);
+	identifier?: string;
 
-		customBreakpoints: T.object,
-
-		// Callbacks
-		onChange: T.func,
-
-		// Flags
-		debug: T.bool,
-		noBpClasses: T.bool,
+	customBreakpoints?: {
+		[value: string]: number;
 	};
 
-	static defaultProps = {
-		className: null,
-		containerClass: null,
-		identifier: ID_DEFAULT,
+	// Callbacks
+	onChange?: (bpName: string, bpSize: number) => void;
 
-		customBreakpoints: null,
+	// Flags
+	debug?: boolean;
+	noBpClasses?: boolean;
+}
 
-		onChange: null,
+interface IState {
+	size: number;
+	currentBp: string;
+}
 
-		// Debug null instead of false so we can opt-out of global debug
-		debug: null,
-		noBpClasses: false,
-	};
-
-	constructor() {
-		super();
-
-		this.state = {
-			size: null,
-			currentBp: null,
-		};
-	}
-
-	componentDidUpdate(prevProps, prevState) {
+export default class BreakpointContainer extends React.Component<
+	IProps,
+	IState
+> {
+	componentDidUpdate(prevProps: IProps, prevState: IState) {
 		// Check if bp changed to support 'onChange' callback
 		if (
 			typeof this.props.onChange === 'function' &&
 			this.state.currentBp !== prevState.currentBp
 		) {
-			this.props.onChange(this.state.currentBp);
+			this.props.onChange(this.state.currentBp, this.state.size);
 		}
 	}
 
 	render() {
 		const {
-			identifier,
+			identifier = ID_DEFAULT,
 			className,
 			containerClass,
-			noBpClasses,
-			debug,
+			noBpClasses = false,
+			debug = null,
 			customBreakpoints,
 			children,
 		} = this.props;
@@ -137,12 +125,12 @@ export default class BreakpointContainer extends React.Component {
 							and causing flashes (i.e. rendering at 'none' bp before true
 							breakpoint 'l' is calculated and communicated to children. Causes
 							mobile content/styles to flash render in many cases). */}
-							{this.state.size !== null && (
+							{!!this.state.size && (
 								<>
 									<div className={cx(SELECTORS.BP_CONTENT, className)}>
 										<WithContext {...{ identifier, currentBp }}>
 											{typeof children === 'function'
-												? children(currentBp, this.state.size)
+												? (children as Function)(currentBp, this.state.size)
 												: children}
 										</WithContext>
 									</div>

@@ -1,14 +1,14 @@
-import React from 'react';
-import T from 'prop-types';
+import * as React from 'react';
 
 import BreakpointContainer, {
 	AppBreakpoint,
 	BreakpointDefinitions,
-} from './BreakpointContainer';
-import { BREAKPOINTS } from '../data/breakpoints.js';
-import { ID_BROWSER } from './Context.js';
+	IProps as IBpcProps,
+} from 'components/BreakpointContainer';
+import { BREAKPOINTS } from 'data/breakpoints';
+import { ID_BROWSER } from 'components/Context';
 
-import '../css/debug.css';
+import 'css/debug.css';
 
 // ------------------------
 // Variables
@@ -37,7 +37,11 @@ const SELECTORS = {
 
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
-const BrowserContainer = ({ children, customBreakpoints, ...props }) => (
+const BrowserContainer = ({
+	children,
+	customBreakpoints,
+	...props
+}: IBpcProps) => (
 	<BreakpointContainer
 		identifier={ID_BROWSER}
 		className={SELECTORS.BP_BROWSER}
@@ -60,14 +64,5 @@ const BrowserContainer = ({ children, customBreakpoints, ...props }) => (
 		)}
 	</BreakpointContainer>
 );
-
-BrowserContainer.propTypes = {
-	customBreakpoints: T.object,
-	children: T.oneOfType([T.node, T.func]).isRequired,
-};
-
-BrowserContainer.defaultProps = {
-	customBreakpoints: null,
-};
 
 export default BrowserContainer;

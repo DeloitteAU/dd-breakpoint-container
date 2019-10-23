@@ -8,10 +8,13 @@ module.exports = {
 
 	// Single quotes for strings, except in JSX
 	singleQuote: true,
-	quoteProps: "consistent",
+	quoteProps: 'consistent',
 	jsxSingleQuote: false,
 	jsxBracketSameLine: false,
 
 	// Trailing commas for improved diff
-	trailingComma: "all"
+	trailingComma: 'all',
+
+	// Enforce LF for line breaks
+	endOfLine: 'lf',
 };

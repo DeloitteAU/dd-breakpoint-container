@@ -6,31 +6,33 @@
  * component parsing support) etc
  */
 
-import React from 'react';
-import T from 'prop-types';
+import * as React from 'react';
 
 export const ID_DEFAULT = 'default';
 export const ID_BROWSER = 'browser';
 
 // NOTE: Other identifier contexts are created as-needed in WithContext
-export const BP_CONTEXTS = {
-	[ID_DEFAULT]: React.createContext(),
-	[ID_BROWSER]: React.createContext(),
+export const BP_CONTEXTS: { [value: string]: any } = {
+	[ID_DEFAULT]: React.createContext(null),
+	[ID_BROWSER]: React.createContext(null),
 };
+
+interface IProps {
+	identifier: string;
+	currentBp?: string;
+	children: React.ReactNode;
+}
 
 /**
  * TODO.
- *
- * @param {*} params
- * @returns {Function}
  */
-function WithContext({ identifier, currentBp, children }) {
+const WithContext = ({ identifier, currentBp, children }: IProps) => {
 	// If a BPC has specified an identifier other than the default
 	const hasIdentifier = identifier !== ID_DEFAULT;
 
 	// Create specific context if it doesn't already exist
 	if (hasIdentifier && !BP_CONTEXTS[identifier]) {
-		BP_CONTEXTS[identifier] = React.createContext();
+		BP_CONTEXTS[identifier] = React.createContext(null);
 	}
 
 	// CoreContext aka 'default' context must always be present, even if the
@@ -54,12 +56,6 @@ function WithContext({ identifier, currentBp, children }) {
 			)}
 		</>
 	);
-}
-
-WithContext.propTypes = {
-	identifier: T.string.isRequired,
-	currentBp: T.string,
-	children: T.node.isRequired,
 };
 
 WithContext.defaultProps = {

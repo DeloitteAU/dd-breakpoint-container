@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"inlineSourceMap": true,
+		"noImplicitAny": true,
+		"moduleResolution": "node",
+		"strict": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"jsx": "react",
+		"baseUrl": "./src"
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules"],
+	"typeRoots": ["node_modules/@types"]
+}

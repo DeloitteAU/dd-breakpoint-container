@@ -10,7 +10,7 @@ import livereload from 'rollup-plugin-livereload';
 import replace from 'rollup-plugin-replace';
 
 export default {
-	input: './src/index.js',
+	input: './src/index.ts',
 	output: {
 		file: './dist/bundle.js',
 		format: 'umd',

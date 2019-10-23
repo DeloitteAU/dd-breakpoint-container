@@ -1,5 +1,11 @@
 # Changelog
 
+## Pending release
+
+- Fix: ./lib now properly transpiling down to ES5
+- Refactor: TypeScript
+- Feature: Added \*.d.ts type files to ./lib
+
 ## 0.7.0
 
 - Feature: Added `customBreakpoints` prop to override default breakpoint names/sizes.

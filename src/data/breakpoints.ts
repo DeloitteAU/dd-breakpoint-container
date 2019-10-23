@@ -1,6 +1,6 @@
 // NOTE: These key:value pairs mirror those in this module's SCSS
 // If you're going to add or change bps, check the notes near the top of the SCSS file
-export const BREAKPOINTS = {
+export const BREAKPOINTS: { [value: string]: number } = {
 	none: 0,
 	xxxs: 320,
 	xxs: 359,
@@ -17,10 +17,9 @@ export const BREAKPOINTS = {
  * Returns the breakpoint 'upper-limit' width in pixels,
  * which is essentially the width of the next breakpoint.
  *
- * @param {string} bpName - Named breakpoint
- * @returns {number}
+ * @param bpName - Named breakpoint
  */
-export function getBpUpperLimit(bpName) {
+export function getBpUpperLimit(bpName: string) {
 	if (!Number.isNaN(parseInt(bpName))) {
 		return null;
 	}
@@ -31,7 +30,7 @@ export function getBpUpperLimit(bpName) {
 	// Check edge-case for when target breakpoint is the last in the array, in which
 	// case Infinity is an acceptable upper-bound, since there is no threshold
 	const nextHighestBpWidth =
-		nextHighestBpIndex !== BREAKPOINTS.length - 1
+		nextHighestBpIndex !== bpKeys.length - 1
 			? BREAKPOINTS[bpKeys[nextHighestBpIndex]]
 			: Infinity;
 
@@ -43,15 +42,14 @@ export function getBpUpperLimit(bpName) {
  * string must be in format `${lower}, ${upper}` (comma separated), where lower/upper
  * are either named breakpoints or px values. Upper is optional.
  *
- * @param {string} query - Breakpoint query string.
- * @param {string|number} bp - Breakpoint name, or px size to resolve query against.
- * @returns {boolean}
+ * @param query - Breakpoint query string.
+ * @param bp - Breakpoint name, or px size to resolve query against.
  */
-export function resolveBp(query, bp) {
+export function resolveBp(query: string, bp: string | number) {
 	// Helper function to parse breakpoint into pixels
 	// Non-strict null check to avoid '0' being evaluated as falsey
-	const parseBp = bp =>
-		BREAKPOINTS[bp] != null ? BREAKPOINTS[bp] : parseInt(bp);
+	const parseBp = (bp: string | number) =>
+		BREAKPOINTS[bp] != null ? BREAKPOINTS[bp] : parseInt(bp as string);
 
 	// Extract lower and upper-bounds from query
 	// Normalise string and comma/whitespace separation

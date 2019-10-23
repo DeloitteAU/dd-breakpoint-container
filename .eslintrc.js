@@ -1,12 +1,26 @@
 module.exports = {
 	settings: {
-		react: {
+		'react': {
 			version: '16.2',
+		},
+
+		// No falsy path resolve errors for imports directr from src
+		// i.e. `import ... from 'core/...';` and `import ... from 'components/...';`
+		'import/resolver': {
+			'babel-module': {},
+			'node': {
+				paths: ['src'],
+				extensions: ['.js', '.jsx', '.ts', '.tsx'],
+			},
 		},
 	},
 	extends: [
 		// Base
 		'@deloitte-digital-au/eslint-config-react',
+
+		// TypeScript
+		'plugin:@typescript-eslint/recommended',
+		'prettier/@typescript-eslint',
 
 		// Prettier
 		'plugin:prettier/recommended',
@@ -16,8 +30,8 @@ module.exports = {
 		node: true,
 		es6: true,
 	},
-	parser: 'babel-eslint',
-	plugins: ['import', 'jsdoc', 'react', 'prettier'],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint', 'react', 'prettier'],
 	rules: {
 		// Mark Prettier syntax errors
 		'prettier/prettier': 'error',
@@ -25,15 +39,26 @@ module.exports = {
 		// Enforce React.Fragment </> shorthand
 		'react/jsx-fragments': 1,
 
-		// No import errors for peer dependencies
-		'import/no-unresolved': [2, { ignore: ['^react$', '^classnames$'] }],
+		// Prefixing interfaces is a Microsoft standard
+		// Ref: https://docs.microsoft.com/en-us/windows/desktop/stg/coding-style-conventions
+		'@typescript-eslint/interface-name-prefix': 0,
 	},
 	globals: {
-		// Cypress
-		cy: true,
-		context: true,
+		window: true,
+		document: true,
+		process: true,
+		require: true,
+
+		// Testing
 		beforeEach: true,
 		it: true,
 		describe: true,
+		// Cypress
+		cy: true,
+		context: true,
+		// Jest
+		jest: true,
+		test: true,
+		expect: true,
 	},
 };
