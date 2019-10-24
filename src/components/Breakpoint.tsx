@@ -6,7 +6,7 @@ import { BP_CONTEXTS, ID_DEFAULT } from './Context';
 interface IProps {
 	query?: string | number;
 	q?: string | number;
-	identifier: string;
+	identifier?: string;
 	children: React.ReactNode;
 }
 
