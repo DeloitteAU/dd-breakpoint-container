@@ -3221,7 +3221,7 @@ var withBrowserContainer = function (Component, bpcProps) {
 };
 
 var Breakpoint = function (_a) {
-    var q = _a.q, _b = _a.query, query = _b === void 0 ? 0 : _b, identifier = _a.identifier, children = _a.children;
+    var q = _a.q, _b = _a.query, query = _b === void 0 ? 0 : _b, _c = _a.identifier, identifier = _c === void 0 ? ID_DEFAULT : _c, children = _a.children;
     var bpQuery = q || query; // Aggregate query shorthand
     var Context = BP_CONTEXTS[identifier];
     return (React.createElement(Context.Consumer, null, function (bp) { return resolveBp(bpQuery.toString(), bp) && children; }));

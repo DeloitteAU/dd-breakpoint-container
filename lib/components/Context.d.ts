@@ -22,7 +22,7 @@ interface IProps {
 declare const WithContext: {
     ({ identifier, currentBp, children }: IProps): JSX.Element;
     defaultProps: {
-        currentBp: any;
+        currentBp: null;
     };
 };
 export { WithContext };

@@ -7,7 +7,7 @@ export declare const BREAKPOINTS: {
  *
  * @param bpName - Named breakpoint
  */
-export declare function getBpUpperLimit(bpName: string): number;
+export declare function getBpUpperLimit(bpName: string): number | null;
 /**
  * Resolves a breakpoint query against a specified breakpoint or value. Query
  * string must be in format `${lower}, ${upper}` (comma separated), where lower/upper
