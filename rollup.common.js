@@ -45,7 +45,6 @@ export default ({ isDev = false } = {}) => {
 			commonjs({ sourceMap, extensions }),
 			postcss({
 				inject: true,
-				modules: true,
 				sourceMap,
 				exclude: 'node_modules/**',
 				plugins: [pcssPresetEnv(), autoprefixer(), !isDev && cssnano()],

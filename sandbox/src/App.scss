@@ -1,0 +1,25 @@
+@import '~dd-breakpoint-container/lib/mixins.scss';
+
+.App {
+	color: orange;
+
+	@include bp(xs) {
+		color: forestgreen;
+	}
+}
+
+.test-bpc {
+	color: blue;
+
+	@include bpc(xs) {
+		color: magenta;
+	}
+
+	@include bpc(s) {
+		color: red;
+	}
+
+	@include bp(l) {
+		color: rebeccapurple;
+	}
+}

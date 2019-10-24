@@ -8,6 +8,7 @@
 - Feat: Added \*.d.ts type files to ./lib
 - Chore: core-js moved to peerDependency
 - Feat: Added \*.esm.js pkg.module to ./dist
+- Fix: 'css/debug.css' no longer being mistakenly imported in the build
 - Chore: Removed ./dev Rollup server; replaced with ./sandbox create-react-app
 
 ## 0.7.0
