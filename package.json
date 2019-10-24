@@ -124,7 +124,7 @@
       "patterns": [
         "src"
       ],
-      "extensions": "js,scss",
+      "extensions": "ts,tsx,js,scss",
       "runOnChangeOnly": true,
       "delay": 2000
     }
