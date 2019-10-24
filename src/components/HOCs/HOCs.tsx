@@ -15,7 +15,7 @@ import BrowserContainer from 'components/BrowserContainer';
  * @param bpcProps - BreakpointContainer props.
  */
 const withBpcTemplate = <P extends object>(
-	BreakpointWrapper: React.ComponentType,
+	BreakpointWrapper: any,
 	Component: React.ComponentType<P>,
 	bpcProps: IBpcProps,
 ): React.FC<
@@ -50,18 +50,12 @@ const withBpcTemplate = <P extends object>(
 const withBreakpointContainer = (
 	Component: React.ComponentType,
 	bpcProps: IBpcProps,
-) =>
-	withBpcTemplate(
-		BreakpointContainer as React.ComponentType,
-		Component,
-		bpcProps,
-	);
+) => withBpcTemplate(BreakpointContainer, Component, bpcProps);
 
 const withBrowserContainer = (
 	Component: React.ComponentType,
 	bpcProps: IBpcProps,
-) =>
-	withBpcTemplate(BrowserContainer as React.ComponentType, Component, bpcProps);
+) => withBpcTemplate(BrowserContainer, Component, bpcProps);
 
 // ------------------------
 
