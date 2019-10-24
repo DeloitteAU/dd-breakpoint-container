@@ -5,16 +5,19 @@
 - Fix: ./lib now properly transpiling down to ES5
 - Fix: ./lib mixins.scss is now properly consolidated into one file, (was missing adjacent .scss file imports)
 - Refactor: TypeScript
-- Feature: Added \*.d.ts type files to ./lib
+- Feat: Added \*.d.ts type files to ./lib
+- Chore: core-js moved to peerDependency
+- Feat: Added \*.esm.js pkg.module to ./dist
+- Chore: Removed ./dev Rollup server; replaced with ./sandbox create-react-app
 
 ## 0.7.0
 
-- Feature: Added `customBreakpoints` prop to override default breakpoint names/sizes.
+- Feat: Added `customBreakpoints` prop to override default breakpoint names/sizes.
 - Fix: No more first-pass render flashes when there's no breakpoint-on-load. Will prevent your components flash rendering mobile styles before settling on a desktop breakpoint.
 
 ## 0.6.0
 
-- Feature: Added `AppBreakpoint` React Context export, (the `<Provider/>` of which lives in `<BrowserContainer/>`).
+- Feat: Added `AppBreakpoint` React Context export, (the `<Provider/>` of which lives in `<BrowserContainer/>`).
 
 ## 0.5.7
 

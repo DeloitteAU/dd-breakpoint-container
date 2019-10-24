@@ -5,6 +5,8 @@ import ReactResizeDetector from 'react-resize-detector';
 import { BREAKPOINTS } from 'data/breakpoints';
 import { WithContext, ID_DEFAULT, ID_BROWSER } from 'components/Context';
 
+// This isn't an absolute import, otherwise `css/debug.css` is parsed by PostCSS
+// as though it was a package, and included as an import at the top of the cjs/esm files
 import '../css/debug.css';
 
 // ------------------------
@@ -12,11 +14,6 @@ import '../css/debug.css';
 // ------------------------
 
 const DEBUG_BPC = false;
-
-// Although these root Contexts are used in <BrowserContainer/>, they
-// are defined here to avoid circular dependencies (via `import ...`)
-export const BreakpointDefinitions = React.createContext(BREAKPOINTS);
-export const AppBreakpoint = React.createContext({});
 
 // NOTE: If you're going to change any CLASSES or SELECTORS, you'll
 // need to also change the  corresponding variables in the SCSS file
@@ -26,12 +23,18 @@ const CLASSES = {
 	DEBUG_MODIFIER: '-debug',
 };
 
-const SELECTORS = {
+// Exported so BrowserContainer can utilise it
+export const SELECTORS = {
 	BP_BROWSER: `${CLASSES.CORE}__browser`,
 	BP_CONTENT: `${CLASSES.CORE}__content`,
 	DEBUG_INDICATOR: `${CLASSES.CORE}__debugIndicator`,
 	DEBUG_IDENTIFIER: `${CLASSES.CORE}__debugIdentifier`,
 };
+
+// Although these root Contexts are used in <BrowserContainer/>, they
+// are defined here to avoid circular dependencies (via `import ...`)
+export const BreakpointDefinitions = React.createContext(BREAKPOINTS);
+export const AppBreakpoint = React.createContext({});
 
 // ------------------------
 // Export

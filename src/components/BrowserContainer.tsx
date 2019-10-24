@@ -4,36 +4,12 @@ import BreakpointContainer, {
 	AppBreakpoint,
 	BreakpointDefinitions,
 	IProps as IBpcProps,
+	SELECTORS,
 } from 'components/BreakpointContainer';
 import { BREAKPOINTS } from 'data/breakpoints';
 import { ID_BROWSER } from 'components/Context';
 
-import 'css/debug.css';
-
-// ------------------------
-// Variables
-// ------------------------
-
 const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
-
-// NOTE: If you're going to change any CLASSES or SELECTORS, you'll
-// need to also change the  corresponding variables in the SCSS file
-const CLASSES = {
-	CORE: 'bpc',
-	BP_PREFIX: '-',
-	DEBUG_MODIFIER: '-debug',
-};
-
-const SELECTORS = {
-	BP_BROWSER: `${CLASSES.CORE}__browser`,
-	BP_CONTENT: `${CLASSES.CORE}__content`,
-	DEBUG_INDICATOR: `${CLASSES.CORE}__debugIndicator`,
-	DEBUG_IDENTIFIER: `${CLASSES.CORE}__debugIdentifier`,
-};
-
-// ------------------------
-// Export
-// ------------------------
 
 // Emulates media query functionality, and enables 'standalone' <Breakpoint/>
 // Also provides backward-compatibility with DDBreakpoints original 'bp()' mixin
