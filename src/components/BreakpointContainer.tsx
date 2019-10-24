@@ -53,7 +53,7 @@ export interface IProps {
 	};
 
 	// Callbacks
-	onChange?: (bpName: string, bpSize: number) => void;
+	onChange?: (bpName?: string, bpSize?: number) => void;
 
 	// Flags
 	debug?: boolean;
@@ -61,14 +61,16 @@ export interface IProps {
 }
 
 interface IState {
-	size: number;
-	currentBp: string;
+	size?: number;
+	currentBp?: string;
 }
 
 export default class BreakpointContainer extends React.Component<
 	IProps,
 	IState
 > {
+	state = { size: undefined, currentBp: undefined };
+
 	componentDidUpdate(prevProps: IProps, prevState: IState) {
 		// Check if bp changed to support 'onChange' callback
 		if (
@@ -99,7 +101,7 @@ export default class BreakpointContainer extends React.Component<
 					const breakpointList = customBreakpoints || breakpoints;
 
 					const matchingBps = Object.keys(breakpointList).filter(
-						bpName => this.state.size >= breakpointList[bpName],
+						bpName => (this.state.size || 0) >= breakpointList[bpName],
 					);
 					const currentBp = matchingBps[matchingBps.length - 1];
 
