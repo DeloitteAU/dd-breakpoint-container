@@ -1,3 +1,5 @@
+- Linting and TS conventions check
+- Optimisation pass-over with React Profiler
 - Warnings around BrowserContainer
   - normalize.css (so its truly edge-to-edge)
   - @bp() SCSS will only be from there down, and therefore wont be usable in `body` selector, etc
@@ -31,7 +33,6 @@
 - README description clarity, what/why, GIF example
 - README badges for version, coverage, build, etc
 - Note peer dependencies in README
-- CONTRIBUTING.md: dev process (`npm start` then `cd dev && npm start`)
 
 ## Package
 
@@ -50,7 +51,7 @@
 ## TBD
 
 - Reinvestigate context API approach to minimise number of event listeners (i.e. propagate from browser container) - any performance gain?
-- can accomplish this with Context API + hooks reducers
+  - can accomplish this with Context API + hooks reducers
 - Is there a way to determine the absolute minimum React version for max backwards compatibility? Maybe we can trial and error once unit tests are in?
 - React hooks
 - Possible/practical to share SCSS / JS vars? Webpack seems equipped to do it? (Styled Components...?)
