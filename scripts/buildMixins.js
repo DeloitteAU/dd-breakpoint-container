@@ -14,19 +14,26 @@ const fs = require('fs');
 
 const mixins = 'src/mixins.scss';
 const variables = 'src/scss/_variables.scss';
-const importStatement = '@import \'scss/variables\';';
-const output = 'dist/mixins.scss';
+const importStatement = "@import 'scss/variables';";
+const outputDist = 'dist/mixins.scss';
+const outputLib = 'lib/mixins.scss';
 
 fs.readFile(mixins, 'utf8', (err, data) => {
-	if (err) { throw err; }
+	if (err) {
+		throw err;
+	}
 
 	let mixinsFile = data.split('\n');
 
 	// Find line index of variable '@import' statement
-	const importIndex = mixinsFile.findIndex(line => line.indexOf(importStatement) >= 0);
+	const importIndex = mixinsFile.findIndex(
+		line => line.indexOf(importStatement) >= 0,
+	);
 
 	fs.readFile(variables, 'utf8', (err, data) => {
-		if (err) { throw err; }
+		if (err) {
+			throw err;
+		}
 
 		const variablesFile = data.split('\n');
 
@@ -42,7 +49,16 @@ fs.readFile(mixins, 'utf8', (err, data) => {
 		// Merge back into a file
 		mixinsFile = mixinsFile.join('\n');
 
-		// Write our amended file to /dist folder
-		fs.writeFile(output, mixinsFile, err => { if (err) { throw err; } });
+		// Write our amended file to /dist & /lib folders
+		fs.writeFile(outputDist, mixinsFile, err => {
+			if (err) {
+				throw err;
+			}
+		});
+		fs.writeFile(outputLib, mixinsFile, err => {
+			if (err) {
+				throw err;
+			}
+		});
 	});
 });

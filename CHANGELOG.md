@@ -3,6 +3,7 @@
 ## Pending release
 
 - Fix: ./lib now properly transpiling down to ES5
+- Fix: ./lib mixins.scss is now properly consolidated into one file, (was missing adjacent .scss file imports)
 - Refactor: TypeScript
 - Feature: Added \*.d.ts type files to ./lib
 
