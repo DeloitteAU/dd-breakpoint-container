@@ -1,5 +1,11 @@
 import * as React from 'react';
 import '../css/debug.css';
+export declare const SELECTORS: {
+    BP_BROWSER: string;
+    BP_CONTENT: string;
+    DEBUG_INDICATOR: string;
+    DEBUG_IDENTIFIER: string;
+};
 export declare const BreakpointDefinitions: React.Context<{
     [value: string]: number;
 }>;

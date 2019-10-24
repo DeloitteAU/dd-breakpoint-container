@@ -1,7 +1,21 @@
 {
   "dist/cjs/dd.BreakpointContainer.min.js": {
-    "bundled": 61316,
-    "minified": 34859,
-    "gzipped": 10542
+    "bundled": 60592,
+    "minified": 34991,
+    "gzipped": 10546
+  },
+  "dist/dd.BreakpointContainer.esm.js": {
+    "bundled": 60764,
+    "minified": 34274,
+    "gzipped": 10442,
+    "treeshaked": {
+      "rollup": {
+        "code": 19125,
+        "import_statements": 165
+      },
+      "webpack": {
+        "code": 20777
+      }
+    }
   }
 }
