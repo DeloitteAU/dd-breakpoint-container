@@ -10,6 +10,7 @@
   },
   "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
   "main": "./lib/index.js",
+  "module": "./dist/dd.BreakpointContainer.esm.js",
   "types": "./lib/index.d.ts",
   "files": [
     "lib/",

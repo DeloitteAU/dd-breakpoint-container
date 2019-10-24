@@ -11,21 +11,32 @@ import pcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+
 export default ({ isDev = false } = {}) => {
 	const sourceMap = isDev ? 'inline' : false;
-	const extensions = ['.js', '.jsx', '.ts', '.tsx'];
-
-	return {
-		input: 'src/index.ts',
-		external: ['react', 'css/debug.css'],
-		output: {
-			name: 'dd-breakpoint-container',
+	const output = [
+		{
 			file: `dist/cjs/dd.BreakpointContainer${isDev ? '.dev' : '.min'}.js`,
 			format: 'cjs',
 			sourceMap,
 			globals: { react: 'React' },
 			exports: 'named',
 		},
+	];
+
+	if (isDev) {
+		output.push({
+			file: 'dist/dd.BreakpointContainer.esm.js',
+			sourceMap,
+			format: 'esm',
+		});
+	}
+
+	return {
+		input: 'src/index.ts',
+		external: ['react', 'css/debug.css'],
+		output,
 		plugins: [
 			progress(),
 			resolve({ extensions }),
