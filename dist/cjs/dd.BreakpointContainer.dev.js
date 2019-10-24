@@ -3093,7 +3093,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".debug_bpc__3jjp5 {\n  width: 100%; }\n\n.debug_-debug__1_g7k {\n  position: relative; }\n  .debug_-debug__1_g7k .debug_bpc__debugIndicator__2b5MU,\n  .debug_-debug__1_g7k > .debug_bpc__content__33T5x:not(.debug_bpc__browser__1MczQ) ~ .debug_bpc__debugIdentifier__jj8Cf {\n    color: black;\n    background-color: white;\n    border: 1px dashed black;\n    font-size: 10px;\n    display: block;\n    position: absolute;\n    top: 0;\n    min-height: 15px;\n    z-index: 9999;\n    padding: 0 3px;\n    font-family: monospace;\n    content: 'none'; }\n  .debug_-debug__1_g7k .debug_bpc__debugIdentifier__jj8Cf {\n    right: 0; }\n  .debug_-debug__1_g7k > .debug_bpc__content__33T5x:not(.debug_bpc__browser__1MczQ) {\n    border: 1px dashed black; }\n  .debug_-debug__1_g7k > .debug_bpc__browser__1MczQ ~ .debug_bpc__debugIndicator__2b5MU {\n    position: fixed;\n    border-style: solid;\n    top: 0;\n    left: 0; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRlYnVnLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVcsRUFBRTs7QUFFZjtFQUNFLGtCQUFrQixFQUFFO0VBQ3BCOztJQUVFLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsd0JBQXdCO0lBQ3hCLGVBQWU7SUFDZixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixnQkFBZ0I7SUFDaEIsYUFBYTtJQUNiLGNBQWM7SUFDZCxzQkFBc0I7SUFDdEIsZUFBZSxFQUFFO0VBQ25CO0lBQ0UsUUFBUSxFQUFFO0VBQ1o7SUFDRSx3QkFBd0IsRUFBRTtFQUM1QjtJQUNFLGVBQWU7SUFDZixtQkFBbUI7SUFDbkIsTUFBTTtJQUNOLE9BQU8sRUFBRSIsImZpbGUiOiJkZWJ1Zy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYnBjIHtcbiAgd2lkdGg6IDEwMCU7IH1cblxuLi1kZWJ1ZyB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTsgfVxuICAuLWRlYnVnIC5icGNfX2RlYnVnSW5kaWNhdG9yLFxuICAuLWRlYnVnID4gLmJwY19fY29udGVudDpub3QoLmJwY19fYnJvd3NlcikgfiAuYnBjX19kZWJ1Z0lkZW50aWZpZXIge1xuICAgIGNvbG9yOiBibGFjaztcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICBib3JkZXI6IDFweCBkYXNoZWQgYmxhY2s7XG4gICAgZm9udC1zaXplOiAxMHB4O1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbWluLWhlaWdodDogMTVweDtcbiAgICB6LWluZGV4OiA5OTk5O1xuICAgIHBhZGRpbmc6IDAgM3B4O1xuICAgIGZvbnQtZmFtaWx5OiBtb25vc3BhY2U7XG4gICAgY29udGVudDogJ25vbmUnOyB9XG4gIC4tZGVidWcgLmJwY19fZGVidWdJZGVudGlmaWVyIHtcbiAgICByaWdodDogMDsgfVxuICAuLWRlYnVnID4gLmJwY19fY29udGVudDpub3QoLmJwY19fYnJvd3Nlcikge1xuICAgIGJvcmRlcjogMXB4IGRhc2hlZCBibGFjazsgfVxuICAuLWRlYnVnID4gLmJwY19fYnJvd3NlciB+IC5icGNfX2RlYnVnSW5kaWNhdG9yIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDsgfVxuIl19 */";
+var css = ".bpc {\n  width: 100%; }\n\n.-debug {\n  position: relative; }\n  .-debug .bpc__debugIndicator,\n  .-debug > .bpc__content:not(.bpc__browser) ~ .bpc__debugIdentifier {\n    color: black;\n    background-color: white;\n    border: 1px dashed black;\n    font-size: 10px;\n    display: block;\n    position: absolute;\n    top: 0;\n    min-height: 15px;\n    z-index: 9999;\n    padding: 0 3px;\n    font-family: monospace;\n    content: 'none'; }\n  .-debug .bpc__debugIdentifier {\n    right: 0; }\n  .-debug > .bpc__content:not(.bpc__browser) {\n    border: 1px dashed black; }\n  .-debug > .bpc__browser ~ .bpc__debugIndicator {\n    position: fixed;\n    border-style: solid;\n    top: 0;\n    left: 0; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRlYnVnLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQVcsRUFBRTs7QUFFZjtFQUNFLGtCQUFrQixFQUFFO0VBQ3BCOztJQUVFLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsd0JBQXdCO0lBQ3hCLGVBQWU7SUFDZixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixnQkFBZ0I7SUFDaEIsYUFBYTtJQUNiLGNBQWM7SUFDZCxzQkFBc0I7SUFDdEIsZUFBZSxFQUFFO0VBQ25CO0lBQ0UsUUFBUSxFQUFFO0VBQ1o7SUFDRSx3QkFBd0IsRUFBRTtFQUM1QjtJQUNFLGVBQWU7SUFDZixtQkFBbUI7SUFDbkIsTUFBTTtJQUNOLE9BQU8sRUFBRSIsImZpbGUiOiJkZWJ1Zy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYnBjIHtcbiAgd2lkdGg6IDEwMCU7IH1cblxuLi1kZWJ1ZyB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTsgfVxuICAuLWRlYnVnIC5icGNfX2RlYnVnSW5kaWNhdG9yLFxuICAuLWRlYnVnID4gLmJwY19fY29udGVudDpub3QoLmJwY19fYnJvd3NlcikgfiAuYnBjX19kZWJ1Z0lkZW50aWZpZXIge1xuICAgIGNvbG9yOiBibGFjaztcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICBib3JkZXI6IDFweCBkYXNoZWQgYmxhY2s7XG4gICAgZm9udC1zaXplOiAxMHB4O1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbWluLWhlaWdodDogMTVweDtcbiAgICB6LWluZGV4OiA5OTk5O1xuICAgIHBhZGRpbmc6IDAgM3B4O1xuICAgIGZvbnQtZmFtaWx5OiBtb25vc3BhY2U7XG4gICAgY29udGVudDogJ25vbmUnOyB9XG4gIC4tZGVidWcgLmJwY19fZGVidWdJZGVudGlmaWVyIHtcbiAgICByaWdodDogMDsgfVxuICAuLWRlYnVnID4gLmJwY19fY29udGVudDpub3QoLmJwY19fYnJvd3Nlcikge1xuICAgIGJvcmRlcjogMXB4IGRhc2hlZCBibGFjazsgfVxuICAuLWRlYnVnID4gLmJwY19fYnJvd3NlciB+IC5icGNfX2RlYnVnSW5kaWNhdG9yIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDsgfVxuIl19 */";
 styleInject(css);
 
 // ------------------------
@@ -3121,7 +3121,9 @@ var AppBreakpoint = React.createContext({});
 var BreakpointContainer = /** @class */ (function (_super) {
     __extends(BreakpointContainer, _super);
     function BreakpointContainer() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.state = { size: undefined, currentBp: undefined };
+        return _this;
     }
     BreakpointContainer.prototype.componentDidUpdate = function (prevProps, prevState) {
         // Check if bp changed to support 'onChange' callback
@@ -3138,7 +3140,7 @@ var BreakpointContainer = /** @class */ (function (_super) {
         return (React.createElement(BreakpointDefinitions.Consumer, null, function (breakpoints) {
             var _a;
             var breakpointList = customBreakpoints || breakpoints;
-            var matchingBps = Object.keys(breakpointList).filter(function (bpName) { return _this.state.size >= breakpointList[bpName]; });
+            var matchingBps = Object.keys(breakpointList).filter(function (bpName) { return (_this.state.size || 0) >= breakpointList[bpName]; });
             var currentBp = matchingBps[matchingBps.length - 1];
             // Formatted breakpoints for className output
             var classBps = matchingBps
@@ -3194,12 +3196,8 @@ var withBpcTemplate = function (BreakpointWrapper, Component, bpcProps) {
     return WithBpc;
 };
 // ------------------------
-var withBreakpointContainer = function (Component, bpcProps) {
-    return withBpcTemplate(BreakpointContainer, Component, bpcProps);
-};
-var withBrowserContainer = function (Component, bpcProps) {
-    return withBpcTemplate(BrowserContainer, Component, bpcProps);
-};
+var withBreakpointContainer = function (Component, bpcProps) { return withBpcTemplate(BreakpointContainer, Component, bpcProps); };
+var withBrowserContainer = function (Component, bpcProps) { return withBpcTemplate(BrowserContainer, Component, bpcProps); };
 
 var Breakpoint = function (_a) {
     var q = _a.q, _b = _a.query, query = _b === void 0 ? 0 : _b, _c = _a.identifier, identifier = _c === void 0 ? ID_DEFAULT : _c, children = _a.children;
