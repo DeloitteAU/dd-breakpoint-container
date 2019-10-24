@@ -3,8 +3,8 @@ import * as React from 'react';
 import {
 	default as BreakpointContainer,
 	IProps as IBpcProps,
-} from 'components/BreakpointContainer';
-import BrowserContainer from 'components/BrowserContainer';
+} from '../BreakpointContainer';
+import BrowserContainer from '../BrowserContainer';
 
 /**
  * Centralised BreakpointContainer HOC template

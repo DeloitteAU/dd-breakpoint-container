@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { resolveBp } from 'data/breakpoints';
-import { BP_CONTEXTS, ID_DEFAULT } from 'components/Context';
+import { resolveBp } from '../data/breakpoints';
+import { BP_CONTEXTS, ID_DEFAULT } from './Context';
 
 interface IProps {
 	query?: string | number;

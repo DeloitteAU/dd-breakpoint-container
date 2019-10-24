@@ -1,7 +1,7 @@
 // TODO remove this when other CSS in JS patterns exist
 /* eslint-disable import/prefer-default-export */
 
-import { resolveBp } from 'data/breakpoints';
+import { resolveBp } from './breakpoints';
 
 /**
  * TODO.

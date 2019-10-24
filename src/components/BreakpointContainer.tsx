@@ -2,11 +2,9 @@ import * as React from 'react';
 import cx from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 
-import { BREAKPOINTS } from 'data/breakpoints';
-import { WithContext, ID_DEFAULT, ID_BROWSER } from 'components/Context';
+import { BREAKPOINTS } from '../data/breakpoints';
+import { WithContext, ID_DEFAULT, ID_BROWSER } from './Context';
 
-// This isn't an absolute import, otherwise `css/debug.css` is parsed by PostCSS
-// as though it was a package, and included as an import at the top of the cjs/esm files
 import '../css/debug.css';
 
 // ------------------------

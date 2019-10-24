@@ -5,9 +5,9 @@ import BreakpointContainer, {
 	BreakpointDefinitions,
 	IProps as IBpcProps,
 	SELECTORS,
-} from 'components/BreakpointContainer';
-import { BREAKPOINTS } from 'data/breakpoints';
-import { ID_BROWSER } from 'components/Context';
+} from './BreakpointContainer';
+import { BREAKPOINTS } from '../data/breakpoints';
+import { ID_BROWSER } from './Context';
 
 const DEBUG_BROWSER = process.env.NODE_ENV === 'development';
 
