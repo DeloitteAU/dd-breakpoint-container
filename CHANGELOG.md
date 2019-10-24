@@ -1,6 +1,6 @@
 # Changelog
 
-## Pending release
+## 0.8.0
 
 - Fix: ./lib now properly transpiling down to ES5
 - Fix: ./lib mixins.scss is now properly consolidated into one file, (was missing adjacent .scss file imports)
