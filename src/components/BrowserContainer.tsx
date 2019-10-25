@@ -33,7 +33,9 @@ const BrowserContainer = ({
 						certain that the above Provider only has one
 						child, which is a strict requirement that would
 						otherwise depend on how children are passed */}
-						{children}
+						{typeof children === 'function'
+							? (children as Function)(bpName, bpSize)
+							: children}
 					</>
 				</AppBreakpoint.Provider>
 			</BreakpointDefinitions.Provider>

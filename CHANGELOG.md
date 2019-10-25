@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1
+
+- Fix: BrowserContainer also supports child functions, parity with BreakpointContainer
+
 ## 0.8.0
 
 - Fix: ./lib now properly transpiling down to ES5
