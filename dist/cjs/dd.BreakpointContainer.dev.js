@@ -3175,7 +3175,9 @@ var BrowserContainer = function (_a) {
     var children = _a.children, customBreakpoints = _a.customBreakpoints, props = __rest(_a, ["children", "customBreakpoints"]);
     return (React.createElement(BreakpointContainer, __assign({ identifier: ID_BROWSER, className: SELECTORS.BP_BROWSER, debug: DEBUG_BROWSER, customBreakpoints: customBreakpoints }, props), function (bpName, bpSize) { return (React.createElement(BreakpointDefinitions.Provider, { value: customBreakpoints || BREAKPOINTS },
         React.createElement(AppBreakpoint.Provider, { value: { bpName: bpName, bpSize: bpSize } },
-            React.createElement(React.Fragment, null, children)))); }));
+            React.createElement(React.Fragment, null, typeof children === 'function'
+                ? children(bpName, bpSize)
+                : children)))); }));
 };
 
 /**

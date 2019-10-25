@@ -3168,7 +3168,9 @@ var BrowserContainer = function (_a) {
     var children = _a.children, customBreakpoints = _a.customBreakpoints, props = __rest(_a, ["children", "customBreakpoints"]);
     return (createElement(BreakpointContainer, __assign({ identifier: ID_BROWSER, className: SELECTORS.BP_BROWSER, debug: DEBUG_BROWSER, customBreakpoints: customBreakpoints }, props), function (bpName, bpSize) { return (createElement(BreakpointDefinitions.Provider, { value: customBreakpoints || BREAKPOINTS },
         createElement(AppBreakpoint.Provider, { value: { bpName: bpName, bpSize: bpSize } },
-            createElement(Fragment, null, children)))); }));
+            createElement(Fragment, null, typeof children === 'function'
+                ? children(bpName, bpSize)
+                : children)))); }));
 };
 
 /**

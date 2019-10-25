@@ -1,8 +1,8 @@
 {
   "dist/cjs/dd.BreakpointContainer.min.js": {
-    "bundled": 60227,
-    "minified": 34626,
-    "gzipped": 10509
+    "bundled": 60255,
+    "minified": 34654,
+    "gzipped": 10516
   },
   "dist/dd.BreakpointContainer.esm.js": {
     "bundled": 60764,
