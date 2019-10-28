@@ -123,33 +123,23 @@ export default class BreakpointContainer extends React.Component<
 								onResize={size => this.setState({ size, currentBp })}
 							/>
 
-							{/* Only render contents if we know what the breakpoint is;
-							this prevents content from rendering prematurely (first-pass)
-							and causing flashes (i.e. rendering at 'none' bp before true
-							breakpoint 'l' is calculated and communicated to children. Causes
-							mobile content/styles to flash render in many cases). */}
-							{!!this.state.size && (
-								<>
-									<div className={cx(SELECTORS.BP_CONTENT, className)}>
-										<WithContext {...{ identifier, currentBp }}>
-											{typeof children === 'function'
-												? (children as Function)(currentBp, this.state.size)
-												: children}
-										</WithContext>
-									</div>
+							<div className={cx(SELECTORS.BP_CONTENT, className)}>
+								<WithContext {...{ identifier, currentBp }}>
+									{typeof children === 'function'
+										? (children as Function)(currentBp, this.state.size)
+										: children}
+								</WithContext>
+							</div>
 
-									{isDebugActive && (
-										<>
-											<span className={SELECTORS.DEBUG_INDICATOR}>
-												{currentBp || 'none'}
-											</span>
-											{identifier !== ID_DEFAULT &&
-												identifier !== ID_BROWSER && (
-													<span className={SELECTORS.DEBUG_IDENTIFIER}>
-														{identifier}
-													</span>
-												)}
-										</>
+							{isDebugActive && (
+								<>
+									<span className={SELECTORS.DEBUG_INDICATOR}>
+										{currentBp || 'none'}
+									</span>
+									{identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (
+										<span className={SELECTORS.DEBUG_IDENTIFIER}>
+											{identifier}
+										</span>
 									)}
 								</>
 							)}

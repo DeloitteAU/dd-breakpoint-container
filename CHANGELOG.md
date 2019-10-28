@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.2
+
+- Fix: Rolled back supressing first-pass render (v0.7.0); it's apparent there are some unexpected side-effects if we're preventing rendering while waiting for container width to propagate
+
 ## 0.8.1
 
 - Fix: BrowserContainer also supports child functions, parity with BreakpointContainer
@@ -105,7 +109,7 @@
 
 ## 0.2.4
 
-- Fix: '0' lower bp definitions are now properly routed to 'none', for <Bpc/> class output too
+- Fix: '0' lower bp definitions are now properly routed to 'none', for `<BreakpointContainer/>` class output too
 - Feat: Added '0' bp, as there is merit to introducing 'none' as an official bp
 - Refactor: Amended overly verbose build process with command double-ups
 
