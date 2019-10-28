@@ -3,11 +3,11 @@
 - Warnings around BrowserContainer
   - normalize.css (so its truly edge-to-edge)
   - @bp() SCSS will only be from there down, and therefore wont be usable in `body` selector, etc
-- Consolidate \*.d.ts files?
 - Absolute imports for CSS files (wont work currently as Rollup + PostCSS interpet it as a package and attempt to import it in the build)
 - Getting TS linting on some JS files? (rollup config?)
 
-- Might be prudent to renamed BreakpointDefinitions context
+- `debug` flags shouldn't render if NODE_ENV === 'production'
+- Might be prudent to rename BreakpointDefinitions context
   -- Should our context var names have `Context` as a var suffix?
 - Do we need 'none' in BREAKPOINTS? I dont think we do?
 - Styled Components; remove classnames
