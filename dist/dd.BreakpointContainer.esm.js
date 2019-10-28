@@ -3147,15 +3147,13 @@ var BreakpointContainer = /** @class */ (function (_super) {
                     _a["" + CLASSES.BP_PREFIX + currentBp] = debug && noBpClasses,
                     _a)) },
                 createElement(ResizeDetector, { handleWidth: true, onResize: function (size) { return _this.setState({ size: size, currentBp: currentBp }); } }),
-                !!_this.state.size && (createElement(Fragment, null,
-                    createElement("div", { className: classnames(SELECTORS.BP_CONTENT, className) },
-                        createElement(WithContext, __assign({}, { identifier: identifier, currentBp: currentBp }), typeof children === 'function'
-                            ? children(currentBp, _this.state.size)
-                            : children)),
-                    isDebugActive && (createElement(Fragment, null,
-                        createElement("span", { className: SELECTORS.DEBUG_INDICATOR }, currentBp || 'none'),
-                        identifier !== ID_DEFAULT &&
-                            identifier !== ID_BROWSER && (createElement("span", { className: SELECTORS.DEBUG_IDENTIFIER }, identifier))))))));
+                createElement("div", { className: classnames(SELECTORS.BP_CONTENT, className) },
+                    createElement(WithContext, __assign({}, { identifier: identifier, currentBp: currentBp }), typeof children === 'function'
+                        ? children(currentBp, _this.state.size)
+                        : children)),
+                isDebugActive && (createElement(Fragment, null,
+                    createElement("span", { className: SELECTORS.DEBUG_INDICATOR }, currentBp || 'none'),
+                    identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (createElement("span", { className: SELECTORS.DEBUG_IDENTIFIER }, identifier))))));
         }));
     };
     return BreakpointContainer;

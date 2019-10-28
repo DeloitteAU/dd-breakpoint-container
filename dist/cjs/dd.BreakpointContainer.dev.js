@@ -3154,15 +3154,13 @@ var BreakpointContainer = /** @class */ (function (_super) {
                     _a["" + CLASSES.BP_PREFIX + currentBp] = debug && noBpClasses,
                     _a)) },
                 React.createElement(ResizeDetector, { handleWidth: true, onResize: function (size) { return _this.setState({ size: size, currentBp: currentBp }); } }),
-                !!_this.state.size && (React.createElement(React.Fragment, null,
-                    React.createElement("div", { className: classnames(SELECTORS.BP_CONTENT, className) },
-                        React.createElement(WithContext, __assign({}, { identifier: identifier, currentBp: currentBp }), typeof children === 'function'
-                            ? children(currentBp, _this.state.size)
-                            : children)),
-                    isDebugActive && (React.createElement(React.Fragment, null,
-                        React.createElement("span", { className: SELECTORS.DEBUG_INDICATOR }, currentBp || 'none'),
-                        identifier !== ID_DEFAULT &&
-                            identifier !== ID_BROWSER && (React.createElement("span", { className: SELECTORS.DEBUG_IDENTIFIER }, identifier))))))));
+                React.createElement("div", { className: classnames(SELECTORS.BP_CONTENT, className) },
+                    React.createElement(WithContext, __assign({}, { identifier: identifier, currentBp: currentBp }), typeof children === 'function'
+                        ? children(currentBp, _this.state.size)
+                        : children)),
+                isDebugActive && (React.createElement(React.Fragment, null,
+                    React.createElement("span", { className: SELECTORS.DEBUG_INDICATOR }, currentBp || 'none'),
+                    identifier !== ID_DEFAULT && identifier !== ID_BROWSER && (React.createElement("span", { className: SELECTORS.DEBUG_IDENTIFIER }, identifier))))));
         }));
     };
     return BreakpointContainer;
