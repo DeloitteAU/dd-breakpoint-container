@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "classnames": "^2.2.5",
-    "core-js": "^2.6.10",
+    "core-js": "^3.4.1",
     "react-resize-detector": "^3.4.0"
   },
   "peerDependencies": {

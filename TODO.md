@@ -1,4 +1,4 @@
-- core-js@3 implementation
+- can we suppress peerDependency warnings in the root dir npm install? Not relevant
 - node_modules dependency errors in sandbox, clashing with the root dir node_modules (how to supress this...?)
 - Linting and TS conventions check
 - Optimisation pass-over with React Profiler
@@ -47,7 +47,6 @@
 
 ## Known issues
 
-- Workaround for the mass of named exports in dev server commonjs plugin
 - Need to check whether mixins nested within BEM selectors are also an issue in DDBreakpoints, or if that limitation is unique and needs to be documents (i.e. root selector level usage of mixins for BEM-style)
 
 ## TBD
