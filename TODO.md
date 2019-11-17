@@ -1,8 +1,10 @@
+- core-js@3 implementation
+- node_modules dependency errors in sandbox, clashing with the root dir node_modules (how to supress this...?)
 - Linting and TS conventions check
 - Optimisation pass-over with React Profiler
 - Warnings around BrowserContainer
   - normalize.css (so its truly edge-to-edge)
-  - @bp() SCSS will only be from there down, and therefore wont be usable in `body` selector, etc
+  - @bp() SCSS will only be from there down, and therefore wont be necessarily usable in `body` selector, etc
 - Absolute imports for CSS files (wont work currently as Rollup + PostCSS interpet it as a package and attempt to import it in the build)
 - Getting TS linting on some JS files? (rollup config?)
 

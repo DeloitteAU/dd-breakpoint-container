@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.3
+
+- Fix: core-js is now a core dependency, not a peerDependency
+- Chore: Removed core-js from sandbox package.json
+
 ## 0.8.2
 
 - Fix: Rolled back supressing first-pass render (v0.7.0); it's apparent there are some unexpected side-effects if we're preventing rendering while waiting for container width to propagate
