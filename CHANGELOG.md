@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.4
+
+- Feature: core-js@3
+
 ## 0.8.3
 
 - Fix: core-js is now a core dependency, not a peerDependency
@@ -17,21 +21,21 @@
 
 - Fix: ./lib now properly transpiling down to ES5
 - Fix: ./lib mixins.scss is now properly consolidated into one file, (was missing adjacent .scss file imports)
-- Refactor: TypeScript
-- Feat: Added \*.d.ts type files to ./lib
+- Refactor: TypeScript refactor
+- Feature: Added \*.d.ts type files to ./lib
 - Chore: core-js moved to peerDependency
-- Feat: Added \*.esm.js pkg.module to ./dist
+- Feature: Added \*.esm.js pkg.module to ./dist
 - Fix: 'css/debug.css' no longer being mistakenly imported in the build
 - Chore: Removed ./dev Rollup server; replaced with ./sandbox create-react-app
 
 ## 0.7.0
 
-- Feat: Added `customBreakpoints` prop to override default breakpoint names/sizes.
+- Feature: Added `customBreakpoints` prop to override default breakpoint names/sizes.
 - Fix: No more first-pass render flashes when there's no breakpoint-on-load. Will prevent your components flash rendering mobile styles before settling on a desktop breakpoint.
 
 ## 0.6.0
 
-- Feat: Added `AppBreakpoint` React Context export, (the `<Provider/>` of which lives in `<BrowserContainer/>`).
+- Feature: Added `AppBreakpoint` React Context export, (the `<Provider/>` of which lives in `<BrowserContainer/>`).
 
 ## 0.5.7
 
@@ -61,14 +65,14 @@
 
 ## 0.5.1
 
-- Feat: Added WIP Typescript definition file; added to package.json
+- Feature: Added WIP Typescript definition file; added to package.json
 - Chore: Cleaned excess files/folders from old builds from /lib
 
 ## 0.5.0
 
-- Feat: Added `resolveBp` core function
+- Feature: Added `resolveBp` core function
 - Docs: Updated README to reflect the above
-- Feat: Added 'bpc' export as preliminary support for CSS-in-js container query support
+- Feature: Added 'bpc' export as preliminary support for CSS-in-js container query support
 - Refactor: Moved HOCs into their own folder as separate files
 - Refactor: Separated out Breakpoint/Browser containers to separate component files
 - Chore: Added Prettier code formatter; updated associated plugins and eslint/stylelint configs; linted as required
@@ -85,7 +89,7 @@
 ## 0.4.1
 
 - Fix: Temporarily removed debug environment variable overrides, due to unverified performance
-- Feat: Added watch command, and dev server for local testing and development
+- Feature: Added watch command, and dev server for local testing and development
 - Docs: Added CONTRIBUTING.md
 - Refactor: Added 'config' directory and moved relevant files there to clean up project root
 - Chore: 'Breakpoint' component file changed to default export (remains named export in package)
@@ -101,7 +105,7 @@
 
 ## 0.3.2
 
-- Feat: Dist format now 'cjs'
+- Feature: Dist format now 'cjs'
 
 ## 0.3.1
 
@@ -110,12 +114,12 @@
 ## 0.3.0
 
 - Refactor: Complete restructure, file renaming, separating, ./lib and ./dist dirs
-- Feat: Added more relevant entries in package.json
+- Feature: Added more relevant entries in package.json
 
 ## 0.2.4
 
 - Fix: '0' lower bp definitions are now properly routed to 'none', for `<BreakpointContainer/>` class output too
-- Feat: Added '0' bp, as there is merit to introducing 'none' as an official bp
+- Feature: Added '0' bp, as there is merit to introducing 'none' as an official bp
 - Refactor: Amended overly verbose build process with command double-ups
 
 ## 0.2.3
@@ -129,14 +133,14 @@
 
 ## 0.2.1
 
-- Feat: Library now auto-routes to prod/dev script according to NODE_ENV
+- Feature: Library now auto-routes to prod/dev script according to NODE_ENV
 - Refactor: ./lib structure, some other internal module renaming
 
 ## 0.2.0
 
-- Feat: Separate production/develop configs
-- Feat: SCSS mixins now separate export
+- Feature: Separate production/develop configs
+- Feature: SCSS mixins now separate export
 
 ## 0.1.0
 
-- Feat: Component converted to package repo
+- Feature: Component converted to package repo
