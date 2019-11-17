@@ -1,6 +1,6 @@
 {
   "name": "dd-breakpoint-container",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Flexible container queries for responsive design in React and SCSS.",
   "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
   "license": "BSD-3-Clause",
