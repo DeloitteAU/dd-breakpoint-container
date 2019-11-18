@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.6
+
+- Fix: Updated underlying `@deloitte-digital-au/babel-preset-app-react` to 3.x for core-js@3 compatibility which affected lib/ `require()` overlap (not fixed in 0.8.5)
+- Chore: core-js@3 useBuiltIns changed to 'usage'
+
 ## 0.8.5
 
 - Fix: core-js@3 `require()` statements were placed in build files alongside core-js@2 legacy `require()` statements (?). Clean rebuild to remove legacy core-js@2 artefacts
