@@ -1,6 +1,6 @@
 module.exports = {
 	presets: [
-		['@babel/preset-env', { useBuiltIns: 'entry', corejs: 3 }],
+		['@babel/preset-env', { useBuiltIns: 'usage', corejs: 3 }],
 		'@deloitte-digital-au/babel-preset-app-react',
 		'@babel/preset-typescript',
 	],
