@@ -3,7 +3,7 @@ import {
 	BreakpointContainer,
 	BrowserContainer,
 	Breakpoint,
-} from 'dd-breakpoint-container';
+} from '@deloitte-digital-au/dd-breakpoint-container';
 
 import './App.scss';
 

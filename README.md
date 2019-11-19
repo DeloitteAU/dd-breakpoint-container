@@ -17,36 +17,6 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 <!-- Note: Re-generate with 'npm run doctoc' (install 'doctoc' globally) -->
 <!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-## Index
-
-- [Install](#markdown-header-install)
-- [Usage](#markdown-header-usage)
-  - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
-  - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
-    - [SCSS pattern](#markdown-header-scss-pattern)
-    - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
-    - [Child function pattern](#markdown-header-child-function-pattern)
-    - [Callback pattern](#markdown-header-callback-pattern)
-- [Conditional rendering](#markdown-header-conditional-rendering)
-- [Options & exports](#markdown-header-options-exports)
-  - [BreakpointContainer](#markdown-header-breakpointcontainer)
-  - [BrowserContainer component](#markdown-header-browsercontainer-component)
-    - [AppBreakpoint context](#markdown-header-appbreakpoint-context)
-  - [Breakpoint component](#markdown-header-breakpoint-component)
-  - [HOCs](#markdown-header-hocs)
-  - [Functions](#markdown-header-functions)
-  - [Other](#markdown-header-other)
-- [Debug features](#markdown-header-debug-features)
-- [Disclaimers](#markdown-header-disclaimers)
-  - [Performance](#markdown-header-performance)
-  - [Consider media queries](#markdown-header-consider-media-queries)
-  - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
-- [About Deloitte Digital Australia](#markdown-header-about-deloitte-digital-australia)
-  - [Key contributors](#markdown-header-key-contributors)
-  - [Who are we?](#markdown-header-who-are-we)
-- [Licence](#markdown-header-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -55,7 +25,7 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 To install via [npm](https://www.npmjs.com/):
 
 ```
-npm install dd-breakpoint-container
+npm install @deloitte-digital-au/dd-breakpoint-container
 ```
 
 ## Usage
@@ -65,7 +35,7 @@ Quick note: this library features named breakpoints, e.g. where `'s'` (small) eq
 ### 1. Wrap your App in `<BrowserContainer/>`
 
 ```
-import { BrowserContainer } from 'dd-breakpoint-container';
+import { BrowserContainer } from '@deloitte-digital-au/dd-breakpoint-container';
 ...
 <BrowserContainer>
 	<App/>
@@ -84,7 +54,7 @@ import { BrowserContainer } from 'dd-breakpoint-container';
 ### 2. Use `<BreakpointContainer/>` in your components
 
 ```
-import { BreakpointContainer } from 'dd-breakpoint-container';
+import { BreakpointContainer } from '@deloitte-digital-au/dd-breakpoint-container';
 ...
 <BreakpointContainer>
 	<div>My Component</div>
@@ -105,7 +75,7 @@ If you are using SCSS, first your `<BreakpointContainer/>` will need a `classNam
 
 Then you'll need to import the library's stylesheet in your own SCSS stylesheet:
 
-`@import '~dd-breakpoint-container/lib/mixins.scss';`
+`@import '~@deloitte-digital-au/dd-breakpoint-container/lib/mixins.scss';`
 
 Now you can use the container query mixin in your `.scss` files. Note that the `className` you specified on your component must be the parent selector.
 
@@ -195,7 +165,7 @@ The component automatically detects which `<BreakpointContainer/>` it's in. Or, 
 
 ### BreakpointContainer
 
-`import { BreakpointContainer } from 'dd-breakpoint-container';`
+`import { BreakpointContainer } from '@deloitte-digital-au/dd-breakpoint-container';`
 
 | Name              | Type            | Default value | Description                                                                                                                                                                                         |
 | ----------------- | --------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -221,7 +191,7 @@ This React Context export provides the `value` of `({ bpName: string, bpSize: nu
 Note this Context value export is an object, which you can destructure like so:
 
 ```
-import { AppBreakpoint } from 'dd-breakpoint-container';
+import { AppBreakpoint } from '@deloitte-digital-au/dd-breakpoint-container';
 ...
 <AppBreakpoint.Consumer>
 	{({ bpName, bpSize }) =>
@@ -233,7 +203,7 @@ import { AppBreakpoint } from 'dd-breakpoint-container';
 
 ### Breakpoint component
 
-`import { Breakpoint } from 'dd-breakpoint-container';`
+`import { Breakpoint } from '@deloitte-digital-au/dd-breakpoint-container';`
 
 | Name       | Type            | Default value | Description                                                                                                                                      |
 | ---------- | --------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |

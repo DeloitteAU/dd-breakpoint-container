@@ -1,14 +1,14 @@
 {
-  "name": "dd-breakpoint-container",
+  "name": "@deloitte-digital-au/dd-breakpoint-container",
   "version": "0.8.6",
   "description": "Flexible container queries for responsive design in React and SCSS.",
   "author": "Deloitte Digital Australia (http://deloittedigital.com.au)",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/"
+    "url": "https://github.com/DeloitteDigitalAPAC/dd-breakpoint-container"
   },
-  "homepage": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/browse/README.md",
+  "homepage": "https://github.com/DeloitteDigitalAPAC/dd-breakpoint-container/blob/master/README.md",
   "main": "./lib/index.js",
   "module": "./dist/dd.BreakpointContainer.esm.js",
   "types": "./lib/index.d.ts",
