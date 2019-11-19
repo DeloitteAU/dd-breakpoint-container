@@ -47,7 +47,7 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 To install via [npm](https://www.npmjs.com/):
 
 ```
-npm install --save git+ssh://dvcs.deloittedigital.com.au:22/fed/dd-breakpoint-container.git
+npm install dd-breakpoint-container
 ```
 
 ## Usage
@@ -131,7 +131,7 @@ You can also use the existing `bp()` mixin to specify styles relative to the ove
 
 #### CSS-in-js pattern
 
-TODO
+Official support coming soon; in the meantime it is possible to bootstrap this utilising the `resolveBp` export.
 
 #### Child function pattern
 

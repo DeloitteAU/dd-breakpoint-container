@@ -21,7 +21,7 @@
 - Make 'dev' folder into demo site for dd.io hosting
 - Restructure/clean-up TODOs here
 
-## Deloitte Consensus
+## Consensus required
 
 - Export names (especially 'BrowserContainer' [rename -> App?] & 'Breakpoint' component)
 - Does classnames really belong as peerdependency?
@@ -58,7 +58,7 @@
 - Possible/practical to share SCSS / JS vars? Webpack seems equipped to do it? (Styled Components...?)
 - Do we need 'bps-max' array in SCSS or can derive that in another way?
 - Efficiency/performance tests?
-- Alpha 1 (MLC URE) 2 + 3 (MQ pre and post major refactor) orphan branches
+- investigate infinite loop behaviour - possible? (at X breakpoint, set width Y, to trigger Z breakpoint- what happens?)
 
 ## Future features?
 
