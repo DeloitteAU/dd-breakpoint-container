@@ -1,3 +1,4 @@
+- Is AppBreakpoint Context stable? To investigate
 - can we suppress peerDependency warnings in the root dir npm install? Not relevant
 - node_modules dependency errors in sandbox, clashing with the root dir node_modules (how to supress this...?)
 - Linting and TS conventions check

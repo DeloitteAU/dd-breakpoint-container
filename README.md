@@ -1,10 +1,18 @@
+# :warning: Alpha release :warning:
+
+This package is now in a state of public alpha release. Though we consider its behaviour to be stable it's missing some essential package infrastructure necessary for a `1.0.0` release; more explicit CSS-in-js support, unit tests and integration tests, and some consensus items, potential refactoring, and more.
+
+As such, please be aware that the first major version is liable to have significant API changes.
+
+Until that time, `0.x.x` semver releases will not be disruptive or introduce breaking changes, and therefore keeping up to date with latest minor and patch releases is advised.
+
 ![Deloitte Digital](dd-logo.png)
 
 # DDBreakpointContainer
 
 A container query toolkit for flexible responsive design in React and CSS. Make modular components that look great no matter what size their container, and say goodbye to media queries.
 
-Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js approaches.
+Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js approaches (coming soon).
 
 <!-- Note: Re-generate with 'npm run doctoc' (install 'doctoc' globally) -->
 <!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
