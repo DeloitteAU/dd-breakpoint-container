@@ -1,6 +1,6 @@
 # :warning: Alpha release :warning:
 
-This package is now in a state of public alpha release. Though we consider its behaviour to be stable it's missing some essential package infrastructure necessary for a `1.0.0` release. Namely - more explicit CSS-in-js support, unit tests and integration tests, some consensus items, potential refactoring, and more.
+This package is now in a state of public alpha release. Though we consider its behaviour to be stable it's missing some essential package infrastructure necessary for a `1.0.0` release. Namely: more explicit CSS-in-js support, unit tests and integration tests, some consensus items, potential refactoring, and more.
 
 As such, please be aware that the first major version is liable to have significant API changes.
 
@@ -22,7 +22,7 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 
 ## Install
 
-To install via [npm](https://www.npmjs.com/):
+To install via [npm](https://www.npmjs.com/package/@deloitte-digital-au/dd-breakpoint-container):
 
 ```
 npm install @deloitte-digital-au/dd-breakpoint-container
