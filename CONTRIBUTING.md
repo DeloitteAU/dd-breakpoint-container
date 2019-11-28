@@ -4,10 +4,10 @@ This package comes with a Sandbox repo for testing live changes in the package, 
 
 ## Set-up: Linking the Sandbox
 
-In order to make the `dd-breakpoint-container` package available to the Sandbox repo, you first have to create the link on your machine. This is only required once when first setting up your development environment. If you're not sure that you've done this already, run `yarn unlink` first, as linking multiple times via `yarn link` can cause unexpected behaviour.
+In order to make the `dd-breakpoint-container` package available to the Sandbox repo, you first have to create the link on your machine. This is only required once when first setting up your development environment.
 
 - In the root directory run `yarn link`
-- Then in the Sandbox repo (`cd sandbox`) - `yarn link ../`
+- Then in the Sandbox repo (`cd sandbox`) - `yarn link @deloitte-digital-au/dd-breakpoint-container`
 
 ## Active Development
 
