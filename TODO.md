@@ -1,3 +1,4 @@
+- Potentially memoize `bpSize` remounts-on-resize bug in child function pattern
 - package.json yarn version; .nvmrc?
 - Prettier onSave breaks Bpc/>?
 - Migrate TODOs (this file) to repo Issues?
