@@ -1,3 +1,5 @@
+- Prettier onSave breaks Bpc/>?
+- Migrate TODOs (this file) to repo Issues?
 - AppBreakpoint HOC
 - Is AppBreakpoint Context stable? To investigate
 - can we suppress peerDependency warnings in the root dir npm install? Not relevant
