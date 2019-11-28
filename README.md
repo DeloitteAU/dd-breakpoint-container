@@ -19,6 +19,35 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 <!-- Note: Re-generate with 'yarn doctoc' (install 'doctoc' globally) -->
 <!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Index
+
+- [Install](#markdown-header-install)
+- [Usage](#markdown-header-usage)
+    - [1. Wrap your App in `<BrowserContainer/>`](#markdown-header-1-wrap-your-app-in-browsercontainer)
+    - [2. Use `<BreakpointContainer/>` in your components](#markdown-header-2-use-breakpointcontainer-in-your-components)
+        - [SCSS pattern](#markdown-header-scss-pattern)
+        - [CSS-in-js pattern](#markdown-header-css-in-js-pattern)
+        - [Child function pattern](#markdown-header-child-function-pattern)
+        - [Callback pattern](#markdown-header-callback-pattern)
+- [Conditional rendering](#markdown-header-conditional-rendering)
+- [Options & exports](#markdown-header-options-exports)
+    - [BreakpointContainer](#markdown-header-breakpointcontainer)
+    - [BrowserContainer component](#markdown-header-browsercontainer-component)
+        - [AppBreakpoint context](#markdown-header-appbreakpoint-context)
+    - [Breakpoint component](#markdown-header-breakpoint-component)
+    - [HOCs](#markdown-header-hocs)
+    - [Functions](#markdown-header-functions)
+    - [Other](#markdown-header-other)
+- [Debug features](#markdown-header-debug-features)
+- [Disclaimers](#markdown-header-disclaimers)
+    - [Performance](#markdown-header-performance)
+    - [Consider media queries](#markdown-header-consider-media-queries)
+    - [DDBreakpoints Backwards compatibility](#markdown-header-ddbreakpoints-backwards-compatibility)
+- [About Deloitte Digital Australia](#markdown-header-about-deloitte-digital-australia)
+    - [Key contributors](#markdown-header-key-contributors)
+    - [Who are we?](#markdown-header-who-are-we)
+- [Licence](#markdown-header-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
