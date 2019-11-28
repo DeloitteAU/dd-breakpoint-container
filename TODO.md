@@ -1,3 +1,4 @@
+- package.json yarn version; .nvmrc?
 - Prettier onSave breaks Bpc/>?
 - Migrate TODOs (this file) to repo Issues?
 - AppBreakpoint HOC

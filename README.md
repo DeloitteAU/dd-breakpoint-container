@@ -14,7 +14,7 @@ A container query toolkit for flexible responsive design in React and CSS. Make 
 
 Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js approaches (coming soon).
 
-<!-- Note: Re-generate with 'npm run doctoc' (install 'doctoc' globally) -->
+<!-- Note: Re-generate with 'yarn doctoc' (install 'doctoc' globally) -->
 <!-- Note: If you experience issues with doctoc regen, replace below START/END with just 'START doctoc' and 'END doctoc' HTML comments and rerun -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -22,10 +22,16 @@ Features for JS (React) rendering, SCSS (mixins), and support for CSS-in-js appr
 
 ## Install
 
-To install via [npm](https://www.npmjs.com/package/@deloitte-digital-au/dd-breakpoint-container):
+Via [npm](https://www.npmjs.com/package/@deloitte-digital-au/dd-breakpoint-container):
 
 ```
 npm install @deloitte-digital-au/dd-breakpoint-container
+```
+
+Via yarn:
+
+```
+yarn @deloitte-digital-au/dd-breakpoint-container
 ```
 
 ## Usage
