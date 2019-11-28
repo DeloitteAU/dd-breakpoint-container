@@ -74,7 +74,8 @@
   },
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
-    "start": "run-s build && npm-watch",
+    "start": "run-s build watch",
+    "watch": "npm-watch",
     "build": "run-s --silent check-types build:*",
     "build:pre": "node ./scripts/text/dd-logo.js",
     "build:clean": "rm -rf lib dist/cjs",
