@@ -74,8 +74,8 @@
   },
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
-    "start": "run-s build watch",
-    "watch": "npm-watch",
+    "start": "npm-watch watch:build",
+    "watch:build": "run-s build:lib build:sass",
     "build": "run-s --silent check-types build:*",
     "build:pre": "node ./scripts/text/dd-logo.js",
     "build:clean": "rm -rf lib dist/cjs",
@@ -114,19 +114,11 @@
     ]
   },
   "watch": {
-    "build:sass": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "scss",
-      "runOnChangeOnly": true
-    },
-    "build:lib": {
+    "watch:build": {
       "patterns": [
         "src"
       ],
       "extensions": "ts,tsx,js,scss",
-      "runOnChangeOnly": true,
       "delay": 2000
     }
   },
