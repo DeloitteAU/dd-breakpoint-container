@@ -6,6 +6,8 @@ As such, please be aware that the first major version is liable to have signific
 
 Until that time, `0.x.x` semver releases will not be disruptive or introduce breaking changes, and therefore keeping up to date with latest minor and patch releases is advised.
 
+<br/>
+
 ![Deloitte Digital](dd-logo.png)
 
 # DDBreakpointContainer
