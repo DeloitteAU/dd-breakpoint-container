@@ -116,7 +116,7 @@
   "watch": {
     "build:sass": {
       "patterns": [
-        "src/scss"
+        "src"
       ],
       "extensions": "scss",
       "runOnChangeOnly": true
