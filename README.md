@@ -44,7 +44,7 @@ Quick note: this library features named breakpoints, e.g. where `'s'` (small) eq
 import { BrowserContainer } from '@deloitte-digital-au/dd-breakpoint-container';
 ...
 <BrowserContainer>
-	<App/>
+    <App/>
 <BrowserContainer/>
 ```
 
@@ -63,7 +63,7 @@ import { BrowserContainer } from '@deloitte-digital-au/dd-breakpoint-container';
 import { BreakpointContainer } from '@deloitte-digital-au/dd-breakpoint-container';
 ...
 <BreakpointContainer>
-	<div>My Component</div>
+    <div>My Component</div>
 <BreakpointContainer/>
 ```
 
@@ -75,7 +75,7 @@ If you are using SCSS, first your `<BreakpointContainer/>` will need a `classNam
 
 ```
 <BreakpointContainer className="my-component-name">
-	...
+    ...
 </BreakpointContainer>
 ```
 
@@ -87,27 +87,27 @@ Now you can use the container query mixin in your `.scss` files. Note that the `
 
 ```
 .my-component {
-	// Core styles
+    // Core styles
 
-	// Between 0px width and 'xs' mixin (inclusive)
-	@include bp(0, xs) {
-		...
-	}
+    // Between 0px width and 'xs' mixin (inclusive)
+    @include bp(0, xs) {
+        ...
+    }
 
-	// 's' breakpoint and above
-	@include bpc(s) {
-		...
-	}
+    // 's' breakpoint and above
+    @include bpc(s) {
+        ...
+    }
 
-	// 'm' breakpoint only
-	@include bpc(m, m) {
-		...
-	}
+    // 'm' breakpoint only
+    @include bpc(m, m) {
+        ...
+    }
 
-	// Between 'm' and 'l' breakpoints (inclusive)
-	@include bpc(m, l) {
-		...
-	}
+    // Between 'm' and 'l' breakpoints (inclusive)
+    @include bpc(m, l) {
+        ...
+    }
 }
 ```
 
@@ -123,9 +123,9 @@ If you'd like to work with responsive logic in your component JS, you can expose
 
 ```
 <BreakpointContainer>
-	{ (bpName, bpSize) => {
-		return `The current breakpoint is ${bpName}, at size ${bpSize} pixels.`.
-	}}
+    { (bpName, bpSize) => {
+        return `The current breakpoint is ${bpName}, at size ${bpSize} pixels.`.
+    }}
 </BreakpointContainer>
 ```
 
@@ -135,11 +135,11 @@ Operate on a callback that triggers when the breakpoint changes. **Note: this is
 
 ```
 <BreakpointContainer
-	onChange={bpName => {
-		...
-	}}
+    onChange={bpName => {
+        ...
+    }}
 >
-	...
+    ...
 </BreakpointContainer>
 ```
 
@@ -200,10 +200,10 @@ Note this Context value export is an object, which you can destructure like so:
 import { AppBreakpoint } from '@deloitte-digital-au/dd-breakpoint-container';
 ...
 <AppBreakpoint.Consumer>
-	{({ bpName, bpSize }) =>
-		<p>`Current bp name is: '${bpName}'`</p>
-		<p>`Current bp size: '${bpSize}'`</p>
-	}
+    {({ bpName, bpSize }) =>
+        <p>`Current bp name is: '${bpName}'`</p>
+        <p>`Current bp size: '${bpSize}'`</p>
+    }
 </AppBreakpoint.Consumer>
 ```
 
