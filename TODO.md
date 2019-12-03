@@ -1,14 +1,15 @@
+- Instructions for using as a standalone script via unpkg
+- Travis CI? Or Azure DevOps? SonarCloud?
+- Deprecate `size` and `bpSize`; maybe expose as a prop so bpSize doesnt otherwise trigger a re-render all the time, but still allows one to exhume bpSize if they really want it (breaking change)
+- Debounce `onResize`; maybe expose that param (not debounced already?)
 - Potentially memoize `bpSize` remounts-on-resize bug in child function pattern
-- package.json yarn version; .nvmrc?
 - Prettier onSave breaks Bpc/>?
-- Migrate TODOs (this file) to repo Issues?
-- AppBreakpoint HOC
 - Is AppBreakpoint Context stable? To investigate
 - can we suppress peerDependency warnings in the root dir npm install? Not relevant
-- node_modules dependency errors in sandbox, clashing with the root dir node_modules (how to supress this...?)
 - Linting and TS conventions check
 - Optimisation pass-over with React Profiler
 - Warnings around BrowserContainer
+  - bp() and AppBreakpoint only emulate media query behaviour if BrowserContainer is the full width of the viewport (provide warning in README?)
   - normalize.css (so its truly edge-to-edge)
   - @bp() SCSS will only be from there down, and therefore wont be necessarily usable in `body` selector, etc
 - Absolute imports for CSS files (wont work currently as Rollup + PostCSS interpet it as a package and attempt to import it in the build)
@@ -24,7 +25,6 @@
 - How could DynamicSubLayout be integrated into this project? Core functionality? Separate with peer dependency on this lib?
 - Rename noBpClasses - something like no SCSS...? Or not?
 - Support render props?
-- Make 'dev' folder into demo site for dd.io hosting
 - Restructure/clean-up TODOs here
 
 ## Consensus required
@@ -39,16 +39,14 @@
 
 - Dev dir README.md
 - README description clarity, what/why, GIF example
-- README badges for version, coverage, build, etc
-- Note peer dependencies in README
 
 ## Package
 
 - Can we make the breakpoint mixins available as functions for CSS-in-js? Might not be necessary if we can instead provide a 'query' resolving function to enable CSS-in-js patterns. More investigation and/or feedback required from those more familiar with approach
+  - cq, mq, aq - container query, media query, app container query
 - Add style/passthrough-props to bpc-content
 - NODE_ENV and debug overrides cant be set client side, because process isnt defined (?)
 - Unit tests, and integration/behavioural tests
-- Backwards compatibility with DDBreakpoints unit tests
 - Unit tests to test that it works without SASS dependency, for those not using mixins.scss
 
 ## Known issues
