@@ -119,7 +119,7 @@
         "src"
       ],
       "extensions": "ts,tsx,js,scss",
-      "delay": 2000
+      "quiet": true
     }
   },
   "keywords": [
