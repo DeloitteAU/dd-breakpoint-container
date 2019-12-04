@@ -75,7 +75,7 @@
   "scripts": {
     "doctoc": "doctoc README.md --title '## Index' --maxlevel 4 --bitbucket",
     "start": "npm-watch watch:build",
-    "watch:build": "run-s build:dev build:sass build:types build:post",
+    "watch:build": "node ./scripts/text/rebuilding.js && run-s build:dev build:sass build:types build:post",
     "build": "run-s --silent check-types build:*",
     "build:pre": "node ./scripts/text/dd-logo.js",
     "build:clean": "rm -rf lib dist/cjs",
