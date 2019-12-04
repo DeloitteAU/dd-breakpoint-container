@@ -1,3 +1,6 @@
+- TypeScript breakpoint type exports?
+- Upgrade react-resize-observer to ^4.0.0 for performance
+- FAQ; first-pass render flash; infinite loop mitigation; why this is a good foundation way to do responsive
 - Instructions for using as a standalone script via unpkg
 - Travis CI? Or Azure DevOps? SonarCloud?
 - Deprecate `size` and `bpSize`; maybe expose as a prop so bpSize doesnt otherwise trigger a re-render all the time, but still allows one to exhume bpSize if they really want it (breaking change)
