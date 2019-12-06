@@ -1,3 +1,4 @@
+- Docs for if/else common rendering pattern
 - TypeScript breakpoint type exports?
 - Upgrade react-resize-observer to ^4.0.0 for performance
 - FAQ; first-pass render flash; infinite loop mitigation; why this is a good foundation way to do responsive
