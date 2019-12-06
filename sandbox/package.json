@@ -5,7 +5,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/https://github.com/DeloitteDigitalAPAC/dd-breakpoint-container"
+    "url": "https://hub.deloittedigital.com.au/stash/projects/FED/repos/dd-breakpoint-container/"
   },
   "dependencies": {
     "@types/jest": "24.0.19",
