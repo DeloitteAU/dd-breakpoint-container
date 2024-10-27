@@ -20,7 +20,7 @@
     "README.md"
   ],
   "dependencies": {
-    "classnames": "^2.2.5",
+    "classnames": "^2.5.1",
     "core-js": "^3.4.1",
     "react-resize-detector": "^3.4.0"
   },
